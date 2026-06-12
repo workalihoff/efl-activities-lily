@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Professional Bio | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+  --gabriela:#7B3FA0;--gabriela-light:#F3ECF9;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--gabriela);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--gabriela);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:540px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.card-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:.75rem}
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-bottom:1rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.amber-box{background:var(--amber-bg);border-left:3px solid #BA7517;border-radius:0 8px 8px 0;padding:.7rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--amber-t);line-height:1.55}
+.structure-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.str-item{background:var(--cream-dark);border-radius:10px;padding:.75rem}
+.str-num{font-size:22px;font-weight:800;color:var(--gabriela);font-family:'Raleway',sans-serif;margin-bottom:.25rem}
+.str-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.str-body{font-size:12px;color:var(--text3);line-height:1.5}
+.phrase-list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.75rem}
+.phrase-item{background:var(--gabriela-light);border-radius:8px;padding:.5rem .85rem;font-size:13px;color:#3D1A55;border-left:3px solid var(--gabriela);display:flex;align-items:center;gap:.5rem}
+.phrase-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin:.75rem 0 .35rem}
+.watch-grid{display:flex;flex-direction:column;gap:.4rem}
+.watch-item{background:var(--red-bg);border-radius:8px;padding:.5rem .85rem;font-size:13px;color:var(--red-t);display:flex;align-items:flex-start;gap:.5rem}
+.watch-right{font-size:13px;color:var(--green-t);display:flex;align-items:flex-start;gap:.5rem;background:var(--green-bg);border-radius:8px;padding:.5rem .85rem;margin-top:.2rem}
+.write-ta{width:100%;min-height:180px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.7;background:var(--cream)}
+.write-ta:focus{border-color:var(--gabriela);background:#fff;box-shadow:0 0 0 3px rgba(123,63,160,.1)}
+.word-counter{font-size:12px;color:var(--text3);margin-top:.35rem;text-align:right}
+.word-counter.ok{color:var(--green-t);font-weight:600}
+.word-counter.over{color:var(--terra);font-weight:600}
+.checklist{display:flex;flex-direction:column;gap:.4rem;margin:.75rem 0}
+.check-item{display:flex;align-items:flex-start;gap:.6rem;font-size:13px;color:var(--text2);line-height:1.45}
+.check-item input{margin-top:2px;accent-color:var(--gabriela);flex-shrink:0}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--gabriela);color:var(--gabriela)}
+.check-btn.done{background:var(--gabriela-light);border-color:var(--gabriela);color:var(--gabriela)}
+.model-answer{margin-top:.75rem;padding:.75rem 1rem;background:var(--gabriela-light);border-left:3px solid var(--gabriela);border-radius:0 8px 8px 0;font-size:13px;color:#3D1A55;line-height:1.7;display:none}
+.model-answer.show{display:block}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn.primary{background:var(--gabriela);border-color:var(--gabriela);color:#fff}
+@media(max-width:580px){.shell{padding:1.5rem .75rem 5rem}.structure-grid{grid-template-columns:1fr}}
+</style>
+<style id="print-css">
+@media print {
+  body { background: #fff !important; }
+  .topbar, .phase-nav, .botnav, #print-fab { display: none !important; }
+  .shell { max-width: 100% !important; padding: 1rem !important; }
+  .word-card, .quiz-card, .write-card, .reflect-card, .card, .listen-card, .pretask-card { break-inside: avoid; margin-bottom: 1rem; box-shadow: none !important; border: 1px solid #ddd !important; }
+  .wc-body, .model-answer, .quiz-feedback, .self-eval { display: block !important; }
+  .write-ta { min-height: 60px; border: 1px solid #ccc; background: #fff; }
+  a { color: #0F6E56; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Writing — Professional Bio</div>
+    <div class="topbar-sub">English with Ali · Gabriela</div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="section-intro">
+    <h2>Your Professional Bio in English</h2>
+    <p>This bio is something you'll actually use — in Geneva, in email signatures, in introductions. Write it well, write it once.</p>
+  </div>
+
+  <!-- Why this matters -->
+  <div class="card">
+    <div class="card-title">🎯 Why this task</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:.75rem">At the Geneva training, you will likely be asked to introduce yourself in writing or in person — to trainers, to colleagues from other countries, in registration forms, in shared documents. Your bio should be ready before you arrive.</div>
+    <div class="tip-box">💡 A professional bio is not a CV. It's a curated narrative — you choose what to include, how much detail to give, and what impression to create. Every sentence earns its place.</div>
+  </div>
+
+  <!-- Structure -->
+  <div class="card">
+    <div class="card-title">📋 Structure for a 150-word professional bio</div>
+    <div class="structure-grid">
+      <div class="str-item">
+        <div class="str-num">1</div>
+        <div class="str-title">Name + current role</div>
+        <div class="str-body">One sentence. State who you are and where you work.</div>
+      </div>
+      <div class="str-item">
+        <div class="str-num">2</div>
+        <div class="str-title">What you actually do</div>
+        <div class="str-body">One or two sentences. Use "I look after..." or "I handle..." — not just your title.</div>
+      </div>
+      <div class="str-item">
+        <div class="str-num">3</div>
+        <div class="str-title">Key achievement or background</div>
+        <div class="str-body">One sentence that makes you memorable. A milestone, a specialization, or a notable project.</div>
+      </div>
+      <div class="str-item">
+        <div class="str-num">4</div>
+        <div class="str-title">Why you're here / your goal</div>
+        <div class="str-body">One sentence connecting your background to your reason for being at this training.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Useful phrases from the vocabulary activity -->
+  <div class="card">
+    <div class="card-title">💬 Phrases to use — from this week's vocabulary</div>
+    <div class="phrase-cat">Describing your role</div>
+    <div class="phrase-list">
+      <div class="phrase-item">🔹 I look after [area] at [organization]</div>
+      <div class="phrase-item">🔹 I handle [type of work], including [specific example]</div>
+      <div class="phrase-item">🔹 I have a background in [field], which in practice means [daily work]</div>
+    </div>
+    <div class="phrase-cat">Describing experience</div>
+    <div class="phrase-list">
+      <div class="phrase-item">🔹 I have [X years of] experience in [area]</div>
+      <div class="phrase-item">🔹 I have worked on [type of project/initiative]</div>
+      <div class="phrase-item">🔹 I specialize in [area]</div>
+    </div>
+    <div class="phrase-cat">Connecting to the training</div>
+    <div class="phrase-list">
+      <div class="phrase-item">🔹 I am attending this training to [purpose / to + infinitive]</div>
+      <div class="phrase-item">🔹 I look forward to [gerund] and [gerund]</div>
+      <div class="phrase-item">🔹 I hope to [base verb] and apply [what] to [where]</div>
+    </div>
+  </div>
+
+  <!-- Error patterns to avoid -->
+  <div class="card">
+    <div class="card-title">⚠️ Patterns to avoid — from your output this week</div>
+    <div class="watch-grid">
+      <div class="watch-item">❌ "I am being in charge of..." </div>
+      <div class="watch-right">✓ "I am in charge of..." / "I am responsible for..."</div>
+      <div class="watch-item" style="margin-top:.5rem">❌ "I work on Guatemala"</div>
+      <div class="watch-right">✓ "I work in Guatemala" / "I work on issues related to Guatemala"</div>
+      <div class="watch-item" style="margin-top:.5rem">❌ "She doesn't / I doesn't..."</div>
+      <div class="watch-right">✓ "I don't..." — third person singular -s only for he/she/it</div>
+      <div class="watch-item" style="margin-top:.5rem">❌ "actually" (meaning "currently")</div>
+      <div class="watch-right">✓ "currently" / "at present" / "right now"</div>
+    </div>
+  </div>
+
+  <!-- Writing task -->
+  <div class="card">
+    <div class="card-title">✍️ Write your bio — 130 to 160 words</div>
+    <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:1rem">Write in the third person (she / Gabriela) — that's the standard format for professional bios submitted to training programs. Aim for 130–160 words. <strong>Do not use ChatGPT or AI for this task.</strong></p>
+    <div class="amber-box">⚠️ Write your first draft without stopping to check grammar. Get the content right first — then review. Perfectionism is the enemy of production.</div>
+    <textarea class="write-ta" id="bio-ta" placeholder="Gabriela is a human rights lawyer currently based in Guatemala City..." oninput="countWords()"></textarea>
+    <div class="word-counter" id="word-count">0 words</div>
+    <div class="checklist" style="margin-top:1rem">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:.25rem">Before you submit — check:</div>
+      <label class="check-item"><input type="checkbox"> Name and current role in sentence 1</label>
+      <label class="check-item"><input type="checkbox"> At least one "I look after / I handle / I am responsible for"</label>
+      <label class="check-item"><input type="checkbox"> No "actually" used as "currently"</label>
+      <label class="check-item"><input type="checkbox"> No "work on [country]" — use "work in" or "work on issues in"</label>
+      <label class="check-item"><input type="checkbox"> At least one phrase from the vocabulary activity</label>
+      <label class="check-item"><input type="checkbox"> Connection to the Geneva training in the final sentence</label>
+      <label class="check-item"><input type="checkbox"> Word count between 130 and 160</label>
+    </div>
+    <button class="check-btn" id="model-btn" onclick="showModel()">See a model bio</button>
+    <div class="model-answer" id="model-bio">
+      <strong>Model bio (you can use this as a reference, not as a template to copy):</strong><br><br>
+      Gabriela is a human rights lawyer currently based in Guatemala City, where she works as a Human Rights Officer and Civic Space Focal Point at the Office of the United Nations High Commissioner for Human Rights (OHCHR). She looks after monitoring and accountability work on human rights issues in Guatemala, with a particular focus on LGBTI rights, women's rights, and the prevention of gender-based violence from an intersectional perspective. She has been instrumental in advancing inter-institutional actions to address sexual harassment in public spaces and has contributed to the report <em>Guatemala: Challenges in the Defence of Human Rights 2020–2025</em>. She is attending the Advanced Training Course on the Effective Integration of Human Rights in Law Enforcement to strengthen her capacity to apply international standards in her work and contribute her field experience to the shared learning.<br><br>
+      <span style="font-size:11px;color:var(--gabriela);margin-top:.5rem;display:block">This is a model — yours should reflect your actual background, your voice, and your priorities. Don't copy it. Learn from its structure.</span>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <span style="font-size:13px;color:var(--text3)">Send your bio to Ali on WhatsApp when done.</span>
+    <button class="nav-btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+  </div>
+</div>
+
+<script>
+function countWords(){
+  const text=document.getElementById('bio-ta').value.trim();
+  const count=text?text.split(/\s+/).length:0;
+  const el=document.getElementById('word-count');
+  el.textContent=count+' words';
+  el.className='word-counter'+(count>=130&&count<=160?' ok':count>160?' over':'');
+}
+function showModel(){
+  document.getElementById('model-bio').classList.add('show');
+  const btn=document.getElementById('model-btn');
+  btn.classList.add('done');btn.textContent='✓ Model bio shown';
+}
+</script>
+
+<div id="print-fab" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:999">
+  <button onclick="exportPDF()" style="display:flex;align-items:center;gap:.5rem;background:#0F6E56;color:#fff;border:none;border-radius:12px;padding:.65rem 1.25rem;font-family:'Lato',sans-serif;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .2s" onmouseover="this.style.background='#1D9E75'" onmouseout="this.style.background='#0F6E56'">
+    📄 Export as PDF
+  </button>
+</div>
+
+<script>
+function exportPDF(){
+  // 1. Show all hidden phases/sections
+  const hidden = document.querySelectorAll('[style*="display:none"], [style*="display: none"]');
+  const hiddenEls = [];
+  hidden.forEach(el => {
+    hiddenEls.push({el, style: el.getAttribute('style')});
+    el.style.display = 'block';
+  });
+
+  // 2. Hide the FAB itself
+  document.getElementById('print-fab').style.display = 'none';
+
+  // 3. Also hide nav buttons and topbar dots for cleaner output
+  const navEls = document.querySelectorAll('.botnav, .topbar, .phase-nav, #print-fab');
+  navEls.forEach(el => el.style.display = 'none');
+
+  // 4. Print
+  window.print();
+
+  // 5. Restore everything after print dialog closes
+  setTimeout(() => {
+    hiddenEls.forEach(({el, style}) => el.setAttribute('style', style));
+    navEls.forEach(el => el.style.display = '');
+    document.getElementById('print-fab').style.display = 'flex';
+  }, 500);
+}
+</script>
+
+</body>
+</html>

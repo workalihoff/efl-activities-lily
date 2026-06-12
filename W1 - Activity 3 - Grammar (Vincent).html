@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar — Past Simple & Past Modals | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+  --vincent:#1D5FA3;--vincent-light:#E6F0FB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--vincent);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.phase-nav{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--vincent);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--vincent);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:520px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.card-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:.75rem}
+.grammar-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
+.grammar-table th{background:var(--vincent);color:#fff;text-align:left;padding:.55rem .85rem;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.grammar-table th:first-child{border-radius:8px 0 0 0}
+.grammar-table th:last-child{border-radius:0 8px 0 0}
+.grammar-table td{padding:.6rem .85rem;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text2);line-height:1.5;font-size:13px}
+.grammar-table tr:last-child td{border-bottom:none}
+.grammar-table td.form{font-family:monospace;font-size:13px;color:var(--vincent);font-weight:700}
+.ex-item{background:var(--cream);border-radius:8px;padding:.65rem .9rem;font-size:13px;color:var(--text2);line-height:1.5;border-left:3px solid var(--teal-mid);margin-bottom:.4rem}
+.ex-item strong{color:var(--teal-dark);font-weight:700}
+.ex-item.wrong{border-left-color:#E24B4A;background:var(--red-bg);color:var(--red-t)}
+.ex-item.right{border-left-color:var(--green-b);background:var(--green-bg);color:var(--green-t)}
+.amber-box{background:var(--amber-bg);border-left:3px solid #BA7517;border-radius:0 8px 8px 0;padding:.7rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--amber-t);line-height:1.55}
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-bottom:1rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-situation{background:var(--vincent-light);border-left:3px solid var(--vincent);border-radius:0 8px 8px 0;padding:.6rem .9rem;font-size:13px;color:#0C3566;margin-bottom:1rem}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:var(--vincent);background:var(--vincent-light)}
+.q-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter,.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.5;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.write-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.write-ta{width:100%;min-height:90px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--vincent);background:#fff;box-shadow:0 0 0 3px rgba(29,95,163,.1)}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--vincent);color:var(--vincent)}
+.check-btn.done{background:var(--vincent-light);border-color:var(--vincent);color:var(--vincent)}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--vincent-light);border-left:3px solid var(--vincent);border-radius:0 8px 8px 0;font-size:13px;color:#0C3566;line-height:1.55;display:none}
+.model-answer.show{display:block}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:54px;font-weight:700;color:var(--vincent);line-height:1}
+.result-denom{font-size:20px;color:var(--text3)}
+.result-note{font-size:14px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn.primary{background:var(--vincent);border-color:var(--vincent);color:#fff}
+@media(max-width:580px){.shell{padding:1.5rem .75rem 5rem}}
+</style>
+<style id="print-css">
+@media print {
+  body { background: #fff !important; }
+  .topbar, .phase-nav, .botnav, #print-fab { display: none !important; }
+  .shell { max-width: 100% !important; padding: 1rem !important; }
+  .word-card, .quiz-card, .write-card, .reflect-card, .card, .listen-card, .pretask-card { break-inside: avoid; margin-bottom: 1rem; box-shadow: none !important; border: 1px solid #ddd !important; }
+  .wc-body, .model-answer, .quiz-feedback, .self-eval { display: block !important; }
+  .write-ta { min-height: 60px; border: 1px solid #ccc; background: #fff; }
+  a { color: #0F6E56; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Grammar — Past Simple & Past Modals</div>
+    <div class="topbar-sub">English with Ali · Vincent</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Learn</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Quiz</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+let currentPhase=0;
+const quizAnswers={};
+const writeAnswers={};
+const writeSelf={};
+
+function updateProgress(){
+  const pcts=[33,66,100];
+  const labels=['Phase 1 of 3 — Learn','Phase 2 of 3 — Quiz','Phase 3 of 3 — Write'];
+  document.getElementById('prog').style.width=pcts[currentPhase]+'%';
+  document.getElementById('prog-label').textContent=labels[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-'+currentPhase).style.display='none';
+  document.querySelectorAll('.phase-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  currentPhase=n;
+  document.getElementById('phase-'+n).style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===1)renderQuiz();
+  if(n===2)renderWrite();
+}
+
+function renderLearn(){
+  const el=document.getElementById('phase-0');
+  let html=`<div class="section-intro"><h2>Past Simple & Past Modals</h2><p>In class today you said: "I could slept well." This is a pattern worth fixing — it appears in French too, which is why it surfaces in your English. Let's clear it up.</p></div>`;
+
+  html+=`<div class="card">
+    <div class="card-title">🔍 Where this came from — your actual output</div>
+    <div class="ex-item wrong">❌ "The hotel is very nice, and <strong>I could slept</strong> well."</div>
+    <div class="ex-item right">✓ "The hotel is very nice, and <strong>I slept</strong> well." &nbsp;&nbsp;or&nbsp;&nbsp; "The hotel is very nice — <strong>I was able to</strong> get a good night's sleep."</div>
+    <div class="amber-box" style="margin-top:.75rem"><strong>What happened:</strong> "Could" is a modal verb — it already marks the past. You cannot add another past marker (-ed / irregular form) after it. Modal + base verb, always.</div>
+  </div>`;
+
+  html+=`<div class="card">
+    <div class="card-title">📋 The rule — Past Simple vs. Past Modal</div>
+    <table class="grammar-table">
+      <thead><tr><th>Structure</th><th>Form</th><th>When to use</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Past Simple</strong></td><td class="form">verb + -ed / irregular</td><td>A completed action in the past. You simply state what happened.</td></tr>
+        <tr><td><strong>Could + base verb</strong></td><td class="form">could + infinitive (no "to")</td><td>Ability or possibility in the past. Something that was possible or achievable.</td></tr>
+        <tr><td><strong>Was able to</strong></td><td class="form">was/were able to + infinitive</td><td>Successfully doing something in the past — often interchangeable with "could" but more emphatic.</td></tr>
+        <tr><td><strong>Had to</strong></td><td class="form">had to + infinitive</td><td>Obligation or necessity in the past.</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box">💡 <strong>The key rule:</strong> After a modal verb (could, would, should, might, must), always use the <strong>base form</strong> of the verb — never the past form. This applies in present AND past.</div>
+  </div>`;
+
+  html+=`<div class="card">
+    <div class="card-title">📝 Examples in professional context</div>
+    <div class="ex-item">The check-in was smooth. <strong>I settled in</strong> quickly. <span style="font-size:11px;color:var(--text3)">— Past simple: completed action</span></div>
+    <div class="ex-item">The hotel was quiet and <strong>I could sleep</strong> well. <span style="font-size:11px;color:var(--text3)">— Could + base verb: past ability</span></div>
+    <div class="ex-item">Despite the jet lag, <strong>I was able to attend</strong> the briefing. <span style="font-size:11px;color:var(--text3)">— Was able to: successfully did something</span></div>
+    <div class="ex-item">It was a long flight, so <strong>I had to rest</strong> before the first meeting. <span style="font-size:11px;color:var(--text3)">— Had to: past obligation</span></div>
+    <div class="ex-item wrong">❌ "I could attended the meeting." &nbsp;→&nbsp; ✓ "I was able to attend the meeting."</div>
+    <div class="ex-item wrong">❌ "I should went earlier." &nbsp;→&nbsp; ✓ "I should have gone earlier."</div>
+  </div>`;
+
+  html+=`<div class="card">
+    <div class="card-title">⚡ Bonus — "Should have" for regret or reflection</div>
+    <div style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.75rem">In professional English, you often need to reflect on what you could have done differently. This structure is different from simple past modals:</div>
+    <table class="grammar-table">
+      <thead><tr><th>Structure</th><th>Form</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Should have + past participle</strong></td><td class="form">should have + done/gone/said</td><td>Regret or reflection — something didn't happen but it would have been better if it had.</td></tr>
+        <tr><td><strong>Could have + past participle</strong></td><td class="form">could have + done/gone/said</td><td>Past possibility — something was possible but didn't happen.</td></tr>
+      </tbody>
+    </table>
+    <div class="ex-item">I <strong>should have sent</strong> that email earlier — the client was waiting. <span style="font-size:11px;color:var(--text3)">— Regret</span></div>
+    <div class="ex-item">I <strong>could have joined</strong> the call remotely, but I preferred to be there in person. <span style="font-size:11px;color:var(--text3)">— Past possibility</span></div>
+  </div>`;
+
+  html+=`<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">Read carefully before continuing.</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Quiz →</button></div>`;
+  el.innerHTML=html;
+}
+
+const QUIZ=[
+  {id:'q1',situation:'You\'re telling a colleague about your first night in Pretoria.',prompt:'Which sentence is grammatically correct?',
+    options:['The hotel was very comfortable and I could slept eight hours.','The hotel was very comfortable and I could sleep eight hours.','The hotel was very comfortable and I could sleeping eight hours.','The hotel was very comfortable and I should slept eight hours.'],
+    correct:1,explain:'"Could sleep" — modal verb (could) + base form. Never add a past ending after a modal verb. This was your exact error from class today.'},
+  {id:'q2',situation:'You need to explain why you attended a meeting despite arriving late.',prompt:'Choose the most accurate and natural sentence.',
+    options:['Even though I arrived late, I could attended the meeting.','Even though I arrived late, I should attend the meeting.','Even though I arrived late, I was able to attend the meeting.','Even though I arrived late, I could attending the meeting.'],
+    correct:2,explain:'"Was able to attend" — this expresses that you successfully managed to do something despite difficulty. "Could" in the past often describes general ability; "was able to" is more natural for a specific achievement.'},
+  {id:'q3',situation:'Reflecting on a presentation that didn\'t go as planned.',prompt:'Which sentence correctly expresses regret?',
+    options:['I should prepared better for that presentation.','I should have prepared better for that presentation.','I should had prepared better for that presentation.','I should preparing better for that presentation.'],
+    correct:1,explain:'"Should have + past participle" — this is the structure for expressing regret about something in the past. Never: "should + past simple."'},
+  {id:'q4',situation:'You\'re describing your first week at the new office to a friend.',prompt:'Choose the sentence with NO errors.',
+    options:['I had to learned a lot of new names and processes very quickly.','I had to learn a lot of new names and processes very quickly.','I must learned a lot of new names very quickly.','I must to learn a lot of new names very quickly.'],
+    correct:1,explain:'"Had to learn" — modal (had to) + base form. Also note: "must" doesn\'t work for past obligation in this context; "had to" is the past form of obligation.'},
+  {id:'q5',situation:'Narrating a story about your move from Guatemala.',prompt:'Which version best combines past simple and past modal correctly?',
+    options:['I packed my things, said goodbye to my friends, and I could left Guatemala with mixed feelings.','I packed my things, said goodbye to my friends, and left Guatemala with mixed feelings. It was hard, but I knew I could make it work.','I packing my things, said goodbye, and could left Guatemala.','I had packed, said goodbye, and could leaving Guatemala.'],
+    correct:1,explain:'The first sentence uses past simple throughout the narrative (packed, said, left) — clean and correct. Then "could make it work" uses modal + base form correctly. The structure reflects exactly how you\'d tell this story naturally.'},
+];
+
+const WRITE_TASKS=[
+  {prompt:'Tell the story of arriving somewhere new for the first time — London, Spain, or Guatemala. Use 4–6 sentences with at least: one past simple, one "could + base verb", and one "was able to."',
+    hint:'Think about: arriving, your first impression, something that was difficult, something that went better than expected. This is exactly the kind of story you\'ll tell in Pretoria.',
+    model:'"I arrived in Guatemala City in 2018 with two suitcases and no real plan. The city was overwhelming at first, but I could find my bearings quickly because I already spoke Spanish. Within the first week, I was able to connect with a small community of expats and locals who helped me settle in. I didn\'t expect to stay seven years — but I did."'},
+  {prompt:'Write 3 sentences reflecting on something you could have done differently during one of your moves or transitions — London, Spain, or arriving in Guatemala. Use "could have" or "should have" at least once.',
+    hint:'Reflection on transitions is a professional skill. Think about preparation, communication, a decision, or something you wish you\'d known earlier.',
+    model:'"When I moved to Guatemala, I should have taken more time to understand the local professional culture before jumping into work. I could have also prepared better financially for the first few months, which were tighter than expected. Looking back, I would have benefited from having a local contact before I arrived — something I\'ll make sure to do for Pretoria."'},
+  {prompt:'Write a short paragraph (4–5 sentences) about what living in Guatemala for seven years taught you — professionally or personally. Use a natural mix of past simple and past modals.',
+    hint:'This is a story you\'ll tell many times in your new role. Think about what you built, what surprised you, what you learned to do — and what you\'ll carry with you.',
+    model:'"Guatemala taught me more than I expected. I had to adapt quickly to a very different pace of work and a complex political environment. Over the years, I was able to build real relationships with communities and organizations that I wouldn\'t have found from behind a desk. There were moments I could have left — but I stayed, and I\'m glad I did. That resilience is something I\'ll bring to Pretoria."'},
+];
+
+function renderQuiz(){
+  const el=document.getElementById('phase-1');
+  let html=`<div class="section-intro"><h2>Phase 2 — Quiz</h2><p>Apply what you've just learned. Each question uses a real professional or personal context.</p></div>`;
+  QUIZ.forEach((q,qi)=>{
+    const answered=quizAnswers[q.id]!==undefined;
+    html+=`<div class="quiz-card">
+      <div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-situation"><strong>Situation:</strong> ${q.situation}</div>
+      <div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-options">`;
+    q.options.forEach((opt,oi)=>{
+      let cls='';if(answered){if(oi===q.correct)cls='revealed';else if(quizAnswers[q.id]===oi)cls='incorrect';}
+      html+=`<button class="q-opt ${cls}" onclick="answerQuiz(this)" data-qid="${q.id}" data-oi="${oi}"><span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span></button>`;
+    });
+    html+=`</div>`;
+    if(answered){const ok=quizAnswers[q.id]===q.correct;html+=`<div class="quiz-feedback ${ok?'correct':'incorrect'} show">${ok?'✓ ':'✗ '}${q.explain}</div>`;}
+    html+=`</div>`;
+  });
+  const allDone=Object.keys(quizAnswers).length===QUIZ.length;
+  const correct=QUIZ.filter(q=>quizAnswers[q.id]===q.correct).length;
+  if(allDone){html+=`<div class="results-card"><div class="result-score">${correct}<span class="result-denom">/${QUIZ.length}</span></div><div style="font-size:14px;color:var(--text3);margin-top:4px">correct</div><p class="result-note">${correct>=4?'Strong. This pattern is now yours to use — move to the writing practice.':'Review Phase 1 before continuing. Pay close attention to what comes after the modal verb.'}</p></div>`;}
+  html+=`<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Learn</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Write →</button></div>`;
+  el.innerHTML=html;
+}
+
+function answerQuiz(btn){
+  const qid=btn.dataset.qid;const oi=parseInt(btn.dataset.oi);
+  if(quizAnswers[qid]!==undefined)return;
+  quizAnswers[qid]=oi;renderQuiz();
+  setTimeout(()=>{const fb=document.querySelector('#phase-1 .quiz-feedback.show:last-of-type');if(fb)fb.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
+}
+
+function renderWrite(){
+  const el=document.getElementById('phase-2');
+  let html=`<div class="section-intro"><h2>Phase 3 — Write</h2><p>Now produce these structures yourself — in contexts that are real to you. Don't overthink the grammar; let it come naturally after what you've practiced.</p></div>`;
+  WRITE_TASKS.forEach((task,ti)=>{
+    const val=writeAnswers[ti]||'';
+    const selfVal=writeSelf[ti]||'';
+    const showModel=selfVal!=='';
+    html+=`<div class="write-card">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:.5rem">Writing task ${ti+1} of ${WRITE_TASKS.length}</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:.5rem;line-height:1.5">${task.prompt}</div>
+      <div style="font-size:12px;color:var(--text3);font-style:italic;margin-bottom:.75rem">💭 ${task.hint}</div>
+      <textarea class="write-ta" id="wta-${ti}" placeholder="Write here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <div class="self-eval" style="margin-top:.75rem;${val.trim().length>10?'display:block':'display:none'}" id="se-${ti}">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.4rem">How did it feel?</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap">
+          <button class="check-btn ${selfVal==='yes'?'done':''}" style="${selfVal==='yes'?'':'border:1px solid var(--border)'}" onclick="pickSelf(${ti},'yes',this)">✓ Natural</button>
+          <button class="check-btn ${selfVal==='unsure'?'done':''}" onclick="pickSelf(${ti},'unsure',this)">? Unsure</button>
+          <button class="check-btn ${selfVal==='no'?'done':''}" onclick="pickSelf(${ti},'no',this)">✗ Hard</button>
+        </div>
+      </div>
+      <button class="check-btn ${showModel?'done':''}" onclick="showModel(${ti})">${showModel?'✓ Example shown':'See an example'}</button>
+      <div class="model-answer ${showModel?'show':''}" id="ma-${ti}"><strong>Example:</strong> ${task.model}<br><span style="font-size:11px;color:var(--vincent);margin-top:.4rem;display:block">Your version doesn't need to match — check that you used the correct structures.</span></div>
+    </div>`;
+  });
+  const done=Object.values(writeAnswers).filter(v=>v&&v.trim().length>5).length;
+  html+=`<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(1)">← Quiz</button><div style="text-align:center"><div style="font-size:13px;color:var(--text3)">${done} of ${WRITE_TASKS.length} completed</div>${done>=WRITE_TASKS.length?'<div style="font-size:13px;font-weight:600;color:var(--vincent)">✓ Done! Send to Ali on WhatsApp.</div>':''}</div><button class="nav-btn" onclick="goPhase(0)">Restart ↺</button></div>`;
+  el.innerHTML=html;
+}
+
+function recordWrite(ti,val){writeAnswers[ti]=val;const se=document.getElementById('se-'+ti);if(se)se.style.display=val.trim().length>10?'block':'none';}
+function pickSelf(ti,val,btn){writeSelf[ti]=val;document.getElementById('ma-'+ti).classList.add('show');btn.classList.add('done');}
+function showModel(ti){document.getElementById('ma-'+ti).classList.add('show');document.querySelectorAll('#phase-2 .write-card')[ti].querySelector('.check-btn:last-of-type').classList.add('done');}
+function escHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+renderLearn();updateProgress();
+</script>
+
+<div id="print-fab" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:999">
+  <button onclick="exportPDF()" style="display:flex;align-items:center;gap:.5rem;background:#0F6E56;color:#fff;border:none;border-radius:12px;padding:.65rem 1.25rem;font-family:'Lato',sans-serif;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .2s" onmouseover="this.style.background='#1D9E75'" onmouseout="this.style.background='#0F6E56'">
+    📄 Export as PDF
+  </button>
+</div>
+
+<script>
+function exportPDF(){
+  // 1. Show all hidden phases/sections
+  const hidden = document.querySelectorAll('[style*="display:none"], [style*="display: none"]');
+  const hiddenEls = [];
+  hidden.forEach(el => {
+    hiddenEls.push({el, style: el.getAttribute('style')});
+    el.style.display = 'block';
+  });
+
+  // 2. Hide the FAB itself
+  document.getElementById('print-fab').style.display = 'none';
+
+  // 3. Also hide nav buttons and topbar dots for cleaner output
+  const navEls = document.querySelectorAll('.botnav, .topbar, .phase-nav, #print-fab');
+  navEls.forEach(el => el.style.display = 'none');
+
+  // 4. Print
+  window.print();
+
+  // 5. Restore everything after print dialog closes
+  setTimeout(() => {
+    hiddenEls.forEach(({el, style}) => el.setAttribute('style', style));
+    navEls.forEach(el => el.style.display = '');
+    document.getElementById('print-fab').style.display = 'flex';
+  }, 500);
+}
+</script>
+
+</body>
+</html>

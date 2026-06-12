@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Email Rewrite | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+  --vincent:#1D5FA3;--vincent-light:#E6F0FB;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--vincent);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--vincent);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:520px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.card-title{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:.75rem}
+.original-email{background:var(--cream-dark);border-radius:10px;padding:1rem 1.25rem;font-size:13px;color:var(--text2);line-height:1.7;border-left:3px solid var(--border);font-family:monospace}
+.original-email .err{background:#FCEBEB;color:#791F1F;border-radius:3px;padding:1px 3px;text-decoration:underline wavy #E24B4A;cursor:help}
+.feedback-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.fb-item{border-radius:10px;padding:.75rem}
+.fb-item.fix{background:var(--red-bg);border-left:3px solid #E24B4A}
+.fb-item.keep{background:var(--green-bg);border-left:3px solid var(--green-b)}
+.fb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+.fb-label.fix{color:var(--red-t)}
+.fb-label.keep{color:var(--green-t)}
+.fb-text{font-size:12px;color:var(--text2);line-height:1.55}
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-bottom:1rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.amber-box{background:var(--amber-bg);border-left:3px solid #BA7517;border-radius:0 8px 8px 0;padding:.7rem 1rem;margin-bottom:1rem;font-size:13px;color:var(--amber-t);line-height:1.55}
+.amber-box strong{font-weight:700}
+.write-ta{width:100%;min-height:200px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.7;background:var(--cream)}
+.write-ta:focus{border-color:var(--vincent);background:#fff;box-shadow:0 0 0 3px rgba(29,95,163,.1)}
+.checklist{display:flex;flex-direction:column;gap:.4rem;margin:.75rem 0}
+.check-item{display:flex;align-items:flex-start;gap:.6rem;font-size:13px;color:var(--text2);line-height:1.45}
+.check-item input{margin-top:2px;accent-color:var(--vincent);flex-shrink:0}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--vincent);color:var(--vincent)}
+.check-btn.done{background:var(--vincent-light);border-color:var(--vincent);color:var(--vincent)}
+.model-answer{margin-top:.75rem;padding:.75rem 1rem;background:var(--vincent-light);border-left:3px solid var(--vincent);border-radius:0 8px 8px 0;font-size:13px;color:#0C3566;line-height:1.65;display:none}
+.model-answer.show{display:block}
+.model-answer pre{font-family:'Lato',sans-serif;white-space:pre-wrap;font-size:13px;line-height:1.7}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn.primary{background:var(--vincent);border-color:var(--vincent);color:#fff}
+@media(max-width:580px){.shell{padding:1.5rem .75rem 5rem}.feedback-grid{grid-template-columns:1fr}}
+</style>
+<style id="print-css">
+@media print {
+  body { background: #fff !important; }
+  .topbar, .phase-nav, .botnav, #print-fab { display: none !important; }
+  .shell { max-width: 100% !important; padding: 1rem !important; }
+  .word-card, .quiz-card, .write-card, .reflect-card, .card, .listen-card, .pretask-card { break-inside: avoid; margin-bottom: 1rem; box-shadow: none !important; border: 1px solid #ddd !important; }
+  .wc-body, .model-answer, .quiz-feedback, .self-eval { display: block !important; }
+  .write-ta { min-height: 60px; border: 1px solid #ccc; background: #fff; }
+  a { color: #0F6E56; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Writing — Email Rewrite</div>
+    <div class="topbar-sub">English with Ali · Vincent</div>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="section-intro">
+    <h2>Email Rewrite</h2>
+    <p>You wrote a good email in class today. Now make it better — without AI help.</p>
+  </div>
+
+  <!-- Original email with annotations -->
+  <div class="card">
+    <div class="card-title">📧 Your email from class — with feedback</div>
+    <div class="original-email">
+      <strong>Subject:</strong> <span class="err" title="Typo: 'Coffe' → 'Coffee'">Coffe</span> plan at 4pm?<br><br>
+      Dear Ali,<br><br>
+      Thank you so much for the flyer. It will be very helpful and hopefully, I will find very soon the apartment we need for my family.<br>
+      <span class="err" title="'Also' at the start of a sentence needs a comma: 'Also, we would...' — or better: 'We would also like to...'">Also</span> we would like to ask if we can move our coffee plan to 4pm. Gaby and I have a new meeting at 3pm. Let us know if it is <span class="err" title="More natural: 'if it works for you' — 'ok for you' is informal">ok for you</span>.<br>
+      Last but not least, <span class="err" title="'as front desk' → 'as the front desk clerk' — missing article; also 'clerk' specifies the individual role">as front</span> desk, do you have an updated mailing list with all the colleagues as well <span class="err" title="'an organigram' — false cognate from French/Spanish. Standard English: 'an org chart'">an organigram</span> of the Office? It will be very useful for me.<br>
+      Thanks again for all your support,<br>
+      Vincent
+    </div>
+    <p style="font-size:11px;color:var(--text3);margin-top:.5rem">Hover over the underlined words to see the feedback.</p>
+  </div>
+
+  <!-- What to fix / what to keep -->
+  <div class="card">
+    <div class="card-title">🔍 What to work on</div>
+    <div class="feedback-grid">
+      <div class="fb-item fix">
+        <div class="fb-label fix">✗ Fix these</div>
+        <div class="fb-text">
+          <strong>Typo:</strong> "Coffe" → "Coffee"<br><br>
+          <strong>Also:</strong> "Also we would like" → "We would also like to" (smoother word order)<br><br>
+          <strong>Article + noun:</strong> "as front desk" → "as the front desk clerk" — missing article, and "clerk" specifies your individual role (not a team)<br><br>
+          <strong>False cognate:</strong> "organigram" → "org chart" — "organigram" comes from Spanish/French (organigrama / organigramme) and is not a word in English. Native speakers won't recognize it. Always use "org chart" or "organizational chart"<br><br>
+          <strong>Collocation:</strong> "ok for you" → "works for you" (more professional)
+        </div>
+      </div>
+      <div class="fb-item keep">
+        <div class="fb-label keep">✓ Keep these</div>
+        <div class="fb-text">
+          <strong>Structure:</strong> Subject line, greeting, body, closing — all correct.<br><br>
+          <strong>"Last but not least":</strong> Sophisticated connector, used well.<br><br>
+          <strong>Tone:</strong> Friendly but professional — the right register for this situation.<br><br>
+          <strong>Purpose:</strong> Clear — you ask for something specific and explain why.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language focus: articles -->
+  <div class="card">
+    <div class="card-title">📌 Language focus — Articles & Collocations</div>
+    <div class="amber-box">
+      <strong>Pattern to watch:</strong> Missing articles under slight pressure.<br><br>
+      "as front desk" → <strong>as the front desk clerk</strong> — article + specific role noun<br>
+      "an organigram" → <strong>an org chart</strong> — "organigram" is a false cognate from Spanish/French; it doesn't exist in standard English. A native speaker will not understand it.<br><br>
+      When you're focused on content, articles tend to disappear. This is a French interference pattern — worth catching in writing before it becomes a habit.
+    </div>
+    <div class="tip-box">
+      💡 <strong>Useful collocations for professional emails:</strong><br>
+      "works for you" / "suits you" (not "is ok for you")<br>
+      "the front desk clerk" / "from the front desk" (not "as front desk")<br>
+      "an org chart" / "an organizational chart" (never "organigram")<br>
+      "a mailing list" ✓ — this one was correct!
+    </div>
+  </div>
+
+  <!-- Rewrite task -->
+  <div class="card">
+    <div class="card-title">✍️ Now rewrite it</div>
+    <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:1rem">Rewrite the email from scratch — same content, same tone, but correcting all the issues above. <strong>Do not use ChatGPT or any AI tool for this task.</strong> The point is to write it yourself.</p>
+
+    <div class="checklist">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:.25rem">Before you submit, check:</div>
+      <label class="check-item"><input type="checkbox"> Subject line spelt correctly</label>
+      <label class="check-item"><input type="checkbox"> "Also" moved to the middle of the sentence</label>
+      <label class="check-item"><input type="checkbox"> "works for you" instead of "ok for you"</label>
+      <label class="check-item"><input type="checkbox"> "the front desk clerk" with article and correct noun</label>
+      <label class="check-item"><input type="checkbox"> "org chart" instead of "organigram"</label>
+      <label class="check-item"><input type="checkbox"> Tone is still warm and professional</label>
+    </div>
+
+    <textarea class="write-ta" id="rewrite-ta" placeholder="Subject: &#10;&#10;Dear Ali,&#10;&#10;..."></textarea>
+    <button class="check-btn" id="show-model-btn" onclick="showModel()">See a model version</button>
+    <div class="model-answer" id="model-answer">
+      <strong>Model version:</strong>
+      <pre>
+Subject: Coffee plan — can we move to 4 PM?
+
+Dear Ali,
+
+Thank you so much for the flyer. It will be very helpful — hopefully I'll find the apartment my family needs soon.
+
+I'd also like to ask if we can move our coffee plan to 4 PM. Gaby and I have a meeting at 3 PM, so that would work better for us. Please let us know if that works for you.
+
+One more thing — as the front desk clerk, would you happen to have an updated staff mailing list and an org chart for the office? Both would be very useful as I settle in.
+
+Thanks again for all your support,
+Vincent</pre>
+      <span style="font-size:11px;color:var(--vincent);margin-top:.5rem;display:block">Compare your version with this one — focus on the corrections, not on matching it exactly. Your voice should still be there.</span>
+    </div>
+  </div>
+
+  <!-- Bonus task -->
+  <div class="card">
+    <div class="card-title">⚡ Bonus — New email, same skills</div>
+    <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:1rem">Write a short email (5–7 sentences) introducing yourself to a new team member in Pretoria who will be reporting directly to you. You've just arrived and want to set a welcoming, professional tone before your first meeting.</p>
+    <div class="tip-box">💡 Think about: introducing yourself, acknowledging the reporting relationship warmly, proposing a first call or meeting, and one thing you're looking forward to working on together. Use at least one phrase from the vocabulary activity: "I look after...", "I report to...", or "I have a background in..., which in practice means..."</div>
+    <textarea class="write-ta" id="bonus-ta" placeholder="Subject: &#10;&#10;Dear [colleague's name],&#10;&#10;..."></textarea>
+    <div style="font-size:12px;color:var(--text3);margin-top:.5rem">No model answer for this one — send it to Ali on WhatsApp for feedback.</div>
+  </div>
+
+  <div class="bottom-nav">
+    <span style="font-size:13px;color:var(--text3)">Send both emails to Ali on WhatsApp when done.</span>
+    <button class="nav-btn primary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+  </div>
+</div>
+
+<script>
+function showModel(){
+  document.getElementById('model-answer').classList.add('show');
+  document.getElementById('show-model-btn').classList.add('done');
+  document.getElementById('show-model-btn').textContent='✓ Model version shown';
+}
+</script>
+
+<div id="print-fab" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:999">
+  <button onclick="exportPDF()" style="display:flex;align-items:center;gap:.5rem;background:#0F6E56;color:#fff;border:none;border-radius:12px;padding:.65rem 1.25rem;font-family:'Lato',sans-serif;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .2s" onmouseover="this.style.background='#1D9E75'" onmouseout="this.style.background='#0F6E56'">
+    📄 Export as PDF
+  </button>
+</div>
+
+<script>
+function exportPDF(){
+  // 1. Show all hidden phases/sections
+  const hidden = document.querySelectorAll('[style*="display:none"], [style*="display: none"]');
+  const hiddenEls = [];
+  hidden.forEach(el => {
+    hiddenEls.push({el, style: el.getAttribute('style')});
+    el.style.display = 'block';
+  });
+
+  // 2. Hide the FAB itself
+  document.getElementById('print-fab').style.display = 'none';
+
+  // 3. Also hide nav buttons and topbar dots for cleaner output
+  const navEls = document.querySelectorAll('.botnav, .topbar, .phase-nav, #print-fab');
+  navEls.forEach(el => el.style.display = 'none');
+
+  // 4. Print
+  window.print();
+
+  // 5. Restore everything after print dialog closes
+  setTimeout(() => {
+    hiddenEls.forEach(({el, style}) => el.setAttribute('style', style));
+    navEls.forEach(el => el.style.display = '');
+    document.getElementById('print-fab').style.display = 'flex';
+  }, 500);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary — Describing Your Work | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.phase-nav{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:520px;margin:0 auto}
+.word-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:1.25rem;overflow:hidden;transition:box-shadow .2s}
+.word-card:hover{box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.wc-header{padding:1.25rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;cursor:pointer;user-select:none}
+.wc-phrase{font-family:'Raleway',sans-serif;font-size:20px;font-weight:700;color:var(--teal);margin-bottom:3px}
+.wc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wc-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:10px;background:var(--teal-light);color:var(--teal-dark)}
+.wc-toggle{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:var(--text3)}
+.wc-body{padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.wc-def-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin:.9rem 0 .35rem}
+.wc-def{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
+.example-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.25rem}
+.ex-item{background:var(--cream);border-radius:8px;padding:.65rem .9rem;font-size:13px;color:var(--text2);line-height:1.5;border-left:3px solid var(--teal-mid)}
+.ex-item strong{color:var(--teal-dark);font-weight:700}
+.ex-context{font-size:11px;color:var(--text3);margin-top:3px}
+.confusion-box{background:var(--amber-bg);border-left:3px solid #BA7517;border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:.75rem 0}
+.confusion-box .cb-title{font-size:11px;font-weight:700;color:var(--amber-t);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.confusion-box p{font-size:13px;color:var(--amber-t);line-height:1.55}
+.colloc-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:.25rem}
+.colloc-chip{padding:5px 12px;border-radius:16px;font-size:12px;background:var(--teal-light);color:var(--teal-dark);font-weight:600;border:1px solid #9FE1CB}
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-top:.75rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+
+/* quiz */
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-situation{background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;padding:.6rem .9rem;font-size:13px;color:var(--teal-dark);margin-bottom:1rem}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.q-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter,.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.5;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+
+/* write */
+.write-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.write-word-tag{display:inline-block;font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--teal);background:var(--teal-light);padding:4px 16px;border-radius:20px;margin-bottom:.75rem;border:1px solid #9FE1CB}
+.write-reminder{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:12px;color:var(--text3);margin-bottom:1rem;line-height:1.5}
+.write-ta{width:100%;min-height:80px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff;box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--teal-mid);color:var(--teal)}
+.check-btn.done{background:var(--teal-light);border-color:var(--teal-mid);color:var(--teal-dark)}
+.self-eval{margin-top:.75rem;display:none}
+.self-eval.show{display:block}
+.self-eval-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.4rem}
+.self-btns{display:flex;gap:7px;flex-wrap:wrap}
+.self-btn{padding:5px 14px;border-radius:16px;border:1px solid var(--border);background:var(--card);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.self-btn.picked-yes{background:var(--green-bg);border-color:var(--green-b);color:var(--green-t)}
+.self-btn.picked-unsure{background:var(--amber-bg);border-color:#BA7517;color:var(--amber-t)}
+.self-btn.picked-no{background:var(--red-bg);border-color:#E24B4A;color:var(--red-t)}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;font-size:13px;color:var(--teal-dark);line-height:1.55;display:none}
+.model-answer.show{display:block}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:54px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:20px;color:var(--text3)}
+.result-note{font-size:14px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+@media(max-width:580px){.shell{padding:1.5rem .75rem 5rem}}
+</style>
+<style id="print-css">
+@media print {
+  body { background: #fff !important; }
+  .topbar, .phase-nav, .botnav, #print-fab { display: none !important; }
+  .shell { max-width: 100% !important; padding: 1rem !important; }
+  .word-card, .quiz-card, .write-card, .reflect-card, .card, .listen-card, .pretask-card { break-inside: avoid; margin-bottom: 1rem; box-shadow: none !important; border: 1px solid #ddd !important; }
+  .wc-body, .model-answer, .quiz-feedback, .self-eval { display: block !important; }
+  .write-ta { min-height: 60px; border: 1px solid #ccc; background: #fff; }
+  a { color: #0F6E56; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Vocabulary — Describing Your Work</div>
+    <div class="topbar-sub">English with Ali · Professional English</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Learn</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Quiz</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+let currentPhase=0;
+const quizAnswers={};
+const writeAnswers={};
+const writeSelf={};
+
+const WORDS=[
+  {
+    id:'look_after',
+    phrase:'I look after / I handle',
+    tag:'Describing responsibility',
+    def:'These phrases replace weak expressions like "my job is" or "I am responsible for" — they sound natural, direct, and professional in spoken and written English.',
+    examples:[
+      {text:'<strong>I look after</strong> monitoring and reporting for the Guatemala office.',context:'Describing your role to a new international colleague.'},
+      {text:'<strong>I handle</strong> coordination between field teams and headquarters.',context:'Explaining your function in a team meeting.'},
+      {text:'<strong>I look after</strong> stakeholder communications and external partnerships.',context:'Introducing yourself at a conference.'},
+    ],
+    collocations:['I look after [area]','I handle [type of work]','I look after a team of [number]','I handle complaints / requests / logistics'],
+    confusion:'⚠️ Avoid: "My job is coordination" or "I am in charge of the coordination." These are grammatically correct but weak. "I coordinate" or "I handle coordination" is stronger and more natural.',
+    tip:'💡 Both phrases work for speaking and writing. In formal documents, "I am responsible for" is also fine — but in conversation, "I look after" sounds much more natural.',
+  },
+  {
+    id:'in_practice',
+    phrase:'I have a background in X, which in practice means...',
+    tag:'Explaining your role to outsiders',
+    def:'This two-part structure lets you name your field and then immediately make it concrete and relatable — especially useful when talking to people outside your organization or industry.',
+    examples:[
+      {text:'<strong>I have a background in</strong> international human rights law, <strong>which in practice means</strong> I monitor state compliance and draft reports for UN bodies.',context:'Talking to someone at a social event who doesn\'t know your field.'},
+      {text:'<strong>I have a background in</strong> project management, <strong>which in practice means</strong> I make sure teams hit their deadlines and stakeholders stay aligned.',context:'Explaining your role when applying for a new position.'},
+      {text:'<strong>I have a background in</strong> communications, <strong>which in practice means</strong> I translate complex policy into language the public can understand.',context:'Introducing yourself at a networking event.'},
+    ],
+    collocations:['I have a background in [field]','which in practice means [daily task]','in practice, my role involves...','my background is in X, so I tend to...'],
+    tip:'💡 The phrase "which in practice means" is your bridge between the abstract (your title/field) and the concrete (what you actually do day-to-day). It prevents the blank stare.',
+  },
+  {
+    id:'transferable',
+    phrase:'Transferable skills',
+    tag:'Career & professional identity',
+    def:'Skills you have developed in one role that can be applied effectively in a different role or industry. The word "transferable" means able to be moved from one context to another.',
+    examples:[
+      {text:'My experience in human rights monitoring has given me strong <strong>transferable skills</strong> in research, analysis, and stakeholder communication.',context:'Explaining why you\'re qualified for a role outside your current field.'},
+      {text:'I\'d like to apply my <strong>transferable skills</strong> from field operations to a policy-focused role.',context:'In a job application or interview.'},
+      {text:'The coordination and negotiation skills I\'ve developed are highly <strong>transferable</strong> — they apply across sectors.',context:'Positioning yourself for a career change.'},
+    ],
+    collocations:['transferable skills','highly transferable','apply my transferable skills to','my skills are transferable to [field]'],
+    confusion:'⚠️ False cognate alert: "transferable" ≠ "transferible" (Spanish). In English, always: transferable.',
+    tip:'💡 When you want to change roles or explain your value to a new organization, lead with transferable skills — they show you\'re thinking about what you bring, not just what you\'ve done.',
+  },
+  {
+    id:'report_to',
+    phrase:'I report to / I work closely with',
+    tag:'Organizational context',
+    def:'These phrases explain where you sit in an organization — your line manager and your key working relationships. They help people understand your authority, responsibilities, and connections.',
+    examples:[
+      {text:'<strong>I report to</strong> the Head of Office and work directly with the legal team.',context:'Explaining your position to a new colleague.'},
+      {text:'<strong>I work closely with</strong> our focal points in the field and the communications unit.',context:'Describing your day-to-day collaboration.'},
+      {text:'<strong>I report to</strong> the Regional Director — so I have visibility across all country operations.',context:'Giving context about your scope of work.'},
+    ],
+    collocations:['I report to [person/title]','I work closely with [team/person]','I work alongside','I liaise with','I sit within [team/department]'],
+    tip:'💡 "I report to" tells people about hierarchy. "I work closely with" tells people about collaboration. Use both together for a complete picture of where you are in the organization.',
+  },
+  {
+    id:'jargon',
+    phrase:'Jargon / Internal jargon',
+    tag:'Communication awareness',
+    def:'Specialized language or terminology used within a particular organization, profession, or industry. Jargon is efficient among insiders but confusing to outsiders — knowing when to use it and when to avoid it is a professional skill.',
+    examples:[
+      {text:'Try to avoid <strong>jargon</strong> when talking to people outside your field — not everyone knows what "focal point" or "UPR" means.',context:'Advice from a senior colleague before a cross-sector meeting.'},
+      {text:'The organization has a lot of <strong>internal jargon</strong> — acronyms, procedures, tools — that takes time to learn.',context:'Onboarding at a new office.'},
+      {text:'She explained the process clearly without using <strong>jargon</strong>, which made the briefing much more accessible.',context:'Positive feedback after a presentation.'},
+    ],
+    collocations:['avoid jargon','full of jargon','internal jargon','technical jargon','plain language (= opposite of jargon)'],
+    confusion:'⚠️ Jargon is not always bad — it\'s efficient among people who share a context. The skill is knowing your audience: use jargon with insiders, plain language with outsiders.',
+    tip:'💡 In international settings, assume your audience doesn\'t know your organization\'s jargon — even if they work in the same field. Clear, plain language is always the safer choice.',
+  },
+];
+
+const QUIZ=[
+  {
+    id:'q1',
+    situation:'A new colleague at your international office asks: "So, what exactly do you do here?"',
+    prompt:'Which response uses the vocabulary from this lesson most effectively?',
+    options:[
+      '"I am a human rights officer."',
+      '"I look after human rights monitoring for the region, which in practice means I review state reports and draft recommendations for UN bodies."',
+      '"My job is in human rights and I do many things."',
+      '"I work in the human rights department and I have a lot of responsibilities."'
+    ],
+    correct:1,
+    explain:'"I look after" + "which in practice means" — both key phrases from this lesson, used together. This response is concrete, professional, and immediately gives the listener a clear picture of your work.'
+  },
+  {
+    id:'q2',
+    situation:'You\'re at a networking event and someone asks if your skills would be useful in a different sector.',
+    prompt:'Which sentence best uses the concept of transferable skills?',
+    options:[
+      '"I have only worked in human rights, so I don\'t think I can work elsewhere."',
+      '"My skills are specific to my current organization."',
+      '"I have developed strong transferable skills in negotiation and analysis that apply across sectors."',
+      '"I can transfer to another job if I receive training."'
+    ],
+    correct:2,
+    explain:'"Transferable skills" + concrete examples (negotiation, analysis) + "across sectors" — this response positions the person as adaptable and valuable, which is exactly what the phrase is designed to do.'
+  },
+  {
+    id:'q3',
+    situation:'You\'re explaining your position to someone who has just joined your organization.',
+    prompt:'Which sentence best explains where you sit in the organization?',
+    options:[
+      '"I am above some people and below others."',
+      '"I report to the Head of Office and work closely with the field teams and the communications unit."',
+      '"I have a manager and I also have colleagues."',
+      '"My position is in the middle of the organization chart."'
+    ],
+    correct:1,
+    explain:'"I report to" establishes hierarchy. "I work closely with" establishes collaboration. Together, they give a complete, professional picture of your position — in two clear phrases.'
+  },
+  {
+    id:'q4',
+    situation:'You are presenting to a group that includes both human rights professionals and people from other sectors.',
+    prompt:'Which approach to jargon is most appropriate?',
+    options:[
+      'Use all your technical terms — it makes you sound credible.',
+      'Avoid all technical language to be safe.',
+      'Use technical terms when necessary but explain them or offer plain language alternatives for the mixed audience.',
+      'Ask the audience to look up any terms they don\'t understand.'
+    ],
+    correct:2,
+    explain:'The key insight from the podcast: jargon is efficient among insiders but excludes outsiders. In a mixed audience, use it when needed — but explain it. That\'s the professional skill.'
+  },
+  {
+    id:'q5',
+    situation:'You want to explain your role to a friend who knows nothing about international organizations.',
+    prompt:'Complete this sentence most naturally: "I have a background in international law, __________ I monitor how governments implement human rights commitments."',
+    options:[
+      '"which it means that"',
+      '"that in practice"',
+      '"which in practice means"',
+      '"so in practice it means that"'
+    ],
+    correct:2,
+    explain:'"Which in practice means" is the standard construction. It connects your background (abstract) to your daily reality (concrete) in one smooth phrase. The other options are grammatically awkward or non-standard.'
+  },
+];
+
+const WRITE_TASKS=[
+  {
+    phrase:'I look after / I handle',
+    prompt:'Write two sentences describing your current role — one using "I look after" and one using "I handle." Make them specific to your actual job.',
+    hint:'Think about the two most important areas of your work. Each sentence should tell someone exactly what you\'re responsible for.',
+    model:'"I look after human rights monitoring and accountability for the Guatemala office." / "I handle coordination between local staff and the international team at OHCHR headquarters."'
+  },
+  {
+    phrase:'...which in practice means...',
+    prompt:'Write a 2–3 sentence introduction to your role for someone outside your field. Use the structure: "I have a background in X, which in practice means..."',
+    hint:'Choose a friend or family member as your imaginary audience. What would make your work clear and interesting to them?',
+    model:'"I have a background in international human rights law, which in practice means I work with governments and civil society to make sure human rights commitments are actually implemented — not just signed on paper."'
+  },
+  {
+    phrase:'Transferable skills',
+    prompt:'Write 2 sentences identifying your most valuable transferable skills. Then write a third sentence saying where you could apply them.',
+    hint:'Think beyond your job title — what abilities do you use every day that would be valuable in other roles or sectors?',
+    model:'"I have developed strong transferable skills in research, analysis, and cross-cultural communication. These skills apply across sectors — from international law to education, policy, or advocacy. I could apply them to any role that requires translating complex information for diverse audiences."'
+  },
+  {
+    phrase:'I report to / I work closely with',
+    prompt:'Write 2–3 sentences explaining where you sit in your organization — who you report to, who you work with, and what that means for your daily work.',
+    hint:'Think about the relationships that most define your role — upward (your manager), lateral (your peers or teams), and outward (external partners).',
+    model:'"I report to the Head of Office and work closely with our legal team, field staff, and UN agency partners. This means I need to manage both upward communication — briefing management on developments — and outward communication with external stakeholders."'
+  },
+];
+
+function updateProgress(){
+  const pcts=[33,66,100];
+  const labels=['Phase 1 of 3 — Learn','Phase 2 of 3 — Quiz','Phase 3 of 3 — Write'];
+  document.getElementById('prog').style.width=pcts[currentPhase]+'%';
+  document.getElementById('prog-label').textContent=labels[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-'+currentPhase).style.display='none';
+  document.querySelectorAll('.phase-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  currentPhase=n;
+  document.getElementById('phase-'+n).style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===1)renderQuiz();
+  if(n===2)renderWrite();
+}
+
+function renderLearn(){
+  const el=document.getElementById('phase-0');
+  let html=`<div class="section-intro"><h2>Phase 1 — Learn the Phrases</h2><p>These are the key expressions from the BBC episode — the ones that make the difference between sounding generic and sounding professional. Study them carefully.</p></div>`;
+  WORDS.forEach(w=>{
+    html+=`<div class="word-card" id="wcard-${w.id}">
+      <div class="wc-header" onclick="toggleCard('${w.id}')">
+        <div>
+          <div class="wc-phrase">${w.phrase}</div>
+          <div class="wc-meta"><span class="wc-tag">${w.tag}</span></div>
+        </div>
+        <div class="wc-toggle" id="toggle-${w.id}">▲</div>
+      </div>
+      <div class="wc-body" id="wbody-${w.id}">
+        <div class="wc-def-label">What it means & when to use it</div>
+        <div class="wc-def">${w.def}</div>
+        <div class="wc-def-label">Examples in professional context</div>
+        <div class="example-list">`;
+    w.examples.forEach(ex=>{
+      html+=`<div class="ex-item">${ex.text}<div class="ex-context">📍 ${ex.context}</div></div>`;
+    });
+    html+=`</div><div class="wc-def-label">Useful collocations</div><div class="colloc-row">`;
+    w.collocations.forEach(c=>{html+=`<span class="colloc-chip">${c}</span>`;});
+    html+=`</div>`;
+    if(w.confusion)html+=`<div class="confusion-box"><div class="cb-title">⚠️ Watch out</div><p>${w.confusion}</p></div>`;
+    if(w.tip)html+=`<div class="tip-box">${w.tip}</div>`;
+    html+=`</div></div>`;
+  });
+  html+=`<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">${WORDS.length} phrases covered</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Quiz →</button></div>`;
+  el.innerHTML=html;
+}
+
+function toggleCard(id){
+  const body=document.getElementById('wbody-'+id);
+  const tog=document.getElementById('toggle-'+id);
+  const isOpen=body.style.display!=='none';
+  body.style.display=isOpen?'none':'block';
+  tog.textContent=isOpen?'▼':'▲';
+}
+
+function renderQuiz(){
+  const el=document.getElementById('phase-1');
+  let html=`<div class="section-intro"><h2>Phase 2 — Quiz</h2><p>Each question gives you a real professional situation. Choose the response that uses the vocabulary most effectively.</p></div>`;
+  QUIZ.forEach((q,qi)=>{
+    const answered=quizAnswers[q.id]!==undefined;
+    html+=`<div class="quiz-card">
+      <div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-situation"><strong>Situation:</strong> ${q.situation}</div>
+      <div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-options">`;
+    q.options.forEach((opt,oi)=>{
+      let cls='';
+      if(answered){if(oi===q.correct)cls='revealed';else if(quizAnswers[q.id]===oi)cls='incorrect';}
+      html+=`<button class="q-opt ${cls}" onclick="answerQuiz(this)" data-qid="${q.id}" data-oi="${oi}">
+        <span class="q-letter">${String.fromCharCode(65+oi)}</span>
+        <span class="q-text">${opt}</span>
+      </button>`;
+    });
+    html+=`</div>`;
+    if(answered){
+      const ok=quizAnswers[q.id]===q.correct;
+      html+=`<div class="quiz-feedback ${ok?'correct':'incorrect'} show">${ok?'✓ ':'✗ '}${q.explain}</div>`;
+    }
+    html+=`</div>`;
+  });
+  const allDone=Object.keys(quizAnswers).length===QUIZ.length;
+  const correct=QUIZ.filter(q=>quizAnswers[q.id]===q.correct).length;
+  if(allDone){
+    html+=`<div class="results-card">
+      <div class="result-score">${correct}<span class="result-denom">/${QUIZ.length}</span></div>
+      <div style="font-size:14px;color:var(--text3);margin-top:4px">correct</div>
+      <p class="result-note">${correct>=4?'Strong. You understand not just what these phrases mean, but when and why to use them. Move on to the writing practice.':'Review Phase 1 before continuing — focus on the examples and when each phrase is most effective.'}</p>
+    </div>`;
+  }
+  html+=`<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Learn</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Write →</button></div>`;
+  el.innerHTML=html;
+}
+
+function answerQuiz(btn){
+  const qid=btn.dataset.qid;const oi=parseInt(btn.dataset.oi);
+  if(quizAnswers[qid]!==undefined)return;
+  quizAnswers[qid]=oi;renderQuiz();
+  setTimeout(()=>{const fb=document.querySelector('#phase-1 .quiz-feedback.show:last-of-type');if(fb)fb.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
+}
+
+function renderWrite(){
+  const el=document.getElementById('phase-2');
+  let html=`<div class="section-intro"><h2>Phase 3 — Write</h2><p>Use the phrases in your own professional context. Be specific — these sentences should be ones you could actually use at work.</p></div>`;
+  WRITE_TASKS.forEach((task,ti)=>{
+    const val=writeAnswers[ti]||'';
+    const selfVal=writeSelf[ti]||'';
+    const showModel=selfVal!=='';
+    html+=`<div class="write-card">
+      <span class="write-word-tag">${task.phrase}</span>
+      <div class="write-reminder"><strong>Task:</strong> ${task.prompt}</div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem;font-style:italic">💭 ${task.hint}</div>
+      <textarea class="write-ta" id="wta-${ti}" placeholder="Write here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <div class="self-eval ${val.trim().length>10?'show':''}" id="se-${ti}">
+        <div class="self-eval-lbl">How natural did this feel?</div>
+        <div class="self-btns">
+          <button class="self-btn ${selfVal==='yes'?'picked-yes':''}" onclick="pickSelf(${ti},'yes',this)">✓ Natural</button>
+          <button class="self-btn ${selfVal==='unsure'?'picked-unsure':''}" onclick="pickSelf(${ti},'unsure',this)">? Unsure</button>
+          <button class="self-btn ${selfVal==='no'?'picked-no':''}" onclick="pickSelf(${ti},'no',this)">✗ Struggled</button>
+        </div>
+      </div>
+      <button class="check-btn ${showModel?'done':''}" onclick="showModel(${ti})">${showModel?'✓ Example shown':'See an example'}</button>
+      <div class="model-answer ${showModel?'show':''}" id="ma-${ti}"><strong>Example:</strong> ${task.model}<br><span style="font-size:11px;color:var(--teal);margin-top:4px;display:block">Use this as a reference — your version should reflect your actual role.</span></div>
+    </div>`;
+  });
+  const done=Object.values(writeAnswers).filter(v=>v&&v.trim().length>5).length;
+  html+=`<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(1)">← Quiz</button>
+    <div style="text-align:center"><div style="font-size:13px;color:var(--text3)">${done} of ${WRITE_TASKS.length} completed</div>${done>=WRITE_TASKS.length?'<div style="font-size:13px;font-weight:600;color:var(--teal)">✓ Done! Submit or send to Ali on WhatsApp.</div>':''}</div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button></div>`;
+  el.innerHTML=html;
+}
+
+function recordWrite(ti,val){writeAnswers[ti]=val;const se=document.getElementById('se-'+ti);if(se)se.className='self-eval'+(val.trim().length>10?' show':'');}
+function pickSelf(ti,val,btn){writeSelf[ti]=val;btn.closest('.self-btns').querySelectorAll('.self-btn').forEach(b=>b.className='self-btn');btn.classList.add(val==='yes'?'picked-yes':val==='unsure'?'picked-unsure':'picked-no');document.getElementById('ma-'+ti).classList.add('show');document.querySelectorAll('#phase-2 .check-btn')[ti].classList.add('done');}
+function showModel(ti){document.getElementById('ma-'+ti).classList.add('show');document.querySelectorAll('#phase-2 .check-btn')[ti].classList.add('done');const val=writeAnswers[ti]||'';const se=document.getElementById('se-'+ti);if(se&&val.trim().length>10)se.classList.add('show');}
+function escHtml(str){return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+renderLearn();updateProgress();
+</script>
+
+<div id="print-fab" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:999">
+  <button onclick="exportPDF()" style="display:flex;align-items:center;gap:.5rem;background:#0F6E56;color:#fff;border:none;border-radius:12px;padding:.65rem 1.25rem;font-family:'Lato',sans-serif;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .2s" onmouseover="this.style.background='#1D9E75'" onmouseout="this.style.background='#0F6E56'">
+    📄 Export as PDF
+  </button>
+</div>
+
+<script>
+function exportPDF(){
+  // 1. Show all hidden phases/sections
+  const hidden = document.querySelectorAll('[style*="display:none"], [style*="display: none"]');
+  const hiddenEls = [];
+  hidden.forEach(el => {
+    hiddenEls.push({el, style: el.getAttribute('style')});
+    el.style.display = 'block';
+  });
+
+  // 2. Hide the FAB itself
+  document.getElementById('print-fab').style.display = 'none';
+
+  // 3. Also hide nav buttons and topbar dots for cleaner output
+  const navEls = document.querySelectorAll('.botnav, .topbar, .phase-nav, #print-fab');
+  navEls.forEach(el => el.style.display = 'none');
+
+  // 4. Print
+  window.print();
+
+  // 5. Restore everything after print dialog closes
+  setTimeout(() => {
+    hiddenEls.forEach(({el, style}) => el.setAttribute('style', style));
+    navEls.forEach(el => el.style.display = '');
+    document.getElementById('print-fab').style.display = 'flex';
+  }, 500);
+}
+</script>
+
+</body>
+</html>
