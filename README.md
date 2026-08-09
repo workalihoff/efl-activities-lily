@@ -1,2 +1,2 @@
-# english-with-ali
-EFL async activities for assignments
+# EFL_activites_Lily
+EFL async activities for Lily's English course
