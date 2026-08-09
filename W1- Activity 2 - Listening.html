@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Lab — Week 1 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 6rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:540px;margin:0 auto}
+.es-note{font-size:12.5px;color:var(--text3);font-style:italic;margin-top:.3rem}
+
+.phase-nav{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+
+.howto-card{background:var(--teal-light);border:1.5px dashed #9FE1CB;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.5rem}
+.howto-card .ht-title{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem}
+.howto-card p{font-size:13px;color:var(--teal-dark);line-height:1.6;margin-bottom:.3rem}
+.howto-card .es{color:var(--teal);opacity:.85;font-style:italic}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+
+.speaker-card{display:flex;align-items:center;gap:1rem;background:var(--teal-light);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.25rem}
+.speaker-flag{font-size:32px}
+.speaker-name{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark)}
+.speaker-sub{font-size:12.5px;color:var(--teal)}
+.listen-link{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--teal);color:#fff;text-decoration:none;padding:1rem 1.5rem;border-radius:12px;font-family:'Raleway',sans-serif;font-weight:700;font-size:16px;margin:1.25rem 0;transition:background .15s}
+.listen-link:hover{background:var(--teal-mid)}
+.listen-link .arrow{transition:transform .15s}
+.listen-link:hover .arrow{transform:translateX(3px)}
+.listen-checklist{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.lc-item{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:10px;padding:.7rem 1rem;font-size:13.5px;color:var(--text2)}
+.lc-item .box{width:18px;height:18px;border:2px solid var(--teal-mid);border-radius:5px;flex-shrink:0}
+
+.recap-box{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;padding:1.3rem 1.5rem;margin-bottom:1.5rem}
+.recap-box h3{font-family:'Raleway',sans-serif;font-size:15px;color:var(--teal-dark);margin-bottom:.6rem}
+.recap-box p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:.7rem}
+.recap-box p:last-child{margin-bottom:0}
+
+.comp-q{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+.comp-q .cq-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.5rem}
+.comp-q .cq-prompt{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:.9rem;line-height:1.5}
+.comp-opts{display:flex;flex-direction:column;gap:6px}
+.comp-opt{display:flex;align-items:center;gap:10px;padding:.6rem .9rem;border:1px solid var(--border);border-radius:9px;background:#fff;cursor:pointer;text-align:left;font-family:'Lato',sans-serif;width:100%;font-size:13.5px;color:var(--text)}
+.comp-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.comp-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.comp-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.comp-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.comp-fb{margin-top:.6rem;padding:.55rem .8rem;border-radius:8px;font-size:12.5px;line-height:1.5;display:none}
+.comp-fb.show{display:block}
+.comp-fb.correct{background:var(--green-bg);color:var(--green-t)}
+.comp-fb.incorrect{background:var(--red-bg);color:var(--red-t)}
+.comp-encourage{font-size:11.5px;margin-top:.3rem;font-style:italic;opacity:.85}
+
+.vocab-mini{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
+.vm-chip{background:var(--blue-bg);border-radius:10px;padding:.7rem 1rem;flex:1;min-width:200px}
+.vm-chip b{color:var(--blue-t);font-size:13px}
+.vm-chip p{font-size:12.5px;color:var(--blue-t);margin-top:.3rem;line-height:1.5}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.compare-col{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem}
+.compare-col.torquay{border-top:3px solid var(--teal-mid)}
+.compare-col.scp{border-top:3px solid var(--terra)}
+.compare-col .cc-label{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;margin-bottom:.5rem}
+.compare-col.torquay .cc-label{color:var(--teal-dark)}
+.compare-col.scp .cc-label{color:var(--terra)}
+.compare-col p{font-size:12.5px;color:var(--text2);line-height:1.5}
+.compare-category{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin:1.5rem 0 .6rem}
+.write-ta{width:100%;min-height:70px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream);margin-top:.5rem}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff;box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.starter{font-size:12px;color:var(--text3);font-style:italic;margin-top:.4rem}
+
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:44px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:18px;color:var(--text3)}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+
+.export-box{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;background:var(--terra);border:1px solid var(--terra);color:#fff;transition:all .15s}
+.export-btn:hover{opacity:.9}
+
+@media(max-width:640px){
+  .shell{padding:1.5rem .75rem 6rem}
+  .compare-row{grid-template-columns:1fr}
+}
+
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box{display:none !important}
+  #phase-0,#phase-1,#phase-2{display:block !important}
+  body{background:#fff}
+  .shell{padding:0;max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Listening Lab — Week 1</div>
+    <div class="topbar-sub">English with Ali · My Town, Your Town</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Listen</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Read</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+
+<script>
+const COMP_QUESTIONS = [
+  {id:'c1',prompt:'What is the name of Katie\'s town?',options:['London','Torquay','Manchester','Liverpool'],correct:1,explain:'Correct! Katie is from Torquay, a small town in the southwest of England.',encourage:'Nice listening! 🎧'},
+  {id:'c2',prompt:'Why is Torquay famous in the UK?',options:['Its mountains','Its beautiful beaches','Its big airport','Its universities'],correct:1,explain:'Correct! Katie says Torquay is famous for its beautiful beaches.',encourage:'You caught it! ✨'},
+  {id:'c3',prompt:'What kinds of food are most popular in Katie\'s town?',options:['British and American food','Italian and Chinese food','Only seafood','Mexican food'],correct:1,explain:'Correct! The most popular foods there are Italian and Chinese.',encourage:'Great memory! 🌟'},
+  {id:'c4',prompt:'Where do people in Torquay usually exercise?',options:['At the gym only','In parks, playing football','On the mountains','At school'],correct:1,explain:'Correct! Lots of people play football in the parks.',encourage:'You got it! 👏'},
+  {id:'c5',prompt:'When does Katie say is a good time to visit her town?',options:['Only winter','Only spring','Summer, for the beach','Never — it always rains'],correct:2,explain:'Correct! Summer is good for the beach — though she jokes it rains a lot in England!',encourage:'Nailed it! 🌱'},
+];
+
+let currentPhase = 0;
+const compAnswers = {};
+const writeAnswers = {};
+
+const CATEGORIES = [
+  {key:'shop', label:'🛒 Shopping', torquay:'Supermarkets — usually need a car, but Katie\'s is close by.', starter:'In Santa Catarina Palopó, people shop at...'},
+  {key:'eat', label:'🍽️ Food', torquay:'Restaurants by the beach — mostly Italian and Chinese food.', starter:'In my town, popular food is...'},
+  {key:'exercise', label:'⚽ Exercise', torquay:'Parks — lots of people play football.', starter:'In Santa Catarina Palopó, people exercise by...'},
+  {key:'nature', label:'🌄 Nature', torquay:'Beaches, gardens, and mountains with walking paths.', starter:'In my town, you can see nature at...'},
+  {key:'when', label:'📅 Best time to visit', torquay:'Summer — for the beach.', starter:'The best time to visit Santa Catarina Palopó is...'},
+];
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Listen','Phase 2 of 3 — Read','Phase 3 of 3 — Write'];
+  const pcts = [33, 66, 100];
+  document.getElementById('prog').style.width = pcts[currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-' + currentPhase).style.display = 'none';
+  document.querySelectorAll('.phase-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentPhase = n;
+  document.getElementById('phase-' + n).style.display = 'block';
+  updateProgress();
+  window.scrollTo({top: 0, behavior:'smooth'});
+  if(n === 1) renderRead();
+  if(n === 2) renderWrite();
+}
+
+function renderListen(){
+  const el = document.getElementById('phase-0');
+  el.innerHTML = `
+    <div class="section-intro"><h2>Phase 1 — Listen</h2><p>This week, you'll listen to someone talk about her town — just like you talked about Santa Catarina Palopó today!</p><div class="es-note">Esta semana vas a escuchar a alguien hablar de su pueblo — igual que tú hablaste de Santa Catarina Palopó hoy.</div></div>
+    <div class="howto-card">
+      <div class="ht-title">📋 How this activity works</div>
+      <p>1. Listen to Katie's audio/video (link below). 2. Read a short summary and answer 5 questions. 3. Compare her town to yours. About 15-20 minutes.</p>
+      <p class="es">Cómo funciona: 1. Escucha a Katie. 2. Lee un resumen corto y responde 5 preguntas. 3. Compara su pueblo con el tuyo. Unos 15-20 minutos.</p>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-flag">🇬🇧</div>
+      <div><div class="speaker-name">Katie, from Torquay, England</div><div class="speaker-sub">Level: A2 Beginner · Topic: "My English Town"</div></div>
+    </div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:.5rem">Katie talks with her friend Todd about her hometown — where people shop, eat, exercise, and enjoy nature. Sound familiar? You talked about very similar things today!</p>
+      <a class="listen-link" href="https://elllo.org/english/1451/1468-Katie-Torquay.htm" target="_blank" rel="noopener">🎧 Listen to Katie on ELLLO <span class="arrow">→</span></a>
+      <p style="font-size:12.5px;color:var(--text3);text-align:center">Opens in a new tab. Video or audio — whichever works better for you. / Se abre en una pestaña nueva.</p>
+    </div>
+    <div class="card">
+      <div style="font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:.75rem">While you listen, try to catch: <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Mientras escuchas, trata de captar:</span></div>
+      <div class="listen-checklist">
+        <div class="lc-item"><div class="box"></div>The name of her town</div>
+        <div class="lc-item"><div class="box"></div>What kind of food is popular there</div>
+        <div class="lc-item"><div class="box"></div>Where people exercise</div>
+        <div class="lc-item"><div class="box"></div>When she says is the best time to visit</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;font-style:italic">Listen 1-2 times. You don't need to understand every word — just the main ideas. No es necesario entender cada palabra, solo la idea general.</p>
+    </div>
+    <div class="bottom-nav"><span style="font-size:13px;color:var(--text3)"></span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Read →</button></div>
+  `;
+}
+
+function renderRead(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Read &amp; Check</h2><p>Here's a simple summary to help confirm what you heard. Then, check your understanding.</p><div class="es-note">Un resumen simple para confirmar lo que escuchaste. Luego, revisa tu comprensión.</div></div>`;
+
+  html += `<div class="recap-box">
+    <h3>📖 Quick Summary</h3>
+    <p>Katie is from a small town called Torquay, in the south of England. It's famous for its beautiful beaches.</p>
+    <p>For food shopping, Katie usually needs a car to get to the supermarket, but she's lucky — one is close to her house. For restaurants, there are many nice places along the beach. The most popular foods in her town are Italian and Chinese, not really British food.</p>
+    <p>For exercise, people usually go to the parks — a lot of people play football there. For nature, Torquay has beaches, gardens with flowers, and even mountains nearby with walking paths.</p>
+    <p>Katie says summer is the best time to visit, because of the beach — even though it rains a lot in England!</p>
+  </div>`;
+
+  html += `<div class="vocab-mini">
+    <div class="vm-chip"><b>except</b><p>"Everyone came to class except Ana." (= not including / "excepto")</p></div>
+    <div class="vm-chip"><b>wherever</b><p>"You can sit wherever you like." (= any place / "donde sea")</p></div>
+    <div class="vm-chip"><b>definitely</b><p>"I will definitely finish my homework." (= without doubt / "definitivamente")</p></div>
+  </div>`;
+
+  html += `<div style="font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark);margin:1.75rem 0 .5rem">Check your understanding <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Revisa tu comprensión</span></div>`;
+
+  COMP_QUESTIONS.forEach((q, qi) => {
+    const answered = compAnswers[q.id] !== undefined;
+    html += `<div class="comp-q">
+      <div class="cq-num">Question ${qi+1} of ${COMP_QUESTIONS.length}</div>
+      <div class="cq-prompt">${q.prompt}</div>
+      <div class="comp-opts">`;
+    q.options.forEach((opt, oi) => {
+      let cls = '';
+      if(answered){
+        if(oi === q.correct) cls = 'revealed';
+        else if(compAnswers[q.id] === oi) cls = 'incorrect';
+      }
+      html += `<button class="comp-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerComp(this)">${opt}</button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = compAnswers[q.id] === q.correct;
+      html += `<div class="comp-fb ${correct?'correct':'incorrect'} show">${correct ? '✓ ' : '✗ '}${q.explain}${correct ? `<div class="comp-encourage">${q.encourage}</div>` : ''}</div>`;
+    }
+    html += `</div>`;
+  });
+
+  const allDone = Object.keys(compAnswers).length === COMP_QUESTIONS.length;
+  const correctCount = COMP_QUESTIONS.filter(q => compAnswers[q.id] === q.correct).length;
+  if(allDone){
+    html += `<div class="results-card">
+      <div class="result-score">${correctCount}<span class="result-denom">/${COMP_QUESTIONS.length}</span></div>
+      <p style="font-size:13.5px;color:var(--text2);margin-top:.5rem">${correctCount >= 4 ? 'Great listening! You caught the main ideas. 🌟' : 'Good try — listening is the skill we\'ll keep building together every week. 🌱'}</p>
+    </div>`;
+  }
+
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Listen</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button></div>`;
+  el.innerHTML = html;
+}
+
+function answerComp(btn){
+  const qid = btn.dataset.qid;
+  const oi = parseInt(btn.dataset.oi);
+  if(compAnswers[qid] !== undefined) return;
+  compAnswers[qid] = oi;
+  renderRead();
+}
+
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — My Town, Your Town</h2><p>Katie answered these questions about Torquay. Now it's your turn — answer the same questions about Santa Catarina Palopó!</p><div class="es-note">Katie respondió estas preguntas sobre Torquay. Ahora te toca a ti — responde sobre Santa Catarina Palopó.</div></div>`;
+
+  CATEGORIES.forEach(cat => {
+    const val = writeAnswers[cat.key] || '';
+    html += `<div class="compare-category">${cat.label}</div>
+      <div class="compare-row">
+        <div class="compare-col torquay"><div class="cc-label">🇬🇧 Torquay (Katie)</div><p>${cat.torquay}</p></div>
+        <div class="compare-col scp">
+          <div class="cc-label">🌄 Santa Catarina Palopó (You)</div>
+          <textarea class="write-ta" id="wta-${cat.key}" placeholder="Write here…" oninput="recordWrite('${cat.key}',this.value)">${escHtml(val)}</textarea>
+          <div class="starter">💭 ${cat.starter}</div>
+        </div>
+      </div>`;
+  });
+
+  const done = Object.values(writeAnswers).filter(v => v && v.trim().length > 3).length;
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(1)">← Back to Read</button>
+    <div style="text-align:center">
+      <div style="font-size:13px;color:var(--text3);margin-bottom:.3rem">${done} of ${CATEGORIES.length} completed</div>
+      ${done >= CATEGORIES.length ? '<div style="font-size:13px;font-weight:600;color:var(--teal)">✓ All done! Export your PDF and turn it in on Classroom.</div>' : ''}
+    </div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button>
+  </div>`;
+  html += `<div class="export-box"><button class="export-btn" onclick="window.print()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+
+function recordWrite(key, val){ writeAnswers[key] = val; }
+
+function escHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+renderListen();
+updateProgress();
+</script>
+</body>
+</html>

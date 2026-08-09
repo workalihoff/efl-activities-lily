@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Lab — Week 1 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 6rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:520px;margin:0 auto}
+.es-note{font-size:12.5px;color:var(--text3);font-style:italic;margin-top:.3rem}
+
+.phase-nav{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+
+/* How-this-works intro card */
+.howto-card{background:var(--teal-light);border:1.5px dashed #9FE1CB;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.5rem}
+.howto-card .ht-title{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem}
+.howto-card p{font-size:13px;color:var(--teal-dark);line-height:1.6;margin-bottom:.3rem}
+.howto-card .es{color:var(--teal);opacity:.85;font-style:italic}
+
+/* Group labels */
+.group-label{display:flex;align-items:center;gap:10px;margin:1.75rem 0 1rem}
+.group-label:first-of-type{margin-top:.5rem}
+.group-title{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--text)}
+.group-sub{font-size:12.5px;color:var(--text3);font-style:italic}
+.group-badge{width:34px;height:34px;border-radius:10px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.group-badge.terra{background:var(--terra)}
+
+.word-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:1.25rem;overflow:hidden;transition:box-shadow .2s}
+.word-card:hover{box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.wc-header{padding:1.25rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;cursor:pointer;user-select:none}
+.wc-word{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:3px}
+.wc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wc-pos{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:10px;background:var(--teal-light);color:var(--teal-dark)}
+.wc-phonetic{font-size:13px;color:var(--text3);font-style:italic}
+.wc-toggle{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;transition:all .2s;color:var(--text3)}
+.wc-body{padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.wc-def-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin:.9rem 0 .35rem}
+.wc-def{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
+.wc-es{font-size:12.5px;color:var(--text3);font-style:italic;margin-bottom:.5rem}
+
+.confusion-box{background:var(--amber-bg);border-left:3px solid #BA7517;border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:.75rem 0}
+.confusion-box .cb-title{font-size:11px;font-weight:700;color:var(--amber-t);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.confusion-box p{font-size:13px;color:var(--amber-t);line-height:1.55}
+
+.example-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.25rem}
+.ex-item{background:var(--cream);border-radius:8px;padding:.65rem .9rem;font-size:13px;color:var(--text2);line-height:1.5;border-left:3px solid var(--teal-mid)}
+.ex-item strong{color:var(--teal-dark);font-weight:700}
+.ex-context{font-size:11px;color:var(--text3);margin-top:3px}
+
+.colloc-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:.25rem}
+.colloc-chip{padding:5px 12px;border-radius:16px;font-size:12px;background:var(--teal-light);color:var(--teal-dark);font-weight:600;border:1px solid #9FE1CB}
+
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-top:.75rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.tip-box strong{font-weight:600}
+
+.spotlight-card{background:linear-gradient(135deg,var(--teal-light),#fff);border:1.5px solid #9FE1CB;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.spotlight-title{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.spotlight-card p{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.5rem}
+.pronoun-grid{display:flex;gap:1rem;margin-top:.75rem;flex-wrap:wrap}
+.pronoun-col{flex:1;min-width:140px;background:#fff;border-radius:10px;padding:.9rem 1.1rem}
+.pronoun-col .pc-label{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem}
+.pronoun-col ul{list-style:none;font-size:13px;color:var(--text2);line-height:1.9}
+
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-situation{background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;padding:.6rem .9rem;font-size:13px;color:var(--teal-dark);margin-bottom:1rem}
+.quiz-situation strong{font-weight:600}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.q-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.5;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.quiz-encourage{font-size:12px;margin-top:.4rem;font-style:italic;opacity:.85}
+
+.write-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.write-word-tag{display:inline-block;font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal);background:var(--teal-light);padding:4px 16px;border-radius:20px;margin-bottom:.75rem;border:1px solid #9FE1CB}
+.write-reminder{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:12px;color:var(--text3);margin-bottom:1rem;line-height:1.5}
+.write-reminder strong{color:var(--text2);font-weight:600}
+.write-ta{width:100%;min-height:90px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff;box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.write-ta.has-text{background:#fff;border-color:var(--border)}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--teal-mid);color:var(--teal)}
+.check-btn.done{background:var(--teal-light);border-color:var(--teal-mid);color:var(--teal-dark)}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;font-size:13px;color:var(--teal-dark);line-height:1.55;display:none}
+.model-answer.show{display:block}
+.model-answer strong{font-weight:600}
+
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:54px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:20px;color:var(--text3)}
+.result-note{font-size:14px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+
+.export-box{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;background:var(--terra);border:1px solid var(--terra);color:#fff;transition:all .15s}
+.export-btn:hover{opacity:.9}
+
+@media(max-width:580px){
+  .shell{padding:1.5rem .75rem 6rem}
+  .wc-word{font-size:18px}
+  .phase-tab .tab-num{font-size:15px}
+}
+
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box{display:none !important}
+  #phase-0,#phase-1,#phase-2{display:block !important}
+  body{background:#fff}
+  .shell{padding:0;max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Vocabulary Lab — Week 1</div>
+    <div class="topbar-sub">English with Ali · Family, Community &amp; Focus</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Learn</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Quiz</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+
+<script>
+const GROUP1 = [
+  {
+    id:'uncle', word:'Uncle', pos:'noun', phonetic:'/ˈʌŋ.kəl/',
+    def:'A male family member — your mom or dad\'s brother, or the husband of your aunt.',
+    defEs:'Un familiar hombre — el hermano de tu mamá o papá, o el esposo de tu tía.',
+    examples:[
+      {text:'My <strong>uncle</strong> lives in Panajachel.',context:'Talking about where family members live.'},
+      {text:'My <strong>uncle</strong> speaks Kaqchikel and Spanish.',context:'Describing a family member\'s languages.'},
+      {text:'I visited my <strong>uncle</strong> last weekend.',context:'Talking about a recent family visit.'},
+    ],
+    collocations:['my uncle','uncle and aunt','my uncle\'s house'],
+    tip:'💡  Pronunciation tip: it sounds like "UNK-uhl" — the U is like in "up," not like "oo." / Se pronuncia "ANK-el," no "OON-cle."',
+    writePrompts:['Write 2-3 sentences about an aunt or uncle in your family.']
+  },
+  {
+    id:'language', word:'Language', pos:'noun', phonetic:'/ˈlæŋ.gwɪdʒ/',
+    def:'The words and grammar a group of people use to communicate. You already speak more than one!',
+    defEs:'Las palabras y gramática que un grupo de personas usa para comunicarse. ¡Tú ya hablas más de uno!',
+    examples:[
+      {text:'I speak three <strong>languages</strong>: Kaqchikel, Spanish, and English.',context:'Describing your own language skills — a real superpower!'},
+      {text:'What <strong>language</strong> do you speak with your grandparents?',context:'A question you might get asked.'},
+      {text:'Kaqchikel is my family\'s <strong>language</strong>.',context:'Talking about your heritage language.'},
+    ],
+    collocations:['speak a language','my first language','learn a new language'],
+    tip:'💡  Pronunciation tip: the middle sound is "gwidj" — like "gwih" + "j."',
+    writePrompts:['Write a sentence about the languages you speak and who you speak them with.']
+  },
+  {
+    id:'artisan', word:'Artisan', pos:'noun', phonetic:'/ˈɑːr.tɪ.zən/',
+    def:'Someone who makes things — like textiles, pottery, or jewelry — using traditional skills, often passed down in a family or community.',
+    defEs:'Alguien que hace cosas — como textiles, cerámica o joyería — usando técnicas tradicionales, muchas veces transmitidas en la familia o comunidad.',
+    examples:[
+      {text:'The <strong>artisans</strong> in my town make traditional clothes.',context:'Describing skilled workers in your community.'},
+      {text:'My town is known for its <strong>artisans</strong>.',context:'Talking about what your town is famous for.'},
+      {text:'She learned from other <strong>artisans</strong> in her family.',context:'Describing how a skill is passed down.'},
+    ],
+    collocations:['local artisans','artisan work','traditional artisans'],
+    confusion:'⚠️  Careful with the plural: it\'s "artisans" (not "artisany"). Just add -s. / Solo agrega -s, no cambies nada más.',
+    tip:'💡  This word connects to what you talked about today — the weavers and artists in Santa Catarina Palopó!',
+    writePrompts:['Write 2-3 sentences about the artisans in your town. What do they make?']
+  },
+  {
+    id:'some', word:'Some', pos:'determiner', phonetic:'/sʌm/',
+    def:'Used when you mean part of a group, not the whole group (= "algunas/algunos").',
+    defEs:'Se usa cuando te refieres a una parte de un grupo, no a todo el grupo.',
+    examples:[
+      {text:'<strong>Some</strong> women in my town are artisans.',context:'Talking about part of a group of people.'},
+      {text:'I understood <strong>some</strong> of the questions.',context:'Describing partial understanding — totally normal!'},
+      {text:'<strong>Some</strong> of my classmates started school five years ago.',context:'Describing part of a group.'},
+    ],
+    collocations:['some of them','some people','some days'],
+    tip:'💡  "Algunas/algunos" → "some." Easy swap once you notice it.',
+    writePrompts:['Write a sentence using "some" — about your classmates, family, or town.']
+  },
+];
+
+const GROUP2 = [
+  {
+    id:'distracted', word:'Distracted', pos:'adjective', phonetic:'/dɪˈstræk.tɪd/',
+    def:'When your mind moves away from what you should be doing (= "distraída").',
+    defEs:'Cuando tu mente se aleja de lo que deberías estar haciendo.',
+    examples:[
+      {text:'I got <strong>distracted</strong> during math class.',context:'Talking about a moment of lost focus at school.'},
+      {text:'It\'s easy to feel <strong>distracted</strong> when a class is difficult.',context:'A completely normal, human thing to say.'},
+      {text:'She looked <strong>distracted</strong>, so the teacher asked a question.',context:'Describing someone else\'s attention.'},
+    ],
+    collocations:['feel distracted','get distracted','easily distracted'],
+    tip:'💡  "Distraída" → "distracted." The stress is on "TRACT."',
+    writePrompts:['Write a sentence about a time you felt distracted — in class or at home.']
+  },
+  {
+    id:'pay-attention', word:'Pay attention', pos:'phrase', phonetic:'/peɪ əˈten.ʃən/',
+    def:'To focus on and listen carefully to something — the opposite of distracted (= "prestar/poner atención").',
+    defEs:'Enfocarte y escuchar con cuidado — lo opuesto de "distracted."',
+    examples:[
+      {text:'I try to <strong>pay attention</strong> in English class.',context:'Talking about your own focus habits.'},
+      {text:'It helps me to <strong>pay attention</strong> when I sit near the front.',context:'Sharing a personal strategy.'},
+      {text:'Can you <strong>pay attention</strong>, please?',context:'A request you might hear from a teacher.'},
+    ],
+    collocations:['pay attention to','pay close attention'],
+    tip:'💡  In English, you "pay" attention, like it\'s a kind of currency!',
+    writePrompts:['Write a sentence about something that helps you pay attention.']
+  },
+];
+
+const QUIZ = [
+  {
+    id:'q1',
+    situation:'You are describing your family to a new friend.',
+    prompt:'Which sentence is correct?',
+    options:['My uncle live in Panajachel.','My uncle lives in Panajachel.','My uncle living in Panajachel.','My uncle is live in Panajachel.'],
+    correct:1,
+    explain:'Correct! With "he/she/it" (third person singular), the verb takes an -s: "lives," not "live."',
+    encourage:'Nice work! 🌱 / ¡Bien hecho!',
+  },
+  {
+    id:'q2',
+    situation:'Someone asks about your sister Ana.',
+    prompt:'Which sentence uses the correct pronoun?',
+    options:['Ana is my sister. He is 14 years old.','Ana is my sister. She is 14 years old.','Ana is my sister. It is 14 years old.','Ana is my sister. They is 14 years old.'],
+    correct:1,
+    explain:'Correct! For a girl or woman, English always uses "she" — even though Kaqchikel doesn\'t need to make this choice. It just takes practice.',
+    encourage:'Great catch! 👏 / ¡Excelente!',
+  },
+  {
+    id:'q3',
+    situation:'You want to describe the skilled people who make traditional clothes in your town.',
+    prompt:'Which word is correct?',
+    options:['The artisany in my town make beautiful textiles.','The artisans in my town make beautiful textiles.','The artisan\'s in my town make beautiful textiles.','The artisen in my town make beautiful textiles.'],
+    correct:1,
+    explain:'Correct! "Artisans" — just add -s for the plural.',
+    encourage:'You got it! ✨ / ¡Lo lograste!',
+  },
+  {
+    id:'q4',
+    situation:'You want to say that not all, but part of a group, does something.',
+    prompt:'Which sentence uses "some" correctly?',
+    options:['Some of my classmates started school five years ago.','Some my classmates started school five years ago.','Some of my classmates start school five years ago.','Is some my classmates started school five years ago.'],
+    correct:0,
+    explain:'Correct! "Some of + [group]" is the pattern. And since this already happened, we use the past tense "started."',
+    encourage:'Sharp thinking! 🎯 / ¡Buen ojo!',
+  },
+  {
+    id:'q5',
+    situation:'You want to explain why you missed part of what your teacher said, and what usually helps.',
+    prompt:'Which pair of sentences makes sense together?',
+    options:['I felt distracted, so it helps me to pay attention when I sit near the front.','I felt pay attention, so it helps me to distracted when I sit near the front.','I felt distracted, so it helps me to distracted when I sit near the front.','I felt attention, so it helps me to pay distracted.'],
+    correct:0,
+    explain:'Correct! "Felt distracted" describes what happened, and "pay attention" describes what helps you focus — they work as a natural pair.',
+    encourage:'That\'s the idea! 🌟 / ¡Esa es la idea!',
+  },
+];
+
+const WRITE_TASKS = [
+  {word:'uncle / aunt',prompt:'Write 2-3 sentences about an aunt or uncle in your family. Remember: he or she?',promptEs:'Escribe 2-3 oraciones sobre una tía o tío de tu familia. Recuerda: ¿he o she?',hint:'Where do they live? What language do they speak?',model:'My uncle lives near the lake. He speaks Kaqchikel and Spanish. He is very kind.'},
+  {word:'artisan',prompt:'Write 2-3 sentences about the artisans in your town. What do they make?',promptEs:'Escribe 2-3 oraciones sobre los artesanos de tu pueblo. ¿Qué hacen?',hint:'Think about the weavers, the traditional clothes, the colors.',model:'The artisans in Santa Catarina Palopó make traditional clothes. Some women weave beautiful textiles with bright colors.'},
+  {word:'focus kit',prompt:'Write a sentence using "distracted" or "pay attention" — about school or home.',promptEs:'Escribe una oración usando "distracted" o "pay attention" — sobre la escuela o tu casa.',hint:'A real moment — no need to be perfect.',model:'I feel distracted when I am tired, but I pay attention better when I sit near the front of the class.'},
+];
+
+let currentPhase = 0;
+const quizAnswers = {};
+const writeAnswers = {};
+let openCards = {};
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Learn','Phase 2 of 3 — Quiz','Phase 3 of 3 — Write'];
+  const pcts = [33, 66, 100];
+  document.getElementById('prog').style.width = pcts[currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-' + currentPhase).style.display = 'none';
+  document.querySelectorAll('.phase-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentPhase = n;
+  document.getElementById('phase-' + n).style.display = 'block';
+  updateProgress();
+  window.scrollTo({top: 0, behavior:'smooth'});
+  if(n === 1) renderQuiz();
+  if(n === 2) renderWrite();
+}
+
+function renderWordCard(w){
+  const isOpen = openCards[w.id] !== false;
+  let html = `<div class="word-card" id="wcard-${w.id}">
+    <div class="wc-header" onclick="toggleCard('${w.id}')">
+      <div>
+        <div class="wc-word">${w.word}</div>
+        <div class="wc-meta"><span class="wc-pos">${w.pos}</span><span class="wc-phonetic">${w.phonetic}</span></div>
+      </div>
+      <div class="wc-toggle" id="toggle-${w.id}">${isOpen ? '▲' : '▼'}</div>
+    </div>
+    <div class="wc-body" id="wbody-${w.id}" style="display:${isOpen?'block':'none'}">
+      <div class="wc-def-label">Definition</div>
+      <div class="wc-def">${w.def}</div>
+      <div class="wc-es">${w.defEs}</div>
+      <div class="wc-def-label">Examples in context</div>
+      <div class="example-list">`;
+  w.examples.forEach(ex => { html += `<div class="ex-item">${ex.text}<div class="ex-context">📍 ${ex.context}</div></div>`; });
+  html += `</div><div class="wc-def-label">Common collocations</div><div class="colloc-row">`;
+  w.collocations.forEach(c => { html += `<span class="colloc-chip">${c}</span>`; });
+  html += `</div>`;
+  if(w.confusion) html += `<div class="confusion-box"><div class="cb-title">⚠️ Don't confuse this</div><p>${w.confusion}</p></div>`;
+  if(w.tip) html += `<div class="tip-box">${w.tip}</div>`;
+  html += `</div></div>`;
+  return html;
+}
+
+function renderLearn(){
+  const el = document.getElementById('phase-0');
+  let html = `<div class="section-intro">
+    <h2>Phase 1 — Learn the Words</h2>
+    <p>These words come straight from what we talked about today! Tap a card to expand it.</p>
+    <div class="es-note">Estas palabras salieron de lo que hablamos hoy. Toca una tarjeta para abrirla.</div>
+  </div>`;
+
+  html += `<div class="howto-card">
+    <div class="ht-title">📋 How this activity works</div>
+    <p>1. Read each word card in this phase (Learn). 2. Answer the quiz. 3. Write your own sentences. Takes about 15-20 minutes total.</p>
+    <p class="es">Cómo funciona: 1. Lee las tarjetas de palabras. 2. Responde el quiz. 3. Escribe tus propias oraciones. Toma unos 15-20 minutos en total.</p>
+  </div>`;
+
+  html += `<div class="spotlight-card">
+    <div class="spotlight-title">🔍 Language Spotlight: He or She?</div>
+    <p>In Kaqchikel, you don't have to choose between "he" and "she" — one word covers both! English is different — you always have to pick. This is just a small switch your brain makes every time, not something to worry about.</p>
+    <p style="font-style:italic;color:var(--text3);font-size:12.5px">En kaqchikel no tienes que elegir entre "he" y "she" — una sola palabra cubre ambos. En inglés sí hay que elegir siempre. Es solo un ajuste, no algo de qué preocuparse.</p>
+    <div class="pronoun-grid">
+      <div class="pronoun-col"><div class="pc-label">He 👦</div><ul><li>Father, dad</li><li>Uncle</li><li>Brother</li><li>Grandfather</li></ul></div>
+      <div class="pronoun-col"><div class="pc-label">She 👧</div><ul><li>Mother, mom</li><li>Aunt</li><li>Sister</li><li>Grandmother</li></ul></div>
+    </div>
+  </div>`;
+
+  html += `<div class="group-label"><div class="group-badge">🏡</div><div><div class="group-title">Family &amp; Community</div><div class="group-sub">Familia y comunidad</div></div></div>`;
+  GROUP1.forEach(w => { html += renderWordCard(w); });
+
+  html += `<div class="group-label"><div class="group-badge terra">🎯</div><div><div class="group-title">Focus Kit</div><div class="group-sub">Palabras que usarás cada semana — Kit de enfoque</div></div></div>`;
+  GROUP2.forEach(w => { html += renderWordCard(w); });
+
+  html += `<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">${GROUP1.length + GROUP2.length} words covered</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Quiz →</button></div>`;
+  el.innerHTML = html;
+}
+
+function toggleCard(id){
+  const body = document.getElementById('wbody-' + id);
+  const tog = document.getElementById('toggle-' + id);
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  tog.textContent = isOpen ? '▼' : '▲';
+  openCards[id] = !isOpen;
+}
+
+function renderQuiz(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Quiz</h2><p>Read each situation and choose the best answer. No timer — take your time.</p><div class="es-note">Lee cada situación y elige la mejor respuesta. Sin tiempo límite.</div></div>`;
+
+  QUIZ.forEach((q, qi) => {
+    const answered = quizAnswers[q.id] !== undefined;
+    html += `<div class="quiz-card">
+      <div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-situation"><strong>Situation:</strong> ${q.situation}</div>
+      <div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-options">`;
+    q.options.forEach((opt, oi) => {
+      let cls = '';
+      if(answered){
+        if(oi === q.correct) cls = 'revealed';
+        else if(quizAnswers[q.id] === oi) cls = 'incorrect';
+      }
+      html += `<button class="q-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerQuiz(this)">
+        <span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span>
+      </button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = quizAnswers[q.id] === q.correct;
+      html += `<div class="quiz-feedback ${correct?'correct':'incorrect'} show">${correct ? '✓ ' : '✗ '}${q.explain}${correct ? `<div class="quiz-encourage">${q.encourage}</div>` : ''}</div>`;
+    }
+    html += `</div>`;
+  });
+
+  const allDone = Object.keys(quizAnswers).length === QUIZ.length;
+  const correctCount = QUIZ.filter(q => quizAnswers[q.id] === q.correct).length;
+  if(allDone){
+    html += `<div class="results-card">
+      <div class="result-score">${correctCount}<span class="result-denom">/${QUIZ.length}</span></div>
+      <div style="font-size:14px;color:var(--text3);margin-top:4px">correct</div>
+      <p class="result-note">${correctCount >= 4 ? 'Excellent! You\'ve got a strong handle on these words. On to writing! 🌱' : 'Good try — review Phase 1 if you want, then continue whenever you\'re ready. No pressure.'}</p>
+    </div>`;
+  }
+
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Learn</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button></div>`;
+  el.innerHTML = html;
+}
+
+function answerQuiz(btn){
+  const qid = btn.dataset.qid;
+  const oi = parseInt(btn.dataset.oi);
+  if(quizAnswers[qid] !== undefined) return;
+  quizAnswers[qid] = oi;
+  renderQuiz();
+  setTimeout(()=>{
+    const fb = document.querySelector(`#phase-1 .quiz-feedback.show:last-of-type`);
+    if(fb) fb.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }, 80);
+}
+
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Write in Context</h2><p>Use the words yourself! Write real sentences about your real life.</p><div class="es-note">Usa las palabras tú misma. Escribe oraciones reales sobre tu vida real.</div></div>`;
+
+  WRITE_TASKS.forEach((task, ti) => {
+    const val = writeAnswers[ti] || '';
+    const showModel = val.trim().length > 5;
+    html += `<div class="write-card">
+      <span class="write-word-tag">${task.word}</span>
+      <div class="write-reminder"><strong>Prompt:</strong> ${task.prompt}<br><span style="font-style:italic">${task.promptEs}</span></div>
+      ${task.hint ? `<div style="font-size:12px;color:var(--text3);margin-bottom:.75rem;font-style:italic">💭 ${task.hint}</div>` : ''}
+      <textarea class="write-ta ${val?'has-text':''}" id="wta-${ti}" placeholder="Write your sentences here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <button class="check-btn" onclick="showModel(${ti})">See a model answer</button>
+      <div class="model-answer" id="ma-${ti}"><strong>Example answer:</strong> ${task.model}<br><span style="font-size:11px;color:var(--teal);margin-top:4px;display:block">Your sentence doesn't need to match — as long as the idea is clear and real to you.</span></div>
+    </div>`;
+  });
+
+  const done = Object.values(writeAnswers).filter(v => v && v.trim().length > 5).length;
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(1)">← Back to Quiz</button>
+    <div style="text-align:center">
+      <div style="font-size:13px;color:var(--text3);margin-bottom:.3rem">${done} of ${WRITE_TASKS.length} completed</div>
+      ${done >= WRITE_TASKS.length ? '<div style="font-size:13px;font-weight:600;color:var(--teal)">✓ All done! Export your PDF and turn it in on Classroom.</div>' : ''}
+    </div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button>
+  </div>`;
+  html += `<div class="export-box"><button class="export-btn" onclick="window.print()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+
+function recordWrite(ti, val){ writeAnswers[ti] = val; }
+
+function showModel(ti){
+  const ma = document.getElementById('ma-' + ti);
+  if(ma){ ma.classList.add('show'); }
+  const btns = document.querySelectorAll('#phase-2 .check-btn');
+  if(btns[ti]) btns[ti].classList.add('done');
+}
+
+function escHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+renderLearn();
+updateProgress();
+</script>
+</body>
+</html>
