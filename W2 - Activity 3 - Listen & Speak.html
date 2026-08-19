@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening &amp; Speak Lab — Week 2 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+  --purple-bg:#F1E9F8;--purple-t:#5B2C87;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:540px;margin:0 auto}
+.es-note{font-size:12.5px;color:var(--text3);font-style:italic;margin-top:.3rem}
+.phase-nav{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.howto-card{background:var(--teal-light);border:1.5px dashed #9FE1CB;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.5rem}
+.howto-card .ht-title{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem}
+.howto-card p{font-size:13px;color:var(--teal-dark);line-height:1.6;margin-bottom:.3rem}
+.howto-card .es{color:var(--teal);opacity:.85;font-style:italic}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.speaker-card{display:flex;align-items:center;gap:1rem;background:var(--teal-light);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.25rem}
+.speaker-flag{font-size:32px}
+.speaker-name{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark)}
+.speaker-sub{font-size:12.5px;color:var(--teal)}
+.listen-link{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--teal);color:#fff;text-decoration:none;padding:1rem 1.5rem;border-radius:12px;font-family:'Raleway',sans-serif;font-weight:700;font-size:16px;margin:1.25rem 0}
+.listen-link:hover{background:var(--teal-mid)}
+.listen-checklist{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.lc-item{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:10px;padding:.7rem 1rem;font-size:13.5px;color:var(--text2)}
+.lc-item .box{width:18px;height:18px;border:2px solid var(--teal-mid);border-radius:5px;flex-shrink:0}
+.recap-box{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;padding:1.3rem 1.5rem;margin-bottom:1.5rem}
+.recap-box h3{font-family:'Raleway',sans-serif;font-size:15px;color:var(--teal-dark);margin-bottom:.6rem}
+.recap-box p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:.7rem}
+.recap-box p:last-child{margin-bottom:0}
+.comp-q{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+.comp-q .cq-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.5rem}
+.comp-q .cq-prompt{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:.9rem;line-height:1.5}
+.comp-opts{display:flex;flex-direction:column;gap:6px}
+.comp-opt{display:flex;align-items:center;gap:10px;padding:.6rem .9rem;border:1px solid var(--border);border-radius:9px;background:#fff;cursor:pointer;text-align:left;font-family:'Lato',sans-serif;width:100%;font-size:13.5px;color:var(--text)}
+.comp-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.comp-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.comp-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.comp-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.comp-fb{margin-top:.6rem;padding:.55rem .8rem;border-radius:8px;font-size:12.5px;line-height:1.5;display:none}
+.comp-fb.show{display:block}
+.comp-fb.correct{background:var(--green-bg);color:var(--green-t)}
+.comp-fb.incorrect{background:var(--red-bg);color:var(--red-t)}
+.comp-encourage{font-size:11.5px;margin-top:.3rem;font-style:italic;opacity:.85}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:44px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:18px;color:var(--text3)}
+.prep-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.write-ta{width:100%;min-height:110px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;background:var(--cream)}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff}
+.word-bank{display:flex;flex-wrap:wrap;gap:6px;margin-top:.75rem}
+.wb-chip{background:var(--teal-light);color:var(--teal-dark);font-size:12px;font-weight:700;padding:4px 12px;border-radius:12px}
+.record-card{background:var(--purple-bg);border-radius:16px;padding:1.4rem 1.6rem;margin-bottom:1.25rem}
+.record-card .rc-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--purple-t);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.record-card p{font-size:13.5px;color:var(--purple-t);line-height:1.6;margin-bottom:.6rem}
+.record-opts{display:flex;gap:.8rem;margin-top:.9rem;flex-wrap:wrap}
+.record-opt{flex:1;min-width:200px;background:#fff;border-radius:10px;padding:.9rem 1.1rem}
+.record-opt b{color:var(--purple-t);font-size:13px}
+.record-opt p{font-size:12px;color:var(--text2);margin-top:.3rem}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.export-box{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;background:var(--terra);border:1px solid var(--terra);color:#fff}
+.export-btn:hover{opacity:.9}
+@media(max-width:640px){.shell{padding:1.5rem .75rem 5rem}.record-opts{flex-direction:column}}
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box{display:none !important}
+  #phase-0,#phase-1,#phase-2{display:block !important}
+  .no-print{display:none !important}
+  body{background:#fff}
+  .shell{padding:0;max-width:100%}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div><div class="topbar-title">Listening &amp; Speak Lab — Week 2</div><div class="topbar-sub">English with Ali · Telling Your Own Story</div></div>
+  <div class="prog-wrap"><div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div><span class="prog-label" id="prog-label">Phase 1 of 3</span></div>
+</div>
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Listen</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Read</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Speak</span></div>
+  </div>
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const COMP_QUESTIONS = [
+  {id:'c1', prompt:'How many countries did Abidemi visit on her trip?', options:['Two','Three','Four','Five'], correct:2,
+    explain:'Correct! She visited Thailand, Laos, Vietnam, and Myanmar.', encourage:'Nice listening! 🎧'},
+  {id:'c2', prompt:'What did Abidemi like about Thailand?', options:['The food and the people','The shopping','The airport','The weather'], correct:0,
+    explain:'Correct! She said she ate delicious food and met nice people.', encourage:'You caught it! ✨'},
+  {id:'c3', prompt:'What activity did she do near Chiang Mai, Thailand?', options:['Swimming','Trekking and riding elephants','Shopping','Cooking class'], correct:1,
+    explain:'Correct! She went trekking and rode elephants — she called it a highlight of her trip.', encourage:'Great memory! 🌟'},
+  {id:'c4', prompt:'What did Abidemi do in Laos?', options:['She went zip-lining','She went to a museum','She learned to cook','She visited a temple'], correct:0,
+    explain:'Correct! She went zip-lining for about two days.', encourage:'You got it! 👏'},
+  {id:'c5', prompt:'Where did she sleep during her time in Laos?', options:['A hotel','A big tree house','A boat','Her friend\'s house'], correct:1,
+    explain:'Correct! She stayed overnight in a big tree house.', encourage:'Nailed it! 🎯'},
+];
+
+let currentPhase = 0;
+const compAnswers = {};
+const writeAnswers = {prep:''};
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Listen','Phase 2 of 3 — Read','Phase 3 of 3 — Speak'];
+  document.getElementById('prog').style.width = [33,66,100][currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+function goPhase(n){
+  document.getElementById('phase-'+currentPhase).style.display='none';
+  document.querySelectorAll('.phase-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  currentPhase=n;
+  document.getElementById('phase-'+n).style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===1) renderRead();
+  if(n===2) renderSpeak();
+}
+
+function renderListen(){
+  const el = document.getElementById('phase-0');
+  el.innerHTML = `
+    <div class="section-intro"><h2>Phase 1 — Listen</h2><p>This week, you'll listen to someone tell a story about her travels — then you'll tell your own!</p><div class="es-note">Esta semana vas a escuchar a alguien contar una historia sobre sus viajes — ¡luego contarás la tuya!</div></div>
+    <div class="howto-card no-print"><div class="ht-title">📋 How this activity works</div><p>1. Listen to Abidemi's story. 2. Read a short summary and check your understanding. 3. Prepare and record a short voice memo telling your own story. About 20 minutes.</p><p class="es">Cómo funciona: 1. Escucha la historia de Abidemi. 2. Lee un resumen corto y revisa tu comprensión. 3. Prepara y graba un audio corto contando tu propia historia. Unos 20 minutos.</p></div>
+    <div class="speaker-card"><div class="speaker-flag">🌏</div><div><div class="speaker-name">Abidemi, talking with Todd</div><div class="speaker-sub">Level: A2 High-Beginner · Topic: "SEA Travels — Thailand and Laos"</div></div></div>
+    <div class="card"><p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:.5rem">Abidemi tells Todd about her trip to Thailand and Laos — what she did, what she liked, and the most memorable moments. Notice how she puts her story in order, one event at a time.</p>
+      <a class="listen-link" href="https://elllo.org/english/1451/1463-Abidemi-Todd-SEA1.htm" target="_blank" rel="noopener">🎧 Listen to Abidemi on ELLLO →</a>
+      <p style="font-size:12.5px;color:var(--text3);text-align:center">Opens in a new tab. / Se abre en una pestaña nueva.</p></div>
+    <div class="card"><div style="font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:.75rem">While you listen, try to catch: <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Mientras escuchas, trata de captar:</span></div>
+      <div class="listen-checklist">
+        <div class="lc-item"><div class="box"></div>How many countries she visited</div>
+        <div class="lc-item"><div class="box"></div>What she liked about Thailand</div>
+        <div class="lc-item"><div class="box"></div>What she did near Chiang Mai</div>
+        <div class="lc-item"><div class="box"></div>What she did in Laos</div>
+        <div class="lc-item"><div class="box"></div>Where she slept in Laos</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;font-style:italic">Listen 1-2 times. Just the main ideas — no es necesario entender cada palabra.</p></div>
+    <div class="bottom-nav"><span></span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Read →</button></div>
+  `;
+}
+
+function renderRead(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Read &amp; Check</h2><p>A short summary to confirm what you heard, then check your understanding.</p><div class="es-note">Un resumen corto para confirmar lo que escuchaste, luego revisa tu comprensión.</div></div>`;
+  html += `<div class="recap-box">
+    <h3>📖 Quick Summary</h3>
+    <p>Abidemi visited four countries in Southeast Asia: Thailand, Laos, Vietnam, and Myanmar. She started in Thailand, where she stayed about a week. She loved the food there and met many nice people.</p>
+    <p>Near Chiang Mai, she went trekking in nature and rode elephants — she says that was one of the highlights of her whole trip. The trek lasted about a day, and she stayed overnight in a community in the hills.</p>
+    <p>From Thailand, she traveled by land to Laos. There, she went zip-lining for about two days and slept overnight in a big tree house. She said it was "quite an experience," and she really enjoyed it.</p>
+  </div>`;
+  html += `<div style="font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark);margin:1.75rem 0 .5rem">Check your understanding <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Revisa tu comprensión</span></div>`;
+  COMP_QUESTIONS.forEach((q,qi)=>{
+    const answered = compAnswers[q.id] !== undefined;
+    html += `<div class="comp-q"><div class="cq-num">Question ${qi+1} of ${COMP_QUESTIONS.length}</div><div class="cq-prompt">${q.prompt}</div><div class="comp-opts">`;
+    q.options.forEach((opt,oi)=>{
+      let cls='';
+      if(answered){ if(oi===q.correct) cls='revealed'; else if(compAnswers[q.id]===oi) cls='incorrect'; }
+      html += `<button class="comp-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerComp(this)">${opt}</button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = compAnswers[q.id]===q.correct;
+      html += `<div class="comp-fb ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explain}${correct?`<div class="comp-encourage">${q.encourage}</div>`:''}</div>`;
+    }
+    html += `</div>`;
+  });
+  const allDone = Object.keys(compAnswers).length === COMP_QUESTIONS.length;
+  const correctCount = COMP_QUESTIONS.filter(q=>compAnswers[q.id]===q.correct).length;
+  if(allDone){
+    html += `<div class="results-card"><div class="result-score">${correctCount}<span class="result-denom">/${COMP_QUESTIONS.length}</span></div><p style="font-size:13.5px;color:var(--text2);margin-top:.5rem">${correctCount>=4?'Great listening! Now let\'s tell your story. 🌟':'Good try — listening keeps improving every week. 🌱'}</p></div>`;
+  }
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Listen</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Speak →</button></div>`;
+  el.innerHTML = html;
+}
+function answerComp(btn){
+  const qid=btn.dataset.qid, oi=parseInt(btn.dataset.oi);
+  if(compAnswers[qid]!==undefined) return;
+  compAnswers[qid]=oi;
+  renderRead();
+}
+
+function renderSpeak(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Tell Your Own Story</h2><p>Now it's your turn — like Abidemi, tell a short story about something that happened to you recently.</p><div class="es-note">Ahora te toca a ti — como Abidemi, cuenta una historia corta sobre algo que te pasó recientemente.</div></div>`;
+  const val = writeAnswers.prep || '';
+  html += `<div class="prep-card">
+    <div style="font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem">Step 1 — Plan your story <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Paso 1 — Planea tu historia</span></div>
+    <p style="font-size:12.5px;color:var(--text3);margin-bottom:.75rem">Write a few notes first — this is just for you, to organize your ideas. Pick something real: Market Day, a day at MAIA, a family day.</p>
+    <textarea class="write-ta" id="wta-prep" placeholder="First, ... Then, ... After that, ..." oninput="recordWrite(this.value)">${escHtml(val)}</textarea>
+    <div class="word-bank no-print"><span class="wb-chip">First</span><span class="wb-chip">Then</span><span class="wb-chip">After that</span><span class="wb-chip">Next</span><span class="wb-chip">Finally</span></div>
+  </div>`;
+  html += `<div class="record-card no-print">
+    <div class="rc-title">🎙️ Step 2 — Record your voice memo</div>
+    <p>Using your notes, record yourself telling the story out loud — 1 to 2 minutes. Speak naturally, don't worry about small mistakes!</p>
+    <p style="font-style:italic">Usando tus notas, grábate contando la historia en voz alta — 1 a 2 minutos. Habla natural, no te preocupes por pequeños errores.</p>
+    <div class="record-opts">
+      <div class="record-opt"><b>Option A — Vocaroo</b><p>Go to vocaroo.com, press record, tell your story, then copy the link it gives you.</p></div>
+      <div class="record-opt"><b>Option B — WhatsApp</b><p>Record a voice memo directly in our WhatsApp chat — just like a normal voice message.</p></div>
+    </div>
+  </div>`;
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(1)">← Back to Read</button><div style="text-align:center"><div style="font-size:13px;color:var(--text3)">Send your voice memo on WhatsApp</div></div><button class="nav-btn" onclick="goPhase(0)">Restart ↺</button></div>`;
+  html += `<div class="export-box"><button class="export-btn" onclick="window.print()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+function recordWrite(val){ writeAnswers.prep = val; }
+function escHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+renderListen();
+updateProgress();
+</script>
+</body>
+</html>
