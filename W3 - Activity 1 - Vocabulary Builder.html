@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Lab — Week 3 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:520px;margin:0 auto}
+.es-note{font-size:12.5px;color:var(--text3);font-style:italic;margin-top:.3rem}
+.phase-nav{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.howto-card{background:var(--teal-light);border:1.5px dashed #9FE1CB;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.5rem}
+.howto-card .ht-title{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:.6rem}
+.howto-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:.5rem}
+.howto-step:last-child{margin-bottom:0}
+.howto-step .hs-num{width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.howto-step p{font-size:13px;color:var(--teal-dark);line-height:1.5;margin:0}
+.howto-step .es{color:var(--teal);opacity:.8;font-style:italic;display:block;font-size:12px;margin-top:2px}
+.word-card{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:1.25rem;overflow:hidden}
+.wc-header{padding:1.25rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;cursor:pointer;user-select:none}
+.wc-word{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:3px}
+.wc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wc-pos{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:10px;background:var(--teal-light);color:var(--teal-dark)}
+.wc-phonetic{font-size:13px;color:var(--text3);font-style:italic}
+.wc-toggle{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:var(--text3)}
+.wc-body{padding:0 1.5rem 1.5rem;border-top:1px solid var(--border)}
+.wc-def-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin:.9rem 0 .35rem}
+.wc-def{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.75rem}
+.wc-es{font-size:12.5px;color:var(--text3);font-style:italic;margin-bottom:.5rem}
+.example-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.25rem}
+.ex-item{background:var(--cream);border-radius:8px;padding:.65rem .9rem;font-size:13px;color:var(--text2);line-height:1.5;border-left:3px solid var(--teal-mid)}
+.ex-item strong{color:var(--teal-dark);font-weight:700}
+.ex-context{font-size:11px;color:var(--text3);margin-top:3px}
+.colloc-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:.25rem}
+.colloc-chip{padding:5px 12px;border-radius:16px;font-size:12px;background:var(--teal-light);color:var(--teal-dark);font-weight:600;border:1px solid #9FE1CB}
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-top:.75rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.spotlight-card{background:linear-gradient(135deg,var(--teal-light),#fff);border:1.5px solid #9FE1CB;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.spotlight-title{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal-dark);margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+.spotlight-card p{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:.5rem}
+.compare-grid{display:flex;gap:1rem;margin-top:.75rem;flex-wrap:wrap}
+.compare-col{flex:1;min-width:140px;background:#fff;border-radius:10px;padding:.9rem 1.1rem}
+.compare-col .cc-label{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--teal-dark);margin-bottom:.4rem}
+.compare-col p{font-size:12.5px;color:var(--text2);line-height:1.5}
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-situation{background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;padding:.6rem .9rem;font-size:13px;color:var(--teal-dark);margin-bottom:1rem}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;width:100%;font-family:'Lato',sans-serif}
+.q-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.q-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.5;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.quiz-encourage{font-size:12px;margin-top:.4rem;font-style:italic;opacity:.85}
+.write-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.write-word-tag{display:inline-block;font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal);background:var(--teal-light);padding:4px 16px;border-radius:20px;margin-bottom:.75rem;border:1px solid #9FE1CB}
+.write-reminder{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:12px;color:var(--text3);margin-bottom:1rem;line-height:1.5}
+.write-ta{width:100%;min-height:90px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;background:var(--cream)}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer}
+.check-btn.done{background:var(--teal-light);border-color:var(--teal-mid);color:var(--teal-dark)}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;font-size:13px;color:var(--teal-dark);line-height:1.55;display:none}
+.model-answer.show{display:block}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.5rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:54px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:20px;color:var(--text3)}
+.result-note{font-size:14px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.export-box{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;background:var(--terra);border:1px solid var(--terra);color:#fff}
+.export-btn:hover{opacity:.9}
+@media(max-width:580px){.shell{padding:1.5rem .75rem 5rem}.wc-word{font-size:18px}}
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box{display:none !important}
+  #phase-0,#phase-1,#phase-2{display:block !important}
+  .no-print{display:none !important}
+  body{background:#fff}
+  .shell{padding:0;max-width:100%}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div><div class="topbar-title">Vocabulary Lab — Week 3</div><div class="topbar-sub">English with Ali · School Life</div></div>
+  <div class="prog-wrap"><div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div><span class="prog-label" id="prog-label">Phase 1 of 3</span></div>
+</div>
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Learn</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Quiz</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const WORDS = [
+  {id:'subject', word:'Subject', pos:'noun', phonetic:'/ˈsʌb.dʒɪkt/',
+    def:'A class you study in school, like math or chemistry.',
+    defEs:'Una clase que estudias en la escuela, como matemáticas o química.',
+    examples:[
+      {text:'Chemistry is my favorite <strong>subject</strong>.',context:'Talking about a class you enjoy.'},
+      {text:'Math is a difficult <strong>subject</strong> for me.',context:'Talking about a class that\'s hard.'},
+      {text:'What <strong>subject</strong> do you like the most?',context:'A question a friend might ask you.'},
+    ],
+    collocations:['my favorite subject','a difficult subject'],
+    tip:'💡 "Subject" = the class itself. "Homework" = the work from that class.'},
+  {id:'homework', word:'Homework', pos:'noun', phonetic:'/ˈhoʊm.wɜːrk/',
+    def:'School work you do at home, not in class.',
+    defEs:'Trabajo de la escuela que haces en casa, no en clase.',
+    examples:[
+      {text:'I have a lot of <strong>homework</strong> tonight.',context:'Talking about your evening.'},
+      {text:'I did my <strong>homework</strong> before dinner.',context:'Talking about your routine.'},
+      {text:'Can you help me with my <strong>homework</strong>?',context:'Asking for help.'},
+    ],
+    collocations:['do homework','a lot of homework'],
+    tip:'💡 "Homework" has no plural — never say "homeworks."'},
+  {id:'assignment', word:'Assignment', pos:'noun', phonetic:'/əˈsaɪn.mənt/',
+    def:'A specific task a teacher gives you to complete.',
+    defEs:'Una tarea específica que el maestro te da para completar.',
+    examples:[
+      {text:'We have a new <strong>assignment</strong> in chemistry.',context:'Talking about a new task.'},
+      {text:'The <strong>assignment</strong> is due on Friday.',context:'Talking about a deadline.'},
+      {text:'I finished the <strong>assignment</strong> early.',context:'Talking about your progress.'},
+    ],
+    collocations:['finish an assignment','a new assignment'],
+    tip:'💡 An "assignment" can be one part of your homework — a specific task.'},
+  {id:'take-notes', word:'Take notes', pos:'phrase', phonetic:'/teɪk noʊts/',
+    def:'To write down important information while the teacher is talking.',
+    defEs:'Escribir información importante mientras el maestro habla.',
+    examples:[
+      {text:'I always <strong>take notes</strong> in chemistry class.',context:'Talking about your study habits.'},
+      {text:'It helps me to <strong>take notes</strong> during the lesson.',context:'Sharing a personal strategy.'},
+      {text:'Did you <strong>take notes</strong> today?',context:'A question a classmate might ask.'},
+    ],
+    collocations:['take good notes','take notes during class'],
+    tip:'💡 "Take notes" — not "make notes" or "do notes."'},
+  {id:'turn-in', word:'Turn in', pos:'phrasal verb', phonetic:'/tɜːrn ɪn/',
+    def:'To give your finished work to the teacher.',
+    defEs:'Entregar tu trabajo terminado al maestro.',
+    examples:[
+      {text:'I need to <strong>turn in</strong> my assignment tomorrow.',context:'Talking about a deadline.'},
+      {text:'She <strong>turned in</strong> her homework late.',context:'Talking about someone else.'},
+      {text:'Did you <strong>turn in</strong> the project?',context:'Asking about a deadline.'},
+    ],
+    collocations:['turn in an assignment','turn in homework'],
+    tip:'💡 Remember: with "she/he" (third person), add -s: "she turns in."'},
+];
+
+const QUIZ = [
+  {id:'q1', situation:'Someone asks about your favorite class.', prompt:'Which sentence is correct?',
+    options:['Chemistry is my favorite homework.','Chemistry is my favorite subject.','Chemistry is my favorite assignment.','Chemistry is my favorite turn in.'],
+    correct:1, explain:'Correct! "Subject" = the class itself.', encourage:'Nice! 🌱'},
+  {id:'q2', situation:'You want to talk about the work you do at home for school.', prompt:'Which sentence is correct?',
+    options:['I have a lot of homeworks.','I have a lot of homework.','I have a lot of subject.','I have a lot of assignments homework.'],
+    correct:1, explain:'Correct! "Homework" never takes an -s.', encourage:'Great catch! 👏'},
+  {id:'q3', situation:'You want to say you write down important information during class.', prompt:'Which sentence is correct?',
+    options:['I make notes in class.','I do notes in class.','I take notes in class.','I write notes in class always.'],
+    correct:2, explain:'Correct! "Take notes" is the natural pattern.', encourage:'You got it! ✨'},
+  {id:'q4', situation:'Someone asks what your teacher gave you to complete this week.', prompt:'Which word fits best?',
+    options:['We have a new subject in chemistry.','We have a new assignment in chemistry.','We have a new turn in chemistry.','We have a new notes in chemistry.'],
+    correct:1, explain:'Correct! "Assignment" = a specific task.', encourage:'Sharp! 🎯'},
+  {id:'q5', situation:'You want to say you gave your finished homework to the teacher.', prompt:'Which sentence is correct?',
+    options:['I turned my homework.','I turned in my homework.','I turn on my homework.','I turned to my homework.'],
+    correct:1, explain:'Correct! "Turn IN" — don\'t forget "in."', encourage:'That\'s the idea! 🌟'},
+];
+
+const WRITE_TASKS = [
+  {word:'subject',prompt:'Write 2 sentences: your favorite subject, and a difficult subject. Say why.',promptEs:'Escribe 2 oraciones: tu materia favorita, y una materia difícil. Di por qué.',hint:'Chemistry, math, English — think about your real classes.',model:'Chemistry is my favorite subject, because I like experiments. Math is difficult for me, because there are many numbers.'},
+  {word:'homework / assignment',prompt:'Write a sentence about your homework or an assignment this week.',promptEs:'Escribe una oración sobre tu tarea o una asignación esta semana.',hint:'What do you have to do? When is it due?',model:'I have a big assignment for chemistry class. It is due on Friday.'},
+  {word:'take notes / turn in',prompt:'Write a sentence using "take notes" or "turn in."',promptEs:'Escribe una oración usando "take notes" o "turn in."',hint:'A real moment from your school routine.',model:'I always take notes in my favorite class, and I turn in my homework the same day.'},
+];
+
+let currentPhase = 0;
+const quizAnswers = {};
+const writeAnswers = {};
+let openCards = {};
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Learn','Phase 2 of 3 — Quiz','Phase 3 of 3 — Write'];
+  document.getElementById('prog').style.width = [33,66,100][currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+function goPhase(n){
+  document.getElementById('phase-'+currentPhase).style.display='none';
+  document.querySelectorAll('.phase-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  currentPhase=n;
+  document.getElementById('phase-'+n).style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===1) renderQuiz();
+  if(n===2) renderWrite();
+}
+
+function renderLearn(){
+  const el = document.getElementById('phase-0');
+  let html = `<div class="section-intro"><h2>Phase 1 — Learn the Words</h2><p>Words for talking about your classes at MAIA.</p><div class="es-note">Palabras para hablar de tus clases en MAIA.</div></div>`;
+  html += `<div class="howto-card no-print">
+    <div class="ht-title">📋 How this activity works / Cómo funciona</div>
+    <div class="howto-step"><div class="hs-num">1</div><p>Read each word card.<span class="es">Lee cada tarjeta de palabra.</span></p></div>
+    <div class="howto-step"><div class="hs-num">2</div><p>Answer the quiz.<span class="es">Responde el quiz.</span></p></div>
+    <div class="howto-step"><div class="hs-num">3</div><p>Write your own sentences.<span class="es">Escribe tus propias oraciones.</span></p></div>
+  </div>`;
+  html += `<div class="spotlight-card no-print">
+    <div class="spotlight-title">🔍 Language Spotlight: Difficult vs. Boring</div>
+    <p>Both are negative words, but they mean different things!</p>
+    <p style="font-style:italic;color:var(--text3);font-size:12.5px">Ambas son palabras negativas, pero significan cosas distintas.</p>
+    <div class="compare-grid">
+      <div class="compare-col"><div class="cc-label">Difficult 😓</div><p>"Math is difficult." = hard to understand<br><span style="color:var(--text3)">= difícil</span></p></div>
+      <div class="compare-col"><div class="cc-label">Boring 😴</div><p>"The class was boring." = not interesting<br><span style="color:var(--text3)">= aburrido</span></p></div>
+    </div>
+    <p style="margin-top:.75rem">A class can be difficult AND interesting at the same time — they're not opposites!</p>
+  </div>`;
+  WORDS.forEach(w=>{
+    const isOpen = openCards[w.id] !== false;
+    html += `<div class="word-card no-print" id="wcard-${w.id}">
+      <div class="wc-header" onclick="toggleCard('${w.id}')">
+        <div><div class="wc-word">${w.word}</div><div class="wc-meta"><span class="wc-pos">${w.pos}</span><span class="wc-phonetic">${w.phonetic}</span></div></div>
+        <div class="wc-toggle" id="toggle-${w.id}">${isOpen?'▲':'▼'}</div>
+      </div>
+      <div class="wc-body" id="wbody-${w.id}" style="display:${isOpen?'block':'none'}">
+        <div class="wc-def-label">Definition</div><div class="wc-def">${w.def}</div><div class="wc-es">${w.defEs}</div>
+        <div class="wc-def-label">Examples in context</div><div class="example-list">`;
+    w.examples.forEach(ex=>{ html += `<div class="ex-item">${ex.text}<div class="ex-context">📍 ${ex.context}</div></div>`; });
+    html += `</div><div class="wc-def-label">Common collocations</div><div class="colloc-row">`;
+    w.collocations.forEach(c=>{ html += `<span class="colloc-chip">${c}</span>`; });
+    html += `</div><div class="tip-box">${w.tip}</div></div></div>`;
+  });
+  html += `<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">${WORDS.length} words covered</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Quiz →</button></div>`;
+  el.innerHTML = html;
+}
+function toggleCard(id){
+  const body = document.getElementById('wbody-'+id), tog = document.getElementById('toggle-'+id);
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  tog.textContent = isOpen ? '▼' : '▲';
+  openCards[id] = !isOpen;
+}
+function renderQuiz(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Quiz</h2><p>Read each situation and choose the best answer. No timer.</p><div class="es-note">Lee cada situación y elige la mejor respuesta. Sin tiempo límite.</div></div>`;
+  QUIZ.forEach((q,qi)=>{
+    const answered = quizAnswers[q.id] !== undefined;
+    html += `<div class="quiz-card"><div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div><div class="quiz-situation"><strong>Situation:</strong> ${q.situation}</div><div class="quiz-prompt">${q.prompt}</div><div class="quiz-options">`;
+    q.options.forEach((opt,oi)=>{
+      let cls='';
+      if(answered){ if(oi===q.correct) cls='revealed'; else if(quizAnswers[q.id]===oi) cls='incorrect'; }
+      html += `<button class="q-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerQuiz(this)"><span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span></button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = quizAnswers[q.id]===q.correct;
+      html += `<div class="quiz-feedback ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explain}${correct?`<div class="quiz-encourage">${q.encourage}</div>`:''}</div>`;
+    }
+    html += `</div>`;
+  });
+  const allDone = Object.keys(quizAnswers).length === QUIZ.length;
+  const correctCount = QUIZ.filter(q=>quizAnswers[q.id]===q.correct).length;
+  if(allDone){
+    html += `<div class="results-card"><div class="result-score">${correctCount}<span class="result-denom">/${QUIZ.length}</span></div><div style="font-size:14px;color:var(--text3);margin-top:4px">correct</div><p class="result-note">${correctCount>=4?'Excellent! On to writing. 🌱':'Good try — review Phase 1 if you\'d like, then continue.'}</p></div>`;
+  }
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Learn</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button></div>`;
+  el.innerHTML = html;
+}
+function answerQuiz(btn){
+  const qid=btn.dataset.qid, oi=parseInt(btn.dataset.oi);
+  if(quizAnswers[qid]!==undefined) return;
+  quizAnswers[qid]=oi;
+  renderQuiz();
+}
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Write in Context</h2><p>Use the words yourself — real sentences about your real classes.</p><div class="es-note">Usa las palabras tú misma — oraciones reales sobre tus clases reales.</div></div>`;
+  WRITE_TASKS.forEach((task,ti)=>{
+    const val = writeAnswers[ti] || '';
+    html += `<div class="write-card"><span class="write-word-tag">${task.word}</span><div class="write-reminder"><strong>Prompt:</strong> ${task.prompt}<br><span style="font-style:italic">${task.promptEs}</span></div>`;
+    if(task.hint) html += `<div class="no-print" style="font-size:12px;color:var(--text3);margin-bottom:.75rem;font-style:italic">💭 ${task.hint}</div>`;
+    html += `<textarea class="write-ta ${val?'has-text':''}" id="wta-${ti}" placeholder="Write your sentence here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <button class="check-btn no-print" onclick="showModel(${ti})">See a model answer</button>
+      <div class="model-answer no-print" id="ma-${ti}"><strong>Example answer:</strong> ${task.model}</div></div>`;
+  });
+  const done = Object.values(writeAnswers).filter(v=>v&&v.trim().length>5).length;
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(1)">← Back to Quiz</button><div style="text-align:center"><div style="font-size:13px;color:var(--text3);margin-bottom:.3rem">${done} of ${WRITE_TASKS.length} completed</div></div><button class="nav-btn" onclick="goPhase(0)">Restart ↺</button></div>`;
+  html += `<div class="export-box"><button class="export-btn" onclick="window.print()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+function recordWrite(ti,val){ writeAnswers[ti]=val; }
+function showModel(ti){
+  document.getElementById('ma-'+ti).classList.add('show');
+  document.querySelectorAll('#phase-2 .check-btn')[ti].classList.add('done');
+}
+function escHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+renderLearn();
+updateProgress();
+</script>
+</body>
+</html>

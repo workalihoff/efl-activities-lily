@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Lab — Week 3 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-light:#F5EAE7;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:120px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:#fff;transition:width .4s ease}
+.prog-label{font-size:12px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:2rem 1rem 5rem}
+.section-intro{text-align:center;padding:2rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:22px;font-weight:700;color:var(--teal);margin-bottom:.4rem}
+.section-intro p{font-size:14px;color:var(--text3);max-width:540px;margin:0 auto}
+.es-note{font-size:12.5px;color:var(--text3);font-style:italic;margin-top:.3rem}
+.phase-nav{display:flex;gap:0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.howto-card{background:var(--teal-light);border:1.5px dashed #9FE1CB;border-radius:14px;padding:1.1rem 1.4rem;margin-bottom:1.5rem}
+.howto-card .ht-title{font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:.6rem}
+.howto-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:.5rem}
+.howto-step:last-child{margin-bottom:0}
+.howto-step .hs-num{width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.howto-step p{font-size:13px;color:var(--teal-dark);line-height:1.5;margin:0}
+.howto-step .es{color:var(--teal);opacity:.8;font-style:italic;display:block;font-size:12px;margin-top:2px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.speaker-card{display:flex;align-items:center;gap:1rem;background:var(--teal-light);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.25rem}
+.speaker-flag{font-size:32px}
+.speaker-name{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark)}
+.speaker-sub{font-size:12.5px;color:var(--teal)}
+.listen-link{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--teal);color:#fff;text-decoration:none;padding:1rem 1.5rem;border-radius:12px;font-family:'Raleway',sans-serif;font-weight:700;font-size:16px;margin:1.25rem 0}
+.listen-link:hover{background:var(--teal-mid)}
+.listen-checklist{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.lc-item{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:10px;padding:.7rem 1rem;font-size:13.5px;color:var(--text2)}
+.lc-item .box{width:18px;height:18px;border:2px solid var(--teal-mid);border-radius:5px;flex-shrink:0}
+.recap-box{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--teal-mid);border-radius:0 14px 14px 0;padding:1.3rem 1.5rem;margin-bottom:1.5rem}
+.recap-box h3{font-family:'Raleway',sans-serif;font-size:15px;color:var(--teal-dark);margin-bottom:.6rem}
+.recap-box p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:.7rem}
+.recap-box p:last-child{margin-bottom:0}
+.comp-q{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+.comp-q .cq-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.5rem}
+.comp-q .cq-prompt{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:.9rem;line-height:1.5}
+.comp-opts{display:flex;flex-direction:column;gap:6px}
+.comp-opt{display:flex;align-items:center;gap:10px;padding:.6rem .9rem;border:1px solid var(--border);border-radius:9px;background:#fff;cursor:pointer;text-align:left;font-family:'Lato',sans-serif;width:100%;font-size:13.5px;color:var(--text)}
+.comp-opt:hover{border-color:#9FE1CB;background:var(--teal-light)}
+.comp-opt.correct{border-color:var(--green-b);background:var(--green-bg)}
+.comp-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.comp-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.comp-fb{margin-top:.6rem;padding:.55rem .8rem;border-radius:8px;font-size:12.5px;line-height:1.5;display:none}
+.comp-fb.show{display:block}
+.comp-fb.correct{background:var(--green-bg);color:var(--green-t)}
+.comp-fb.incorrect{background:var(--red-bg);color:var(--red-t)}
+.comp-encourage{font-size:11.5px;margin-top:.3rem;font-style:italic;opacity:.85}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.compare-col{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem}
+.compare-col.abidemi{border-top:3px solid var(--teal-mid)}
+.compare-col.scp{border-top:3px solid var(--terra)}
+.compare-col .cc-label{font-family:'Raleway',sans-serif;font-size:13px;font-weight:700;margin-bottom:.5rem}
+.compare-col.abidemi .cc-label{color:var(--teal-dark)}
+.compare-col.scp .cc-label{color:var(--terra)}
+.compare-col p{font-size:12.5px;color:var(--text2);line-height:1.5}
+.compare-category{font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin:1.5rem 0 .6rem}
+.write-ta{width:100%;min-height:70px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;background:var(--cream);margin-top:.5rem}
+.write-ta:focus{border-color:var(--teal-mid);background:#fff}
+.starter{font-size:12px;color:var(--text3);font-style:italic;margin-top:.4rem}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:44px;font-weight:700;color:var(--teal);line-height:1}
+.result-denom{font-size:18px;color:var(--text3)}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.nav-btn{padding:.6rem 1.4rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--teal-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.export-box{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;background:var(--terra);border:1px solid var(--terra);color:#fff}
+.export-btn:hover{opacity:.9}
+@media(max-width:640px){.shell{padding:1.5rem .75rem 5rem}.compare-row{grid-template-columns:1fr}}
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box,.listen-link{display:none !important}
+  #phase-0,#phase-1,#phase-2{display:block !important}
+  .no-print{display:none !important}
+  body{background:#fff}
+  .shell{padding:0;max-width:100%}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div><div class="topbar-title">Listening Lab — Week 3</div><div class="topbar-sub">English with Ali · More Travels with Abidemi</div></div>
+  <div class="prog-wrap"><div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div><span class="prog-label" id="prog-label">Phase 1 of 3</span></div>
+</div>
+<div class="shell">
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Listen</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Read</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const COMP_QUESTIONS = [
+  {id:'c1', prompt:'What city did Abidemi visit first in Vietnam?', options:['Ho Chi Minh City','Hanoi','Hoi An','Sapa'], correct:1,
+    explain:'Correct! She started her time in Vietnam in Hanoi.', encourage:'Nice listening! 🎧'},
+  {id:'c2', prompt:'What is special about Sapa?', options:['It has a big airport','It has rice terraces in the mountains','It has a famous beach','It has a big market'], correct:1,
+    explain:'Correct! Sapa has beautiful rice terraces planted in the mountains.', encourage:'You caught it! ✨'},
+  {id:'c3', prompt:'What kind of city is Hoi An?', options:['A modern city with tall buildings','A historical city with beautiful night scenery','A city with no people','A city only for shopping'], correct:1,
+    explain:'Correct! Hoi An is historical, with beautiful scenery by the river at night.', encourage:'Great memory! 🌟'},
+  {id:'c4', prompt:'How long did Abidemi stay in Ho Chi Minh City?', options:['One week','Three days','One night','One month'], correct:2,
+    explain:'Correct! She could only stay one night before leaving for Myanmar.', encourage:'You got it! 👏'},
+  {id:'c5', prompt:'What did Abidemi say was the highlight of Myanmar?', options:['The food in Yangon','The temples in Bagan','The beaches','The mountains'], correct:1,
+    explain:'Correct! She said Bagan, with its many old temples, was the highlight.', encourage:'Nailed it! 🎯'},
+];
+
+let currentPhase = 0;
+const compAnswers = {};
+const writeAnswers = {};
+
+const CATEGORIES = [
+  {key:'place', label:'📍 A special place', abidemi:'Bagan, Myanmar — famous for many old temples from the past.', starter:'A special place in Guatemala is...'},
+  {key:'nature', label:'🌄 Nature', abidemi:'Sapa, Vietnam — mountains with beautiful rice terraces.', starter:'For nature, I recommend...'},
+  {key:'city', label:'🏙️ A historical or special town', abidemi:'Hoi An, Vietnam — a historical city with beautiful river scenery at night.', starter:'A special town in Guatemala is...'},
+  {key:'highlight', label:'🌟 The highlight', abidemi:'"I would say Bagan was the highlight — seeing so many temples was very impressive."', starter:'The highlight of visiting my area is...'},
+];
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Listen','Phase 2 of 3 — Read','Phase 3 of 3 — Write'];
+  document.getElementById('prog').style.width = [33,66,100][currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+function goPhase(n){
+  document.getElementById('phase-'+currentPhase).style.display='none';
+  document.querySelectorAll('.phase-tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  currentPhase=n;
+  document.getElementById('phase-'+n).style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===1) renderRead();
+  if(n===2) renderWrite();
+}
+
+function renderListen(){
+  const el = document.getElementById('phase-0');
+  el.innerHTML = `
+    <div class="section-intro"><h2>Phase 1 — Listen</h2><p>Abidemi is back! This time she talks about Vietnam and Myanmar.</p><div class="es-note">¡Abidemi está de vuelta! Esta vez habla de Vietnam y Myanmar.</div></div>
+    <div class="howto-card no-print">
+      <div class="ht-title">📋 How this activity works / Cómo funciona</div>
+      <div class="howto-step"><div class="hs-num">1</div><p>Listen to Abidemi.<span class="es">Escucha a Abidemi.</span></p></div>
+      <div class="howto-step"><div class="hs-num">2</div><p>Read a short summary and answer 5 questions.<span class="es">Lee un resumen corto y responde 5 preguntas.</span></p></div>
+      <div class="howto-step"><div class="hs-num">3</div><p>Write about a special place in Guatemala.<span class="es">Escribe sobre un lugar especial en Guatemala.</span></p></div>
+    </div>
+    <div class="speaker-card"><div class="speaker-flag">🌏</div><div><div class="speaker-name">Abidemi, talking with Todd</div><div class="speaker-sub">Level: A2 High-Beginner · Topic: "SEA Travels — Vietnam and Myanmar"</div></div></div>
+    <div class="card"><p style="font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:.5rem">You already know Abidemi's voice from last week! This time, she continues her trip — from Vietnam to Myanmar.</p>
+      <a class="listen-link" href="https://elllo.org/english/1451/1464-AbidemiTodd-SEA2.htm" target="_blank" rel="noopener">🎧 Listen to Abidemi on ELLLO →</a>
+      <p style="font-size:12.5px;color:var(--text3);text-align:center">Opens in a new tab. / Se abre en una pestaña nueva.</p></div>
+    <div class="card"><div style="font-family:'Raleway',sans-serif;font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:.75rem">While you listen, try to catch: <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Mientras escuchas, trata de captar:</span></div>
+      <div class="listen-checklist">
+        <div class="lc-item"><div class="box"></div>The first city she visited in Vietnam</div>
+        <div class="lc-item"><div class="box"></div>What Sapa is known for</div>
+        <div class="lc-item"><div class="box"></div>What kind of city Hoi An is</div>
+        <div class="lc-item"><div class="box"></div>How long she stayed in Ho Chi Minh City</div>
+        <div class="lc-item"><div class="box"></div>The highlight of Myanmar</div>
+      </div>
+      <p style="font-size:12.5px;color:var(--text3);margin-top:1rem;font-style:italic">Listen 1-2 times. Just the main ideas. / No es necesario entender cada palabra.</p></div>
+    <div class="bottom-nav"><span></span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Read →</button></div>
+  `;
+}
+
+function renderRead(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Read &amp; Check</h2><p>A short summary to confirm what you heard, then check your understanding.</p><div class="es-note">Un resumen corto para confirmar lo que escuchaste, luego revisa tu comprensión.</div></div>`;
+  html += `<div class="recap-box">
+    <h3>📖 Quick Summary</h3>
+    <p>Abidemi continued her trip to Vietnam. She started in Hanoi, then visited Sapa, a mountain area famous for its rice terraces and beautiful views. There, she also met local people.</p>
+    <p>Next, she went to Hoi An, a historical city with beautiful scenery by the river at night. Her last stop in Vietnam was Ho Chi Minh City, but she could only stay one night before leaving for Myanmar.</p>
+    <p>In Myanmar, her last country, she didn't have much time — but she visited Yangon, Bagan, and Mandalay. She said Bagan was the highlight, because of its many old temples. Seeing so many of them really impressed her.</p>
+  </div>`;
+  html += `<div style="font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--teal-dark);margin:1.75rem 0 .5rem">Check your understanding <span style="font-size:12px;font-weight:400;color:var(--text3);font-style:italic">/ Revisa tu comprensión</span></div>`;
+  COMP_QUESTIONS.forEach((q,qi)=>{
+    const answered = compAnswers[q.id] !== undefined;
+    html += `<div class="comp-q"><div class="cq-num">Question ${qi+1} of ${COMP_QUESTIONS.length}</div><div class="cq-prompt">${q.prompt}</div><div class="comp-opts">`;
+    q.options.forEach((opt,oi)=>{
+      let cls='';
+      if(answered){ if(oi===q.correct) cls='revealed'; else if(compAnswers[q.id]===oi) cls='incorrect'; }
+      html += `<button class="comp-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerComp(this)">${opt}</button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = compAnswers[q.id]===q.correct;
+      html += `<div class="comp-fb ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explain}${correct?`<div class="comp-encourage">${q.encourage}</div>`:''}</div>`;
+    }
+    html += `</div>`;
+  });
+  const allDone = Object.keys(compAnswers).length === COMP_QUESTIONS.length;
+  const correctCount = COMP_QUESTIONS.filter(q=>compAnswers[q.id]===q.correct).length;
+  if(allDone){
+    html += `<div class="results-card"><div class="result-score">${correctCount}<span class="result-denom">/${COMP_QUESTIONS.length}</span></div><p style="font-size:13.5px;color:var(--text2);margin-top:.5rem">${correctCount>=4?'Great listening! Now let\'s write. 🌟':'Good try — listening keeps improving every week. 🌱'}</p></div>`;
+  }
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Listen</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button></div>`;
+  el.innerHTML = html;
+}
+function answerComp(btn){
+  const qid=btn.dataset.qid, oi=parseInt(btn.dataset.oi);
+  if(compAnswers[qid]!==undefined) return;
+  compAnswers[qid]=oi;
+  renderRead();
+}
+
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Special Places</h2><p>Abidemi shared her favorite places. Now share yours — from Guatemala!</p><div class="es-note">Abidemi compartió sus lugares favoritos. Ahora comparte los tuyos — ¡de Guatemala!</div></div>`;
+  CATEGORIES.forEach(cat=>{
+    const val = writeAnswers[cat.key] || '';
+    html += `<div class="compare-category">${cat.label}</div>
+      <div class="compare-row">
+        <div class="compare-col abidemi"><div class="cc-label">🌏 Abidemi</div><p>${cat.abidemi}</p></div>
+        <div class="compare-col scp">
+          <div class="cc-label">🇬🇹 You</div>
+          <textarea class="write-ta" id="wta-${cat.key}" placeholder="Write here…" oninput="recordWrite('${cat.key}',this.value)">${escHtml(val)}</textarea>
+          <div class="starter">💭 ${cat.starter}</div>
+        </div>
+      </div>`;
+  });
+  const done = Object.values(writeAnswers).filter(v=>v&&v.trim().length>3).length;
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(1)">← Back to Read</button><div style="text-align:center"><div style="font-size:13px;color:var(--text3);margin-bottom:.3rem">${done} of ${CATEGORIES.length} completed</div></div><button class="nav-btn" onclick="goPhase(0)">Restart ↺</button></div>`;
+  html += `<div class="export-box"><button class="export-btn" onclick="window.print()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+function recordWrite(key,val){ writeAnswers[key]=val; }
+function escHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+renderListen();
+updateProgress();
+</script>
+</body>
+</html>
