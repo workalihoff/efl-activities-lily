@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening &amp; Speak — Week 4 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-mid:#D97656;--terra-light:#F5EAE7;--terra-dark:#8F3D28;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.es{color:var(--text3);font-style:italic;font-size:.9em}
+
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:110px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:var(--terra-mid);transition:width .4s ease}
+.prog-label{font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap}
+
+.shell{max-width:780px;margin:0 auto;padding:1.5rem 1rem 5rem}
+
+.howto-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--terra);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.howto-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--terra-dark);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.howto-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:.55rem;font-size:14px;color:var(--text2);line-height:1.5}
+.howto-step:last-child{margin-bottom:0}
+.howto-step .es{display:block;margin-top:1px}
+
+.section-intro{text-align:center;padding:1.5rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:21px;font-weight:700;color:var(--teal);margin-bottom:.3rem}
+.section-intro p{font-size:13.5px;color:var(--text3);max-width:540px;margin:0 auto}
+.section-intro p.es{margin-top:2px}
+
+.phase-nav{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .4rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:12.5px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+
+/* Listen phase */
+.audio-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.audio-title{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal-dark);margin-bottom:.3rem}
+.audio-sub{font-size:13px;color:var(--text3);margin-bottom:1rem}
+.audio-sub .es{display:block;margin-top:2px}
+.audio-embed{border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.speaker-row{display:flex;gap:12px;margin-top:1rem;align-items:center}
+.speaker-chip{font-size:12px;font-weight:700;padding:5px 12px;border-radius:16px;background:var(--terra-light);color:var(--terra-dark);border:1px solid #E7C4B7}
+
+.notes-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.notes-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.6rem}
+.notes-list{display:flex;flex-direction:column;gap:.5rem}
+.notes-item{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:13.5px;color:var(--text2);line-height:1.5}
+.notes-item .es{display:block;margin-top:2px}
+
+/* Quiz (Read & Check) */
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-prompt .es{display:block;font-size:13px;font-weight:400;margin-top:3px}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:#E7C4B7;background:var(--terra-light)}
+.q-opt.correct,.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter,.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.55;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.quiz-feedback .es{display:block;margin-top:4px}
+
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:50px;font-weight:700;color:var(--terra-dark);line-height:1}
+.result-denom{font-size:19px;color:var(--text3)}
+.result-note{font-size:13.5px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.result-note .es{display:block;margin-top:6px}
+
+/* Speak phase */
+.speak-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.speak-title{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--terra-dark);margin-bottom:.5rem}
+.frame-box{background:var(--terra-light);border-left:3px solid var(--terra);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:15px;color:var(--terra-dark);font-weight:600;line-height:1.6}
+.frame-box .es{display:block;font-size:12px;font-weight:400;font-style:italic;margin-top:4px;color:var(--terra-dark);opacity:.8}
+.speak-hint{font-size:12.5px;color:var(--teal);margin-bottom:.9rem;line-height:1.55;font-style:italic}
+.write-ta{width:100%;min-height:100px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--terra-mid);background:#fff;box-shadow:0 0 0 3px rgba(196,85,58,.1)}
+.write-ta.has-text{background:#fff}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;font-size:13px;color:var(--teal-dark);line-height:1.55}
+.model-answer strong{font-weight:700}
+
+.vocaroo-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.vocaroo-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--teal-dark);margin-bottom:.8rem;display:flex;align-items:center;gap:8px}
+.vocaroo-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:.6rem;font-size:14px;color:var(--text2);line-height:1.5}
+.vocaroo-step .es{display:block;margin-top:1px}
+.vocaroo-link-row{margin-top:1rem}
+.vocaroo-link-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.4rem}
+.link-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:.65rem .9rem;font-size:13.5px;color:var(--text);font-family:'Lato',sans-serif;outline:none;background:var(--cream)}
+.link-input:focus{border-color:var(--teal-mid);background:#fff}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);gap:1rem;flex-wrap:wrap}
+.nav-btn{padding:.6rem 1.3rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--terra-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+
+.export-box{display:none;text-align:center;margin-top:1.5rem}
+.export-box.show{display:block}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;border:none;background:var(--terra);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif}
+.export-btn:hover{background:var(--terra-dark)}
+
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box,.howto-card,.audio-card,.vocaroo-card{display:none!important}
+  .no-print{display:none!important}
+  #phase-0,#phase-1,#phase-2{display:block!important}
+  body{background:#fff}
+  .shell{max-width:100%;padding:0 .5rem}
+}
+@media(max-width:580px){ .shell{padding:1.25rem .75rem 5rem} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Listening &amp; Speak — Week 4</div>
+    <div class="topbar-sub">English with Ali · Convince Ali!</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <div class="howto-card no-print">
+    <div class="howto-title">📋 How to do this activity / Cómo hacer esta actividad</div>
+    <div class="howto-step"><span>1️⃣</span><span>Phase 1 — Listen: Listen to Meg and Todd talk about their free time.<span class="es">Fase 1 — Escuchar: Escucha a Meg y Todd hablar de su tiempo libre.</span></span></div>
+    <div class="howto-step"><span>2️⃣</span><span>Phase 2 — Read & Check: Answer questions about what you heard.<span class="es">Fase 2 — Leer y Verificar: Responde preguntas sobre lo que escuchaste.</span></span></div>
+    <div class="howto-step"><span>3️⃣</span><span>Phase 3 — Speak: Plan and record a 1-minute voice memo convincing Ali to try your favorite activity, using Vocaroo.<span class="es">Fase 3 — Hablar: Planifica y graba un audio de 1 minuto convenciendo a Ali de probar tu actividad favorita, usando Vocaroo.</span></span></div>
+    <div class="howto-step"><span>📄</span><span>At the end, click <strong>"Export written parts to PDF"</strong> and save it.<span class="es">Al final, haz clic en "Export written parts to PDF" y guárdalo.</span></span></div>
+  </div>
+
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Listen</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Read & Check</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Speak</span></div>
+  </div>
+
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const QUIZ = [
+  {id:'q1',prompt:'What does Meg love doing?',promptEs:'¿Qué le encanta hacer a Meg?',
+    options:['Cleaning','Cooking and baking','Writing letters','Doing laundry'],correct:1,
+    explainEn:'Correct! Meg says "I love cooking. I like to try new dishes and I love baking as well."',explainEs:'¡Correcto! Meg dice "Amo cocinar. Me gusta probar platillos nuevos y también amo hornear."'},
+  {id:'q2',prompt:'How does Todd feel about cleaning?',promptEs:'¿Cómo se siente Todd sobre limpiar?',
+    options:['He hates it','He thinks it\'s relaxing','He never does it','He thinks it\'s boring'],correct:1,
+    explainEn:'Correct! Todd says "Cleaning is relaxing" and his house is usually very clean.',explainEs:'¡Correcto! Todd dice que "limpiar es relajante" y su casa siempre está muy limpia.'},
+  {id:'q3',prompt:'Why does Todd listen to audio books while jogging?',promptEs:'¿Por qué Todd escucha audiolibros mientras trota?',
+    options:['He can\'t read paper books','He loves multitasking — he can exercise and "read" at the same time','His phone doesn\'t work at home','He doesn\'t like silence'],correct:1,
+    explainEn:'Correct! Todd explains he can exercise and listen to a book "at the same time" — he says "I love multitasking."',explainEs:'¡Correcto! Todd explica que puede hacer ejercicio y escuchar un libro "al mismo tiempo" — dice "amo el multitasking."'},
+  {id:'q4',prompt:'What outdoor activities does Meg say she loves?',promptEs:'¿Qué actividades al aire libre dice Meg que ama?',
+    options:['Rock climbing and singing','Hiking, kayaking, and canoeing','Yard work and gardening','Dancing and karaoke'],correct:1,
+    explainEn:'Correct! Meg says "Anything that is in nature, I love doing. I love hiking. I love kayaking. I love canoing."',explainEs:'¡Correcto! Meg dice "Cualquier cosa en la naturaleza, me encanta hacerla. Amo el senderismo, el kayak y el canotaje."'},
+  {id:'q5',prompt:'What does Todd say about singing and dancing?',promptEs:'¿Qué dice Todd sobre cantar y bailar?',
+    options:['He loves both','He is good at singing but hates dancing','He hates both — he says they\'re embarrassing for him','He only likes karaoke'],correct:2,
+    explainEn:'Correct! Todd says "I really, really hate singing" and "I hate dancing too... dancing is very embarrassing for me."',explainEs:'¡Correcto! Todd dice "realmente odio cantar" y "también odio bailar... bailar es muy vergonzoso para mí."'},
+  {id:'q6',prompt:'What is different between Meg and Todd about hanging out laundry?',promptEs:'¿Qué es diferente entre Meg y Todd sobre tender la ropa?',
+    options:['Meg hates it, Todd loves it','They both hate it','Todd hates it, but Meg doesn\'t mind it because she saves money','Neither of them does laundry'],correct:2,
+    explainEn:'Correct! Todd says hanging out laundry "takes forever," but Meg says "I don\'t mind hanging out my laundry, because I like saving money."',explainEs:'¡Correcto! Todd dice que tender la ropa "toma para siempre," pero Meg dice "no me molesta tender mi ropa, porque me gusta ahorrar dinero."'},
+];
+
+let currentPhase = 0;
+const quizAnswers = {};
+let planningText = '';
+let vocarooLink = '';
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Listen','Phase 2 of 3 — Read & Check','Phase 3 of 3 — Speak'];
+  const pcts = [33,66,100];
+  document.getElementById('prog').style.width = pcts[currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-' + currentPhase).style.display = 'none';
+  document.querySelectorAll('.phase-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentPhase = n;
+  document.getElementById('phase-' + n).style.display = 'block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n === 1) renderQuiz();
+  if(n === 2) renderSpeak();
+}
+
+function renderListen(){
+  const el = document.getElementById('phase-0');
+  let html = `<div class="section-intro"><h2>Phase 1 — Listen</h2><p>Meg and Todd talk about what they love and hate doing in their free time.</p><p class="es">Meg y Todd hablan sobre lo que aman y odian hacer en su tiempo libre.</p></div>`;
+
+  html += `<div class="audio-card">
+    <div class="audio-title">Love it / Hate it — ELLLO #1504</div>
+    <div class="audio-sub">Meg and Todd, about 5 minutes. Listen 1–2 times before Phase 2.<span class="es">Meg y Todd, alrededor de 5 minutos. Escucha 1–2 veces antes de la Fase 2.</span></div>
+    <div class="speaker-row">
+      <span class="speaker-chip">👩 Meg</span>
+      <span class="speaker-chip">🧑 Todd</span>
+    </div>
+    <div class="audio-embed" style="margin-top:1rem">
+      <iframe width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/507739239&color=%23c4553a&inverse=false&auto_play=false&show_user=true"></iframe>
+    </div>
+  </div>`;
+
+  html += `<div class="notes-card no-print">
+    <div class="notes-title">🎧 Listen for these things / Escucha esto</div>
+    <div class="notes-list">
+      <div class="notes-item">What does each person <strong>love</strong> doing? What do they <strong>hate</strong>?<span class="es">¿Qué ama hacer cada persona? ¿Qué odian?</span></div>
+      <div class="notes-item">Meg and Todd don't always agree — sometimes they are the opposite!<span class="es">Meg y Todd no siempre están de acuerdo — ¡a veces son opuestos!</span></div>
+    </div>
+  </div>`;
+
+  html += `<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">ELLLO Views #1504</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Read & Check →</button></div>`;
+  el.innerHTML = html;
+}
+
+function renderQuiz(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Read & Check</h2><p>Answer based on what Meg and Todd said.</p><p class="es">Responde según lo que dijeron Meg y Todd.</p></div>`;
+
+  QUIZ.forEach((q,qi) => {
+    const answered = quizAnswers[q.id] !== undefined;
+    html += `<div class="quiz-card">
+      <div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-prompt">${q.prompt}<span class="es">${q.promptEs}</span></div>
+      <div class="quiz-options">`;
+    q.options.forEach((opt,oi) => {
+      let cls = '';
+      if(answered){
+        if(oi === q.correct) cls = 'revealed';
+        else if(quizAnswers[q.id] === oi) cls = 'incorrect';
+      }
+      html += `<button class="q-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerQuiz(this)">
+        <span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span>
+      </button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = quizAnswers[q.id] === q.correct;
+      html += `<div class="quiz-feedback ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explainEn}<span class="es">${q.explainEs}</span></div>`;
+    }
+    html += `</div>`;
+  });
+
+  const allDone = Object.keys(quizAnswers).length === QUIZ.length;
+  const correctCount = QUIZ.filter(q => quizAnswers[q.id] === q.correct).length;
+  if(allDone){
+    html += `<div class="results-card">
+      <div class="result-score">${correctCount}<span class="result-denom">/${QUIZ.length}</span></div>
+      <div style="font-size:14px;color:var(--text3);margin-top:4px">correct / correctas</div>
+      <p class="result-note">${correctCount >= 5 ? 'Excellent listening! You\'re ready to speak.' : correctCount >= 4 ? 'Good work! Listen again if you want, then continue.' : 'Try listening one more time before continuing.'}<span class="es">${correctCount >= 5 ? '¡Excelente comprensión! Estás lista para hablar.' : correctCount >= 4 ? '¡Buen trabajo! Escucha de nuevo si quieres, luego continúa.' : 'Intenta escuchar una vez más antes de continuar.'}</span></p>
+    </div>`;
+  }
+
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(0)">← Back to Listen</button>
+    <button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Speak →</button>
+  </div>`;
+  el.innerHTML = html;
+}
+
+function answerQuiz(btn){
+  const qid = btn.dataset.qid;
+  const oi = parseInt(btn.dataset.oi);
+  if(quizAnswers[qid] !== undefined) return;
+  quizAnswers[qid] = oi;
+  renderQuiz();
+}
+
+function renderSpeak(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Convince Ali!</h2><p>Record a 1-minute voice memo persuading Ali to try your favorite free-time activity.</p><p class="es">Graba un audio de 1 minuto convenciendo a Ali de probar tu actividad favorita de tiempo libre.</p></div>`;
+
+  html += `<div class="speak-card">
+    <div class="speak-title">🎤 Your sentence frame / Tu estructura</div>
+    <div class="frame-box">"You should try [activity] because I love / enjoy..."<span class="es">Úsala como punto de partida — luego añade tus propias razones.</span></div>
+    <div class="speak-hint">💭 Think about: what activity would you recommend? Why do you love or enjoy it? Give at least one real reason.<br><span class="es">Piensa: ¿qué actividad recomendarías? ¿Por qué la amas o disfrutas? Da al menos una razón real.</span></div>
+    <div class="notes-title" style="margin-bottom:.5rem">Plan your ideas here first (optional) / Planifica tus ideas aquí primero (opcional)</div>
+    <textarea class="write-ta" id="planning-ta" placeholder="Write a few notes before you record…" oninput="recordPlanning(this.value)"></textarea>
+    <div class="model-answer" style="margin-top:.9rem"><strong>Example:</strong> "Hi Ali! You should try jogging because I love jogging with music — it gives me energy for the whole day, and it's a great way to clear your mind before band practice. You should try it!"</div>
+  </div>`;
+
+  html += `<div class="vocaroo-card">
+    <div class="vocaroo-title">🔴 Record with Vocaroo</div>
+    <div class="vocaroo-step"><span>1️⃣</span><span>Go to <strong>vocaroo.com</strong> and click the red record button.<span class="es">Entra a vocaroo.com y haz clic en el botón rojo de grabar.</span></span></div>
+    <div class="vocaroo-step"><span>2️⃣</span><span>Record your 1-minute persuasive message using the frame above.<span class="es">Graba tu mensaje persuasivo de 1 minuto usando la estructura de arriba.</span></span></div>
+    <div class="vocaroo-step"><span>3️⃣</span><span>Click "Save & Share" and copy the link Vocaroo gives you.<span class="es">Haz clic en "Save & Share" y copia el enlace que te da Vocaroo.</span></span></div>
+    <div class="vocaroo-step"><span>4️⃣</span><span>Paste the link below, then send it to Ali on Classroom or WhatsApp.<span class="es">Pega el enlace abajo, luego envíalo a Ali en Classroom o WhatsApp.</span></span></div>
+    <div class="vocaroo-link-row">
+      <div class="vocaroo-link-lbl">Your Vocaroo link / Tu enlace de Vocaroo</div>
+      <input type="text" class="link-input" id="vocaroo-link" placeholder="https://vocaroo.com/…" oninput="recordLink(this.value)">
+    </div>
+  </div>`;
+
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(1)">← Back to Read & Check</button>
+    <div style="text-align:center"><div style="font-size:13px;font-weight:600;color:var(--teal)">✓ Paste your Vocaroo link, then submit in Classroom or WhatsApp.</div></div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button>
+  </div>
+  <div class="export-box show"><button class="export-btn" onclick="exportPdf()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+
+function recordPlanning(val){ planningText = val; }
+function recordLink(val){ vocarooLink = val; }
+
+function exportPdf(){
+  document.getElementById('phase-0').style.display = 'block';
+  document.getElementById('phase-1').style.display = 'block';
+  document.getElementById('phase-2').style.display = 'block';
+  window.print();
+  setTimeout(() => {
+    document.getElementById('phase-0').style.display = currentPhase===0?'block':'none';
+    document.getElementById('phase-1').style.display = currentPhase===1?'block':'none';
+    document.getElementById('phase-2').style.display = currentPhase===2?'block':'none';
+  }, 300);
+}
+
+renderListen();
+updateProgress();
+</script>
+</body>
+</html>

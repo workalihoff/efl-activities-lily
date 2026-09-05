@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Lab — Week 4 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-mid:#D97656;--terra-light:#F5EAE7;--terra-dark:#8F3D28;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;
+  --border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;
+  --amber-bg:#FAEEDA;--amber-t:#633806;
+  --blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.es{color:var(--text3);font-style:italic;font-size:.9em}
+
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:110px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:var(--terra-mid);transition:width .4s ease}
+.prog-label{font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap}
+
+.shell{max-width:780px;margin:0 auto;padding:1.5rem 1rem 5rem}
+
+.howto-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--terra);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.howto-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--terra-dark);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.howto-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:.55rem;font-size:14px;color:var(--text2);line-height:1.5}
+.howto-step:last-child{margin-bottom:0}
+.howto-step .es{display:block;margin-top:1px}
+
+.section-intro{text-align:center;padding:1.5rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:21px;font-weight:700;color:var(--teal);margin-bottom:.3rem}
+.section-intro p{font-size:13.5px;color:var(--text3);max-width:540px;margin:0 auto}
+.section-intro p.es{margin-top:2px}
+
+.phase-nav{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .5rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
+
+/* Pattern cards */
+.pattern-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.pattern-head{display:flex;align-items:center;gap:10px;margin-bottom:.9rem}
+.pattern-verb{font-family:'Raleway',sans-serif;font-size:20px;font-weight:800;color:var(--terra-dark);background:var(--terra-light);padding:5px 16px;border-radius:20px;border:1px solid #E7C4B7}
+.pattern-plus{font-size:18px;color:var(--text3);font-weight:700}
+.pattern-ing{font-family:'Raleway',sans-serif;font-size:20px;font-weight:800;color:var(--teal-dark);background:var(--teal-light);padding:5px 16px;border-radius:20px;border:1px solid #9FE1CB}
+.example-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.25rem}
+.ex-item{background:var(--cream);border-radius:8px;padding:.65rem .9rem;font-size:13.5px;color:var(--text2);line-height:1.5;border-left:3px solid var(--teal-mid)}
+.ex-item strong{color:var(--teal-dark);font-weight:700}
+.ex-item .es{display:block;margin-top:3px}
+
+/* Before/After box */
+.ba-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.5rem}
+.ba-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.ba-title .es{display:block;font-size:12px;font-weight:400;margin-top:2px}
+.ba-row{display:flex;flex-direction:column;gap:.6rem;margin-top:.9rem}
+.ba-item{border-radius:10px;padding:.75rem 1rem;font-size:14px;line-height:1.5}
+.ba-item.before{background:var(--red-bg);border-left:3px solid #E24B4A;color:var(--red-t)}
+.ba-item.after{background:var(--green-bg);border-left:3px solid var(--green-b);color:var(--green-t)}
+.ba-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;display:block}
+.ba-note{font-size:12.5px;color:var(--text3);margin-top:.6rem;line-height:1.5;font-style:italic}
+
+.tip-box{background:var(--blue-bg);border-radius:8px;padding:.65rem .9rem;margin-top:.9rem;font-size:13px;color:var(--blue-t);line-height:1.5}
+.tip-box strong{font-weight:700}
+.tip-box .es{display:block;margin-top:3px}
+
+/* Quiz */
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-situation{background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;padding:.6rem .9rem;font-size:13px;color:var(--teal-dark);margin-bottom:1rem}
+.quiz-situation strong{font-weight:700}
+.quiz-situation .es{display:block;margin-top:3px}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:#E7C4B7;background:var(--terra-light)}
+.q-opt.correct,.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter,.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.55;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.quiz-feedback .es{display:block;margin-top:4px}
+
+/* Write */
+.write-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.write-word-tag{display:inline-block;font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--terra-dark);background:var(--terra-light);padding:4px 16px;border-radius:20px;margin-bottom:.75rem;border:1px solid #E7C4B7}
+.write-reminder{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:12.5px;color:var(--text2);margin-bottom:.5rem;line-height:1.55}
+.write-reminder strong{font-weight:700}
+.write-reminder .es{display:block;margin-top:3px}
+.write-hint{font-size:12px;color:var(--teal);margin-bottom:.75rem;font-style:italic;line-height:1.5}
+.write-ta{width:100%;min-height:80px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--terra-mid);background:#fff;box-shadow:0 0 0 3px rgba(196,85,58,.1)}
+.write-ta.has-text{background:#fff}
+.check-btn{margin-top:.75rem;padding:.5rem 1.1rem;border:1px solid var(--border);border-radius:8px;background:var(--card);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Lato',sans-serif}
+.check-btn:hover{border-color:var(--terra-mid);color:var(--terra-dark)}
+.model-answer{margin-top:.75rem;padding:.65rem .9rem;background:var(--teal-light);border-left:3px solid var(--teal-mid);border-radius:0 8px 8px 0;font-size:13px;color:var(--teal-dark);line-height:1.55;display:none}
+.model-answer.show{display:block}
+.model-answer strong{font-weight:700}
+
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:50px;font-weight:700;color:var(--terra-dark);line-height:1}
+.result-denom{font-size:19px;color:var(--text3)}
+.result-note{font-size:13.5px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.result-note .es{display:block;margin-top:6px}
+
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);gap:1rem;flex-wrap:wrap}
+.nav-btn{padding:.6rem 1.3rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--terra-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+
+.export-box{display:none;text-align:center;margin-top:1.5rem}
+.export-box.show{display:block}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;border:none;background:var(--terra);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif}
+.export-btn:hover{background:var(--terra-dark)}
+
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box,.howto-card{display:none!important}
+  .no-print{display:none!important}
+  #phase-0,#phase-1,#phase-2{display:block!important}
+  body{background:#fff}
+  .shell{max-width:100%;padding:0 .5rem}
+}
+@media(max-width:580px){ .shell{padding:1.25rem .75rem 5rem} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Grammar Lab — Week 4</div>
+    <div class="topbar-sub">English with Ali · After Love, Hate, and Enjoy...</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <div class="howto-card no-print">
+    <div class="howto-title">📋 How to do this activity / Cómo hacer esta actividad</div>
+    <div class="howto-step"><span>1️⃣</span><span>Phase 1 — Learn: Read each pattern card and the examples.<span class="es">Fase 1 — Aprender: Lee cada tarjeta de patrón y los ejemplos.</span></span></div>
+    <div class="howto-step"><span>2️⃣</span><span>Phase 2 — Quiz: Choose the sentence that uses the pattern correctly.<span class="es">Fase 2 — Quiz: Elige la oración que usa el patrón correctamente.</span></span></div>
+    <div class="howto-step"><span>3️⃣</span><span>Phase 3 — Write: Write your own sentences using the pattern.<span class="es">Fase 3 — Escribir: Escribe tus propias oraciones usando el patrón.</span></span></div>
+    <div class="howto-step"><span>📄</span><span>At the end, click <strong>"Export written parts to PDF"</strong> and save it.<span class="es">Al final, haz clic en "Export written parts to PDF" y guárdalo.</span></span></div>
+  </div>
+
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Learn</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Quiz</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const PATTERNS = [
+  {verb:'love',examples:[
+    {en:'I <strong>love reading</strong> stories about Lake Atitlán.',es:'Me encanta leer historias sobre el Lago Atitlán.'},
+    {en:'My dad <strong>loves cooking</strong> for our family on Sundays.',es:'A mi papá le encanta cocinar para la familia los domingos.'},
+  ]},
+  {verb:'hate',examples:[
+    {en:'My brother <strong>hates cleaning</strong> his room.',es:'A mi hermano le desagrada limpiar su cuarto.'},
+    {en:'I don\'t <strong>hate jogging</strong>, but I prefer walking.',es:'No me desagrada trotar, pero prefiero caminar.'},
+  ]},
+  {verb:'like',examples:[
+    {en:'I <strong>like exercising</strong> before band practice.',es:'Me gusta hacer ejercicio antes del ensayo de banda.'},
+    {en:'She <strong>likes cooking</strong> with her mom on weekends.',es:'A ella le gusta cocinar con su mamá los fines de semana.'},
+  ]},
+  {verb:'enjoy',examples:[
+    {en:'We <strong>enjoy reading</strong> together at night.',es:'Disfrutamos leer juntos en la noche.'},
+    {en:'Todd <strong>enjoys listening</strong> to audio books while he jogs.',es:'A Todd le gusta escuchar audiolibros mientras trota.'},
+  ]},
+  {verb:'prefer',examples:[
+    {en:'I <strong>prefer listening</strong> to music instead of watching TV.',es:'Prefiero escuchar música en vez de ver televisión.'},
+    {en:'My mom <strong>prefers cleaning</strong> in the morning, not at night.',es:'Mi mamá prefiere limpiar en la mañana, no en la noche.'},
+  ]},
+];
+
+const QUIZ = [
+  {id:'q1',situationEn:'You want to say what you enjoy doing in your free time.',situationEs:'Quieres decir qué disfrutas hacer en tu tiempo libre.',
+    prompt:'Which sentence is correct?',
+    options:['I enjoy to read stories at night.','I enjoy read stories at night.','I enjoy reading stories at night.','I enjoying reading stories at night.'],
+    correct:2,explainEn:'Correct! "Enjoy" is always followed by verb + -ing: enjoy reading, enjoy cooking, enjoy jogging.',explainEs:'¡Correcto! "Enjoy" siempre va seguido de verbo + -ing: enjoy reading, enjoy cooking, enjoy jogging.'},
+  {id:'q2',situationEn:'Your dad cooks at home even though he works at a hotel restaurant.',situationEs:'Tu papá cocina en casa aunque trabaja en el restaurante de un hotel.',
+    prompt:'Which sentence describes him correctly?',
+    options:['My dad loves cook at home too.','My dad loves cooking at home too.','My dad love to cooking at home too.','My dad loving cook at home too.'],
+    correct:1,explainEn:'Correct! "Loves cooking" — remember the -s on "loves" (he/she) and -ing on "cooking."',explainEs:'¡Correcto! "Loves cooking" — recuerda la -s en "loves" (he/she) y el -ing en "cooking."'},
+  {id:'q3',situationEn:'Instead of watching TV, you like to listen to music.',situationEs:'En vez de ver televisión, te gusta escuchar música.',
+    prompt:'Which sentence uses "prefer" correctly?',
+    options:['I prefer listen to music.','I prefer to listening music.','I prefer listening to music.','I prefer am listening music.'],
+    correct:2,explainEn:'Correct! "Prefer listening to music" — same pattern as love/hate/like/enjoy: prefer + verb-ing.',explainEs:'¡Correcto! "Prefer listening to music" — mismo patrón que love/hate/like/enjoy: prefer + verbo-ing.'},
+  {id:'q4',situationEn:'Your brother really dislikes doing his chores.',situationEs:'A tu hermano realmente le desagrada hacer sus quehaceres.',
+    prompt:'Which sentence is correct?',
+    options:['My brother hates clean his room.','My brother hates to cleaning his room.','My brother hates cleaning his room.','My brother hate cleaning his room.'],
+    correct:2,explainEn:'Correct! "Hates cleaning" — -s on the verb (he), -ing on "cleaning."',explainEs:'¡Correcto! "Hates cleaning" — -s en el verbo (he), -ing en "cleaning."'},
+  {id:'q5',situationEn:'Todd listens to audio books while he runs.',situationEs:'Todd escucha audiolibros mientras corre.',
+    prompt:'Which sentence describes him correctly?',
+    options:['Todd enjoy listening audio books while jogging.','Todd enjoys listening to audio books while jogging.','Todd enjoys to listen audio books while jogging.','Todd enjoying listen audio books while jogging.'],
+    correct:1,explainEn:'Correct! "Enjoys listening to..." — the -s agrees with Todd (he), and "listening" keeps the -ing form.',explainEs:'¡Correcto! "Enjoys listening to..." — la -s concuerda con Todd (he), y "listening" mantiene la forma -ing.'},
+  {id:'q6',situationEn:'You and a friend both enjoy the same activity at night.',situationEs:'Tú y una amiga disfrutan la misma actividad por la noche.',
+    prompt:'Which sentence is correct?',
+    options:['We enjoy reading together at night.','We enjoy to read together at night.','We enjoying read together at night.','We enjoys reading together at night.'],
+    correct:0,explainEn:'Correct! With "we," the verb stays as "enjoy" (no -s), followed by -ing: enjoy reading.',explainEs:'¡Correcto! Con "we," el verbo se queda como "enjoy" (sin -s), seguido de -ing: enjoy reading.'},
+];
+
+const WRITE_TASKS = [
+  {word:'love + -ing',promptEn:'Write a sentence about something you love doing.',promptEs:'Escribe una oración sobre algo que amas hacer.',hint:'Think of a hobby, a subject at school, or time with family.',model:'I love reading stories about Guatemala, especially about Lake Atitlán.'},
+  {word:'hate + -ing',promptEn:'Write a sentence about something you or someone in your family hates doing.',promptEs:'Escribe una oración sobre algo que tú o alguien en tu familia odia hacer.',hint:'Think of a chore or task nobody enjoys.',model:'My brother hates cleaning his room, but he doesn\'t mind cooking.'},
+  {word:'like / enjoy + -ing',promptEn:'Write a sentence using "like" or "enjoy" about a real activity in your life.',promptEs:'Escribe una oración usando "like" o "enjoy" sobre una actividad real en tu vida.',hint:'Band practice, chemistry class, walking around SCP — anything real.',model:'I enjoy exercising before band practice — it gives me more energy.'},
+  {word:'prefer + -ing',promptEn:'Write a sentence using "prefer" to compare two activities you like.',promptEs:'Escribe una oración usando "prefer" para comparar dos actividades que te gustan.',hint:'Try: "I prefer [activity] instead of [activity]."',model:'I prefer listening to music instead of watching TV.'},
+];
+
+let currentPhase = 0;
+const quizAnswers = {};
+const writeAnswers = {};
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Learn','Phase 2 of 3 — Quiz','Phase 3 of 3 — Write'];
+  const pcts = [33,66,100];
+  document.getElementById('prog').style.width = pcts[currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+
+function goPhase(n){
+  document.getElementById('phase-' + currentPhase).style.display = 'none';
+  document.querySelectorAll('.phase-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentPhase = n;
+  document.getElementById('phase-' + n).style.display = 'block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n === 1) renderQuiz();
+  if(n === 2) renderWrite();
+}
+
+function renderLearn(){
+  const el = document.getElementById('phase-0');
+  let html = `<div class="section-intro"><h2>Phase 1 — Learn the Pattern</h2><p>After these five words, the next verb always ends in -ing.</p><p class="es">Después de estas cinco palabras, el siguiente verbo siempre termina en -ing.</p></div>`;
+
+  PATTERNS.forEach(p => {
+    html += `<div class="pattern-card">
+      <div class="pattern-head"><span class="pattern-verb">${p.verb}</span><span class="pattern-plus">+</span><span class="pattern-ing">verb-ing</span></div>
+      <div class="example-list">`;
+    p.examples.forEach(ex => {
+      html += `<div class="ex-item">${ex.en}<span class="es">${ex.es}</span></div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  html += `<div class="ba-box no-print">
+    <div class="ba-title">🌱 Leveling up a sentence<span class="es">Subiendo de nivel una oración</span></div>
+    <div class="ba-row">
+      <div class="ba-item before"><span class="ba-lbl">Earlier</span>I prefer listen to music.</div>
+      <div class="ba-item after"><span class="ba-lbl">Next level</span>I prefer <strong>listening</strong> to music.</div>
+    </div>
+    <div class="ba-note">You already know "prefer" — great! Now the verb after it just needs -ing, exactly like love, hate, like, and enjoy.<br><span class="es">Ya conoces "prefer" — ¡excelente! Ahora el verbo después solo necesita -ing, igual que love, hate, like, y enjoy.</span></div>
+  </div>`;
+
+  html += `<div class="tip-box"><strong>💡 Memory trick:</strong> LOVE • HATE • LIKE • ENJOY • PREFER — five feeling-words, one same rule: verb + -ING.<span class="es">Truco: LOVE • HATE • LIKE • ENJOY • PREFER — cinco palabras de sentimiento, una misma regla: verbo + -ING.</span></div>`;
+
+  html += `<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">${PATTERNS.length} patterns / patrones</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Quiz →</button></div>`;
+  el.innerHTML = html;
+}
+
+function renderQuiz(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Quiz</h2><p>Choose the sentence that uses the pattern correctly.</p><p class="es">Elige la oración que usa el patrón correctamente.</p></div>`;
+
+  QUIZ.forEach((q,qi) => {
+    const answered = quizAnswers[q.id] !== undefined;
+    html += `<div class="quiz-card">
+      <div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-situation"><strong>Situation:</strong> ${q.situationEn}<span class="es">${q.situationEs}</span></div>
+      <div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-options">`;
+    q.options.forEach((opt,oi) => {
+      let cls = '';
+      if(answered){
+        if(oi === q.correct) cls = 'revealed';
+        else if(quizAnswers[q.id] === oi) cls = 'incorrect';
+      }
+      html += `<button class="q-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerQuiz(this)">
+        <span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span>
+      </button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = quizAnswers[q.id] === q.correct;
+      html += `<div class="quiz-feedback ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explainEn}<span class="es">${q.explainEs}</span></div>`;
+    }
+    html += `</div>`;
+  });
+
+  const allDone = Object.keys(quizAnswers).length === QUIZ.length;
+  const correctCount = QUIZ.filter(q => quizAnswers[q.id] === q.correct).length;
+  if(allDone){
+    html += `<div class="results-card">
+      <div class="result-score">${correctCount}<span class="result-denom">/${QUIZ.length}</span></div>
+      <div style="font-size:14px;color:var(--text3);margin-top:4px">correct / correctas</div>
+      <p class="result-note">${correctCount >= 5 ? 'Great! You\'ve got the pattern. Continue to writing.' : correctCount >= 4 ? 'Good work! Review Phase 1 quickly, then continue.' : 'Take another look at the pattern cards before continuing.'}<span class="es">${correctCount >= 5 ? '¡Genial! Ya tienes el patrón. Continúa a escribir.' : correctCount >= 4 ? '¡Buen trabajo! Revisa rápido la Fase 1 y continúa.' : 'Revisa otra vez las tarjetas de patrón antes de continuar.'}</span></p>
+    </div>`;
+  }
+
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(0)">← Back to Learn</button>
+    <button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button>
+  </div>`;
+  el.innerHTML = html;
+}
+
+function answerQuiz(btn){
+  const qid = btn.dataset.qid;
+  const oi = parseInt(btn.dataset.oi);
+  if(quizAnswers[qid] !== undefined) return;
+  quizAnswers[qid] = oi;
+  renderQuiz();
+}
+
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Write in Context</h2><p>Now use the pattern yourself, about your real life.</p><p class="es">Ahora usa el patrón tú misma, sobre tu vida real.</p></div>`;
+
+  WRITE_TASKS.forEach((task,ti) => {
+    const val = writeAnswers[ti] || '';
+    html += `<div class="write-card">
+      <span class="write-word-tag">${task.word}</span>
+      <div class="write-reminder"><strong>Prompt:</strong> ${task.promptEn}<span class="es">${task.promptEs}</span></div>
+      <div class="write-hint">💭 ${task.hint}</div>
+      <textarea class="write-ta ${val?'has-text':''}" id="wta-${ti}" placeholder="Write your sentence here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <button class="check-btn" onclick="showModel(${ti})">See a model answer / Ver ejemplo</button>
+      <div class="model-answer" id="ma-${ti}"><strong>Example:</strong> ${task.model}</div>
+    </div>`;
+  });
+
+  const done = Object.values(writeAnswers).filter(v => v && v.trim().length > 5).length;
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(1)">← Back to Quiz</button>
+    <div style="text-align:center"><div style="font-size:13px;color:var(--text3)">${done} of ${WRITE_TASKS.length} completed</div></div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button>
+  </div>
+  <div class="export-box show"><button class="export-btn" onclick="exportPdf()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+
+function recordWrite(ti,val){ writeAnswers[ti] = val; }
+
+function showModel(ti){
+  const ma = document.getElementById('ma-' + ti);
+  if(ma) ma.classList.add('show');
+  const btns = document.querySelectorAll('#phase-2 .check-btn');
+  if(btns[ti]) btns[ti].classList.add('done');
+}
+
+function escHtml(str){
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function exportPdf(){
+  document.getElementById('phase-0').style.display = 'block';
+  document.getElementById('phase-1').style.display = 'block';
+  document.getElementById('phase-2').style.display = 'block';
+  window.print();
+  setTimeout(() => {
+    document.getElementById('phase-0').style.display = currentPhase===0?'block':'none';
+    document.getElementById('phase-1').style.display = currentPhase===1?'block':'none';
+    document.getElementById('phase-2').style.display = currentPhase===2?'block':'none';
+  }, 300);
+}
+
+renderLearn();
+updateProgress();
+</script>
+</body>
+</html>
