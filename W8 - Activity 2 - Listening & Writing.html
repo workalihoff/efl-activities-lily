@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening &amp; Writing — Week 8 | English with Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-mid:#1D9E75;--teal-light:#E1F5EE;--teal-dark:#085041;
+  --terra:#C4553A;--terra-mid:#D97656;--terra-light:#F5EAE7;--terra-dark:#8F3D28;
+  --cream:#F7F5F0;--cream-dark:#EDE9E2;
+  --text:#1A1A18;--text2:#4A4A47;--text3:#888780;--border:#E0DED8;--card:#fff;
+  --green-bg:#EAF3DE;--green-t:#27500A;--green-b:#3B6D11;
+  --red-bg:#FCEBEB;--red-t:#791F1F;--blue-bg:#E6F1FB;--blue-t:#0C447C;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+.es{color:var(--text3);font-style:italic;font-size:.9em}
+.topbar{background:var(--teal);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.topbar-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.prog-wrap{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{width:110px;height:6px;background:rgba(255,255,255,.2);border-radius:3px}
+.prog-bar-fill{height:6px;border-radius:3px;background:var(--terra-mid);transition:width .4s ease}
+.prog-label{font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap}
+.shell{max-width:780px;margin:0 auto;padding:1.5rem 1rem 5rem}
+.howto-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--terra);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.howto-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--terra-dark);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.howto-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:.55rem;font-size:14px;color:var(--text2);line-height:1.5}
+.howto-step:last-child{margin-bottom:0}
+.howto-step .es{display:block;margin-top:1px}
+.section-intro{text-align:center;padding:1.5rem 0 1.5rem}
+.section-intro h2{font-family:'Raleway',sans-serif;font-size:21px;font-weight:700;color:var(--teal);margin-bottom:.3rem}
+.section-intro p{font-size:13.5px;color:var(--text3);max-width:540px;margin:0 auto}
+.section-intro p.es{margin-top:2px}
+.phase-nav{display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.phase-tab{flex:1;padding:.75rem .4rem;text-align:center;cursor:pointer;border:none;background:transparent;font-family:'Lato',sans-serif;font-size:12.5px;font-weight:600;color:var(--text3);transition:all .2s;border-right:1px solid var(--border)}
+.phase-tab:last-child{border-right:none}
+.phase-tab.active{background:var(--teal);color:#fff}
+.phase-tab .tab-num{display:block;font-size:18px;font-weight:700;margin-bottom:2px}
+.phase-tab .tab-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.audio-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.audio-title{font-family:'Raleway',sans-serif;font-size:18px;font-weight:700;color:var(--teal-dark);margin-bottom:.3rem}
+.audio-sub{font-size:13px;color:var(--text3);margin-bottom:1rem}
+.audio-sub .es{display:block;margin-top:2px}
+.open-link-btn{display:inline-block;background:var(--teal);color:#fff;font-size:14px;font-weight:700;padding:.7rem 1.4rem;border-radius:10px;text-decoration:none;margin-top:.4rem}
+.open-link-btn:hover{background:var(--teal-mid)}
+.notes-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.notes-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.6rem}
+.notes-list{display:flex;flex-direction:column;gap:.5rem}
+.notes-item{background:var(--cream);border-radius:8px;padding:.6rem .9rem;font-size:13.5px;color:var(--text2);line-height:1.5}
+.notes-item .es{display:block;margin-top:2px}
+.notes-ta{width:100%;min-height:70px;border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;background:var(--cream);margin-top:.7rem}
+.notes-ta:focus{border-color:var(--terra-mid);background:#fff;outline:none}
+.transcript-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.transcript-conv{margin-bottom:1rem}
+.transcript-conv:last-child{margin-bottom:0}
+.transcript-conv-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--terra-dark);margin-bottom:.5rem}
+.transcript-line{font-size:13.5px;color:var(--text2);line-height:1.6;margin-bottom:.2rem}
+.transcript-line strong{color:var(--teal-dark);font-weight:700}
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.quiz-num{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quiz-prompt{font-size:15px;font-weight:600;color:var(--text);margin-bottom:1rem;line-height:1.5}
+.quiz-prompt .es{display:block;font-size:13px;font-weight:400;margin-top:3px}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.q-opt{display:flex;align-items:flex-start;gap:10px;padding:.7rem 1rem;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:left;transition:all .15s;font-family:'Lato',sans-serif;width:100%}
+.q-opt:hover{border-color:#E7C4B7;background:var(--terra-light)}
+.q-opt.correct,.q-opt.revealed{border-color:var(--green-b);background:var(--green-bg)}
+.q-opt.incorrect{border-color:#E24B4A;background:var(--red-bg)}
+.q-letter{min-width:22px;height:22px;border-radius:50%;border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.q-opt.correct .q-letter,.q-opt.revealed .q-letter{background:var(--green-b);border-color:var(--green-b);color:#fff}
+.q-opt.incorrect .q-letter{background:#E24B4A;border-color:#E24B4A;color:#fff}
+.q-text{font-size:14px;color:var(--text);line-height:1.5}
+.quiz-feedback{margin-top:.75rem;padding:.65rem .9rem;border-radius:8px;font-size:13px;line-height:1.55;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct{background:var(--green-bg);color:var(--green-t);border-left:3px solid var(--green-b)}
+.quiz-feedback.incorrect{background:var(--red-bg);color:var(--red-t);border-left:3px solid #E24B4A}
+.quiz-feedback .es{display:block;margin-top:4px}
+.results-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.2rem;text-align:center;margin-bottom:1.25rem}
+.result-score{font-family:'Raleway',sans-serif;font-size:50px;font-weight:700;color:var(--terra-dark);line-height:1}
+.result-denom{font-size:19px;color:var(--text3)}
+.result-note{font-size:13.5px;color:var(--text2);max-width:420px;margin:.75rem auto 0;line-height:1.6}
+.result-note .es{display:block;margin-top:6px}
+.speak-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.speak-title{font-family:'Raleway',sans-serif;font-size:17px;font-weight:700;color:var(--terra-dark);margin-bottom:.5rem}
+.frame-box{background:var(--terra-light);border-left:3px solid var(--terra);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:14.5px;color:var(--terra-dark);font-weight:600;line-height:1.6}
+.speak-hint{font-size:12.5px;color:var(--teal);margin-bottom:.9rem;line-height:1.55;font-style:italic}
+.write-ta{width:100%;min-height:90px;border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:14px;color:var(--text);font-family:'Lato',sans-serif;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;background:var(--cream)}
+.write-ta:focus{border-color:var(--terra-mid);background:#fff;box-shadow:0 0 0 3px rgba(196,85,58,.1)}
+.vocaroo-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.25rem}
+.vocaroo-title{font-family:'Raleway',sans-serif;font-size:16px;font-weight:700;color:var(--teal-dark);margin-bottom:.8rem;display:flex;align-items:center;gap:8px}
+.vocaroo-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:.6rem;font-size:14px;color:var(--text2);line-height:1.5}
+.vocaroo-step .es{display:block;margin-top:1px}
+.vocaroo-link-row{margin-top:1rem}
+.vocaroo-link-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-bottom:.4rem}
+.link-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:.65rem .9rem;font-size:13.5px;color:var(--text);font-family:'Lato',sans-serif;outline:none;background:var(--cream)}
+.link-input:focus{border-color:var(--teal-mid);background:#fff}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);gap:1rem;flex-wrap:wrap}
+.nav-btn{padding:.6rem 1.3rem;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Lato',sans-serif;transition:all .15s;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.nav-btn:hover{border-color:var(--terra-mid)}
+.nav-btn.primary{background:var(--teal);border-color:var(--teal);color:#fff}
+.nav-btn.primary:hover{background:var(--teal-mid)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.export-box{display:none;text-align:center;margin-top:1.5rem}
+.export-box.show{display:block}
+.export-btn{padding:.7rem 1.6rem;border-radius:10px;border:none;background:var(--terra);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif}
+.export-btn:hover{background:var(--terra-dark)}
+@media print{
+  .topbar,.phase-nav,.bottom-nav,.export-box,.howto-card,.audio-card,.vocaroo-card{display:none!important}
+  .no-print{display:none!important}
+  #phase-0,#phase-1,#phase-2{display:block!important}
+  body{background:#fff}
+  .shell{max-width:100%;padding:0 .5rem}
+}
+@media(max-width:580px){ .shell{padding:1.25rem .75rem 5rem} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Listening &amp; Writing — Week 8</div>
+    <div class="topbar-sub">English with Ali · Listen First — Telling Time</div>
+  </div>
+  <div class="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog" style="width:0%"></div></div>
+    <span class="prog-label" id="prog-label">Phase 1 of 3</span>
+  </div>
+</div>
+
+<div class="shell">
+
+  <div class="howto-card no-print">
+    <div class="howto-title">📋 How to do this activity / Cómo hacer esta actividad</div>
+    <div class="howto-step"><span>1️⃣</span><span>Phase 1 — Listen First: Listen WITHOUT reading. Just try to catch the times you hear.<span class="es">Fase 1 — Escuchar Primero: Escucha SIN leer. Solo intenta captar las horas que escuchas.</span></span></div>
+    <div class="howto-step"><span>2️⃣</span><span>Phase 2 — Read & Check: Now read the script and check your answers.<span class="es">Fase 2 — Leer y Verificar: Ahora lee el script y revisa tus respuestas.</span></span></div>
+    <div class="howto-step"><span>3️⃣</span><span>Phase 3 — Write: Write a few sentences about your own schedule, using "at."<span class="es">Fase 3 — Escribir: Escribe algunas oraciones sobre tu propio horario, usando "at."</span></span></div>
+    <div class="howto-step"><span>📄</span><span>At the end, click <strong>"Export written parts to PDF"</strong> and save it.<span class="es">Al final, haz clic en "Export written parts to PDF" y guárdalo.</span></span></div>
+  </div>
+
+  <div class="phase-nav">
+    <div class="phase-tab active" id="tab-0" onclick="goPhase(0)"><span class="tab-num">1</span><span class="tab-lbl">Listen First</span></div>
+    <div class="phase-tab" id="tab-1" onclick="goPhase(1)"><span class="tab-num">2</span><span class="tab-lbl">Read & Check</span></div>
+    <div class="phase-tab" id="tab-2" onclick="goPhase(2)"><span class="tab-num">3</span><span class="tab-lbl">Write</span></div>
+  </div>
+
+  <div id="phase-0"></div>
+  <div id="phase-1" style="display:none"></div>
+  <div id="phase-2" style="display:none"></div>
+</div>
+
+<script>
+const QUIZ = [
+  {id:'q1',prompt:'What time does the meeting start?',promptEs:'¿A qué hora empieza la reunión?',
+    options:['At 6:30','At 6 o\'clock','At 7:15','At 7:30'],correct:1,
+    explainEn:'Correct! "It starts at 6 o\'clock."',explainEs:'¡Correcto! "It starts at 6 o\'clock."'},
+  {id:'q2',prompt:'What time is the meeting over?',promptEs:'¿A qué hora termina la reunión?',
+    options:['At 7:15','At 7:30','At 6:00','At 8:00'],correct:1,
+    explainEn:'Correct! "It is over at 7:30" (though it might finish a bit earlier, by 7:15).',explainEs:'¡Correcto! "It is over at 7:30" (aunque podría terminar antes, por las 7:15).'},
+  {id:'q3',prompt:'What time is the woman\'s last class?',promptEs:'¿A qué hora es la última clase de la mujer?',
+    options:['At 8:30','At 5:15','At 3:45','At 9:30'],correct:2,
+    explainEn:'Correct! "My last class is at 3:45."',explainEs:'¡Correcto! "My last class is at 3:45."'},
+  {id:'q4',prompt:'What does "half past ten" mean?',promptEs:'¿Qué significa "half past ten"?',
+    options:['10:15','10:45','11:30','10:30'],correct:3,
+    explainEn:'Correct! "Half past ten" = 10:30.',explainEs:'¡Correcto! "Half past ten" = 10:30.'},
+  {id:'q5',prompt:'After the 8:15 bus, when is the next one?',promptEs:'Después del bus de las 8:15, ¿cuándo es el siguiente?',
+    options:['Quarter to nine (8:45)','9:15','9:30','Quarter past nine (9:15)'],correct:0,
+    explainEn:'Correct! "The next bus is at quarter to nine" = 8:45.',explainEs:'¡Correcto! "The next bus is at quarter to nine" = 8:45.'},
+  {id:'q6',prompt:'What time is the man\'s class in the last conversation?',promptEs:'¿A qué hora es la clase del hombre en la última conversación?',
+    options:['At 8:15','At 9:15','At 9:30','At 8:45'],correct:2,
+    explainEn:'Correct! "I have class at 9:30."',explainEs:'¡Correcto! "I have class at 9:30."'},
+];
+
+let currentPhase = 0;
+const quizAnswers = {};
+let listenNotes = '';
+let planningText = '';
+let vocarooLink = '';
+
+function updateProgress(){
+  const phases = ['Phase 1 of 3 — Listen First','Phase 2 of 3 — Read & Check','Phase 3 of 3 — Write'];
+  const pcts = [33,66,100];
+  document.getElementById('prog').style.width = pcts[currentPhase] + '%';
+  document.getElementById('prog-label').textContent = phases[currentPhase];
+}
+function goPhase(n){
+  document.getElementById('phase-' + currentPhase).style.display = 'none';
+  document.querySelectorAll('.phase-tab').forEach((t,i) => t.classList.toggle('active', i === n));
+  currentPhase = n;
+  document.getElementById('phase-' + n).style.display = 'block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n === 1) renderReadCheck();
+  if(n === 2) renderWrite();
+}
+
+function renderListenFirst(){
+  const el = document.getElementById('phase-0');
+  let html = `<div class="section-intro"><h2>Phase 1 — Listen First</h2><p>Listen WITHOUT reading anything. Just try to catch the times.</p><p class="es">Escucha SIN leer nada. Solo intenta captar las horas.</p></div>`;
+  html += `<div class="audio-card">
+    <div class="audio-title">Telling Time — ELLLO A1-15</div>
+    <div class="audio-sub">4 short conversations, about 2 minutes total. It's OK if you don't catch everything — that's normal!<span class="es">4 conversaciones cortas, unos 2 minutos en total. Está bien si no captas todo — ¡es normal!</span></div>
+    <a class="open-link-btn" href="https://www.elllo.org/class/A1/A1-15-Telling-Time.html" target="_blank" rel="noopener">▶ Open the lesson on ELLLO</a>
+  </div>`;
+  html += `<div class="notes-card no-print">
+    <div class="notes-title">🎧 Write down any times you hear / Escribe las horas que escuches</div>
+    <div class="notes-list">
+      <div class="notes-item">You don't need full sentences — just numbers are fine! Listen 2-3 times if you want.<span class="es">No necesitas oraciones completas — ¡solo números está bien! Escucha 2-3 veces si quieres.</span></div>
+    </div>
+    <textarea class="notes-ta" id="listen-notes" placeholder="Example: 6:00, 7:30..." oninput="recordNotes(this.value)"></textarea>
+  </div>`;
+  html += `<div class="bottom-nav"><span style="font-size:13px;color:var(--text3)">ELLLO A1-15</span><button class="nav-btn primary" onclick="goPhase(1)">Continue to Read & Check →</button></div>`;
+  el.innerHTML = html;
+}
+function recordNotes(val){ listenNotes = val; }
+
+function renderReadCheck(){
+  const el = document.getElementById('phase-1');
+  let html = `<div class="section-intro"><h2>Phase 2 — Read &amp; Check</h2><p>Now read the script and check what you heard. Then answer the questions.</p><p class="es">Ahora lee el script y verifica lo que escuchaste. Luego responde las preguntas.</p></div>`;
+
+  html += `<div class="transcript-card">
+    <div class="transcript-conv"><div class="transcript-conv-lbl">Conversation 1</div>
+      <div class="transcript-line"><strong>Man:</strong> What time is the meeting?</div>
+      <div class="transcript-line"><strong>Woman:</strong> It starts at 6 o'clock.</div>
+      <div class="transcript-line"><strong>Man:</strong> When is it over?</div>
+      <div class="transcript-line"><strong>Woman:</strong> It is over at 7:30.</div>
+    </div>
+    <div class="transcript-conv"><div class="transcript-conv-lbl">Conversation 2</div>
+      <div class="transcript-line"><strong>Man:</strong> When is your first class?</div>
+      <div class="transcript-line"><strong>Woman:</strong> It is at 8:30.</div>
+      <div class="transcript-line"><strong>Man:</strong> When is your last class?</div>
+      <div class="transcript-line"><strong>Woman:</strong> My last class is at 3:45.</div>
+    </div>
+    <div class="transcript-conv"><div class="transcript-conv-lbl">Conversation 3</div>
+      <div class="transcript-line"><strong>Man:</strong> What time is it?</div>
+      <div class="transcript-line"><strong>Woman:</strong> It is half past ten. (10:30)</div>
+    </div>
+    <div class="transcript-conv"><div class="transcript-conv-lbl">Conversation 4</div>
+      <div class="transcript-line"><strong>Man:</strong> When is the next bus?</div>
+      <div class="transcript-line"><strong>Woman:</strong> It is at quarter past eight. (8:15)</div>
+      <div class="transcript-line"><strong>Man:</strong> And the next one?</div>
+      <div class="transcript-line"><strong>Woman:</strong> The next bus is at quarter to nine. (8:45)</div>
+      <div class="transcript-line"><strong>Man:</strong> I have class at 9:30.</div>
+    </div>
+  </div>`;
+
+  QUIZ.forEach((q,qi) => {
+    const answered = quizAnswers[q.id] !== undefined;
+    html += `<div class="quiz-card"><div class="quiz-num">Question ${qi+1} of ${QUIZ.length}</div>
+      <div class="quiz-prompt">${q.prompt}<span class="es">${q.promptEs}</span></div><div class="quiz-options">`;
+    q.options.forEach((opt,oi) => {
+      let cls = '';
+      if(answered){ if(oi === q.correct) cls = 'revealed'; else if(quizAnswers[q.id] === oi) cls = 'incorrect'; }
+      html += `<button class="q-opt ${cls}" data-qid="${q.id}" data-oi="${oi}" onclick="answerQuiz(this)"><span class="q-letter">${String.fromCharCode(65+oi)}</span><span class="q-text">${opt}</span></button>`;
+    });
+    html += `</div>`;
+    if(answered){
+      const correct = quizAnswers[q.id] === q.correct;
+      html += `<div class="quiz-feedback ${correct?'correct':'incorrect'} show">${correct?'✓ ':'✗ '}${q.explainEn}<span class="es">${q.explainEs}</span></div>`;
+    }
+    html += `</div>`;
+  });
+
+  const allDone = Object.keys(quizAnswers).length === QUIZ.length;
+  const correctCount = QUIZ.filter(q => quizAnswers[q.id] === q.correct).length;
+  if(allDone){
+    html += `<div class="results-card"><div class="result-score">${correctCount}<span class="result-denom">/${QUIZ.length}</span></div>
+      <div style="font-size:14px;color:var(--text3);margin-top:4px">correct / correctas</div>
+      <p class="result-note">Don't worry about how many you caught the first time without reading — that gets easier with practice. Continue to speaking!<span class="es">No te preocupes por cuántas captaste la primera vez sin leer — eso mejora con práctica. ¡Continúa a hablar!</span></p></div>`;
+  }
+  html += `<div class="bottom-nav"><button class="nav-btn" onclick="goPhase(0)">← Back to Listen First</button><button class="nav-btn primary" onclick="goPhase(2)" ${allDone?'':'disabled'}>Continue to Write →</button></div>`;
+  el.innerHTML = html;
+}
+function answerQuiz(btn){
+  const qid = btn.dataset.qid; const oi = parseInt(btn.dataset.oi);
+  if(quizAnswers[qid] !== undefined) return;
+  quizAnswers[qid] = oi; renderReadCheck();
+}
+
+const WRITE_TASKS = [
+  {word:'Your morning',promptEn:'Write a sentence about what time you wake up and start school.',promptEs:'Escribe una oración sobre a qué hora te despiertas y empiezas la escuela.',hint:'I wake up at... My first class is at...',model:'I wake up at 5:30, and my first class is at 7:00.'},
+  {word:'Your afternoon',promptEn:'Write a sentence about what time your last class ends.',promptEs:'Escribe una oración sobre a qué hora termina tu última clase.',hint:'My last class ends at...',model:'My last class ends at 2:30 in the afternoon.'},
+  {word:'Your evening',promptEn:'Write a sentence about what time you have dinner or relax.',promptEs:'Escribe una oración sobre a qué hora cenas o te relajas.',hint:'I have dinner at... / I relax at...',model:'I usually have dinner at 7 o\'clock, and I relax in the evening.'},
+];
+
+function renderWrite(){
+  const el = document.getElementById('phase-2');
+  let html = `<div class="section-intro"><h2>Phase 3 — Write</h2><p>Write a few short sentences about your own schedule, using "at."</p><p class="es">Escribe algunas oraciones cortas sobre tu propio horario, usando "at."</p></div>`;
+
+  WRITE_TASKS.forEach((task,ti) => {
+    const val = writeAnswers[ti] || '';
+    html += `<div class="write-card"><span class="write-word-tag">${task.word}</span>
+      <div class="write-reminder"><strong>Prompt:</strong> ${task.promptEn}<span class="es">${task.promptEs}</span></div>
+      <div class="write-hint">💭 ${task.hint}</div>
+      <textarea class="write-ta ${val?'has-text':''}" id="wta-${ti}" placeholder="Write your sentence here…" oninput="recordWrite(${ti},this.value)">${escHtml(val)}</textarea>
+      <button class="check-btn" onclick="showModel(${ti})">See a model answer / Ver ejemplo</button>
+      <div class="model-answer" id="ma-${ti}"><strong>Example:</strong> ${task.model}</div></div>`;
+  });
+
+  const done = Object.values(writeAnswers).filter(v => v && v.trim().length > 5).length;
+  html += `<div class="bottom-nav">
+    <button class="nav-btn" onclick="goPhase(1)">← Back to Read & Check</button>
+    <div style="text-align:center"><div style="font-size:13px;color:var(--text3)">${done} of ${WRITE_TASKS.length} completed</div></div>
+    <button class="nav-btn" onclick="goPhase(0)">Restart ↺</button>
+  </div>
+  <div class="export-box show"><button class="export-btn" onclick="exportPdf()">📄 Export written parts to PDF</button></div>`;
+  el.innerHTML = html;
+}
+const writeAnswers = {};
+function recordWrite(ti,val){ writeAnswers[ti] = val; }
+function showModel(ti){
+  const ma = document.getElementById('ma-' + ti);
+  if(ma) ma.classList.add('show');
+  const btns = document.querySelectorAll('#phase-2 .check-btn');
+  if(btns[ti]) btns[ti].classList.add('done');
+}
+function escHtml(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function exportPdf(){
+  document.getElementById('phase-0').style.display = 'block';
+  document.getElementById('phase-1').style.display = 'block';
+  document.getElementById('phase-2').style.display = 'block';
+  window.print();
+  setTimeout(() => {
+    document.getElementById('phase-0').style.display = currentPhase===0?'block':'none';
+    document.getElementById('phase-1').style.display = currentPhase===1?'block':'none';
+    document.getElementById('phase-2').style.display = currentPhase===2?'block':'none';
+  }, 300);
+}
+renderListenFirst();
+updateProgress();
+</script>
+</body>
+</html>
